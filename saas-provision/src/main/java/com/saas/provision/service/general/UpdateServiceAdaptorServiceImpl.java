@@ -1,0 +1,25 @@
+package com.saas.provision.service.general;
+
+import java.util.HashMap;
+import java.util.Map;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+import com.saas.common.IAppsConstants;
+import com.saas.provision.service.AdaptorService;
+import com.saas.provision.service.BaseAdaptor;
+import com.saas.provision.service.IsvConstants;
+
+public class UpdateServiceAdaptorServiceImpl extends BaseAdaptor implements AdaptorService {
+    private static Logger log = LoggerFactory.getLogger(UpdateServiceAdaptorServiceImpl.class);
+    public Map<String, Object> execute(Map<String, String> paraMap, Map<String,String> serviceMap) {
+    	 String isvService = serviceMap.get(IAppsConstants.SERVICE_MAP_SERVICE_ID);
+         String returnCode = IsvConstants.ISV_ADAP_SUCCESS;
+         Map<String, Object> responseMap = new HashMap<String, Object>();
+         responseMap.put(IAppsConstants.ISV_ADAPTOR_RETURN_DETAIL_MSG, IAppsConstants.PROVISION_REQUEST_PROVISION_SUCCESS_MSG);
+         updateProductOrderStatus(isvService, IAppsConstants.PACKAGE_ORDER_STATUS_SUCCESS);
+         responseMap.put(IAppsConstants.ISV_ADAPTOR_RETURN_CODE, returnCode);
+         return responseMap;
+    }
+}
