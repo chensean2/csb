@@ -33,25 +33,11 @@ public class AppProduct extends BaseEntity<Long>  {
 	@Column(name="AUTO_ASSIGN_INDICATOR")
 	private String autoAssignIndicator;
 
-	@Column(name="CREATED_BY")
-	private String createdBy;
-
-	@Temporal(TemporalType.TIMESTAMP)
-	@Column(name="CREATED_DT")
-	private Date createdDt;
-
 	private String ext1;
 
 	private String ext2;
 
 	private String ext3;
-
-	@Column(name="LAST_UPDATED_BY")
-	private String lastUpdatedBy;
-
-	@Temporal(TemporalType.TIMESTAMP)
-	@Column(name="LAST_UPDATED_DT")
-	private Date lastUpdatedDt;
 
 	@Column(name="MULTI_LICENSE_INDICATOR")
 	private String multiLicenseIndicator;
@@ -79,7 +65,6 @@ public class AppProduct extends BaseEntity<Long>  {
 	@Column(name="USAGE_UNIT")
 	private String usageUnit;
 
-	private int version;
 
 	public AppProduct() {
 	}
@@ -90,22 +75,6 @@ public class AppProduct extends BaseEntity<Long>  {
 
 	public void setAutoAssignIndicator(String autoAssignIndicator) {
 		this.autoAssignIndicator = autoAssignIndicator;
-	}
-
-	public String getCreatedBy() {
-		return this.createdBy;
-	}
-
-	public void setCreatedBy(String createdBy) {
-		this.createdBy = createdBy;
-	}
-
-	public Date getCreatedDt() {
-		return this.createdDt;
-	}
-
-	public void setCreatedDt(Date createdDt) {
-		this.createdDt = createdDt;
 	}
 
 	public String getExt1() {
@@ -130,22 +99,6 @@ public class AppProduct extends BaseEntity<Long>  {
 
 	public void setExt3(String ext3) {
 		this.ext3 = ext3;
-	}
-
-	public String getLastUpdatedBy() {
-		return this.lastUpdatedBy;
-	}
-
-	public void setLastUpdatedBy(String lastUpdatedBy) {
-		this.lastUpdatedBy = lastUpdatedBy;
-	}
-
-	public Date getLastUpdatedDt() {
-		return this.lastUpdatedDt;
-	}
-
-	public void setLastUpdatedDt(Date lastUpdatedDt) {
-		this.lastUpdatedDt = lastUpdatedDt;
 	}
 
 	public String getMultiLicenseIndicator() {
@@ -219,14 +172,6 @@ public class AppProduct extends BaseEntity<Long>  {
 
 	public void setUsageUnit(String usageUnit) {
 		this.usageUnit = usageUnit;
-	}
-
-	public int getVersion() {
-		return this.version;
-	}
-
-	public void setVersion(int version) {
-		this.version = version;
 	}
 
 	public List<AppPackage> getAppPackageList() {

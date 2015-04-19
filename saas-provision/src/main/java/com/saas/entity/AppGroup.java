@@ -18,18 +18,10 @@ import com.saas.common.entity.BaseEntity;
  */
 @Entity
 @Table(name="tbl_ss_app_group")
-@NamedQuery(name="AppGroup.findAll", query="SELECT t FROM AppGroup t")
 public class AppGroup extends BaseEntity<Long> {
 
 	@Column(name="ALLOW_DIFF_PACKAGE")
 	private String allowDiffPackage;
-
-	@Column(name="CREATED_BY")
-	private String createdBy;
-
-	@Temporal(TemporalType.TIMESTAMP)
-	@Column(name="CREATED_DT")
-	private Date createdDt;
 
 	@Column(name="GROUP_DESC")
 	private String groupDesc;
@@ -40,15 +32,6 @@ public class AppGroup extends BaseEntity<Long> {
 	@Column(name="GROUP_NAME")
 	private String groupName;
 
-	@Column(name="LAST_UPDATED_BY")
-	private String lastUpdatedBy;
-
-	@Temporal(TemporalType.TIMESTAMP)
-	@Column(name="LAST_UPDATED_DT")
-	private Date lastUpdatedDt;
-
-	private int version;
-
 	public AppGroup() {
 	}
 
@@ -58,22 +41,6 @@ public class AppGroup extends BaseEntity<Long> {
 
 	public void setAllowDiffPackage(String allowDiffPackage) {
 		this.allowDiffPackage = allowDiffPackage;
-	}
-
-	public String getCreatedBy() {
-		return this.createdBy;
-	}
-
-	public void setCreatedBy(String createdBy) {
-		this.createdBy = createdBy;
-	}
-
-	public Date getCreatedDt() {
-		return this.createdDt;
-	}
-
-	public void setCreatedDt(Date createdDt) {
-		this.createdDt = createdDt;
 	}
 
 	public String getGroupDesc() {
@@ -100,28 +67,5 @@ public class AppGroup extends BaseEntity<Long> {
 		this.groupName = groupName;
 	}
 
-	public String getLastUpdatedBy() {
-		return this.lastUpdatedBy;
-	}
-
-	public void setLastUpdatedBy(String lastUpdatedBy) {
-		this.lastUpdatedBy = lastUpdatedBy;
-	}
-
-	public Date getLastUpdatedDt() {
-		return this.lastUpdatedDt;
-	}
-
-	public void setLastUpdatedDt(Date lastUpdatedDt) {
-		this.lastUpdatedDt = lastUpdatedDt;
-	}
-
-	public int getVersion() {
-		return this.version;
-	}
-
-	public void setVersion(int version) {
-		this.version = version;
-	}
 
 }

@@ -10,7 +10,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.Lob;
 import javax.persistence.ManyToMany;
-import javax.persistence.NamedQuery;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -36,6 +36,10 @@ public class AppPackage extends BaseEntity<Long> {
 	@Fetch(FetchMode.JOIN)
 	private List<AppProduct> appProductList;
 
+	@ManyToOne
+	@JoinColumn(name="PACKAGE_GROUP_ID",referencedColumnName="group_id")
+	private AppGroup appGroup;
+	
 	@Column(name = "ADD_ON_INDICATOR")
 	private String addOnIndicator;
 
@@ -46,20 +50,6 @@ public class AppPackage extends BaseEntity<Long> {
 	@Temporal(TemporalType.TIMESTAMP)
 	@Column(name = "AVAILABLE_START_DT")
 	private Date availableStartDt;
-
-	@Column(name = "CREATED_BY")
-	private String createdBy;
-
-	@Temporal(TemporalType.TIMESTAMP)
-	@Column(name = "CREATED_DT")
-	private Date createdDt;
-
-	@Column(name = "LAST_UPDATED_BY")
-	private String lastUpdatedBy;
-
-	@Temporal(TemporalType.TIMESTAMP)
-	@Column(name = "LAST_UPDATED_DT")
-	private Date lastUpdatedDt;
 
 	@Lob
 	@Column(name = "MAIL_CONTENT_EXT")
@@ -80,9 +70,6 @@ public class AppPackage extends BaseEntity<Long> {
 
 	@Column(name = "PACKAGE_DESC")
 	private String packageDesc;
-
-	@Column(name = "PACKAGE_GROUP_ID")
-	private String packageGroupId;
 
 	@Lob
 	@Column(name = "PACKAGE_HOWTO_TOOLTIP")
@@ -134,7 +121,6 @@ public class AppPackage extends BaseEntity<Long> {
 	@Column(name = "UNPUBLISHED_DT")
 	private Date unpublishedDt;
 
-	private int version;
 
 	public AppPackage() {
 	}
@@ -161,38 +147,6 @@ public class AppPackage extends BaseEntity<Long> {
 
 	public void setAvailableStartDt(Date availableStartDt) {
 		this.availableStartDt = availableStartDt;
-	}
-
-	public String getCreatedBy() {
-		return this.createdBy;
-	}
-
-	public void setCreatedBy(String createdBy) {
-		this.createdBy = createdBy;
-	}
-
-	public Date getCreatedDt() {
-		return this.createdDt;
-	}
-
-	public void setCreatedDt(Date createdDt) {
-		this.createdDt = createdDt;
-	}
-
-	public String getLastUpdatedBy() {
-		return this.lastUpdatedBy;
-	}
-
-	public void setLastUpdatedBy(String lastUpdatedBy) {
-		this.lastUpdatedBy = lastUpdatedBy;
-	}
-
-	public Date getLastUpdatedDt() {
-		return this.lastUpdatedDt;
-	}
-
-	public void setLastUpdatedDt(Date lastUpdatedDt) {
-		this.lastUpdatedDt = lastUpdatedDt;
 	}
 
 	public byte[] getMailContentExt() {
@@ -243,12 +197,13 @@ public class AppPackage extends BaseEntity<Long> {
 		this.packageDesc = packageDesc;
 	}
 
-	public String getPackageGroupId() {
-		return this.packageGroupId;
+
+	public AppGroup getAppGroup() {
+		return appGroup;
 	}
 
-	public void setPackageGroupId(String packageGroupId) {
-		this.packageGroupId = packageGroupId;
+	public void setAppGroup(AppGroup appGroup) {
+		this.appGroup = appGroup;
 	}
 
 	public byte[] getPackageHowtoTooltip() {
@@ -377,14 +332,6 @@ public class AppPackage extends BaseEntity<Long> {
 
 	public void setUnpublishedDt(Date unpublishedDt) {
 		this.unpublishedDt = unpublishedDt;
-	}
-
-	public int getVersion() {
-		return this.version;
-	}
-
-	public void setVersion(int version) {
-		this.version = version;
 	}
 
 	public List<AppProduct> getAppProductList() {

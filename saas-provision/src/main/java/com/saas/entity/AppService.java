@@ -28,13 +28,6 @@ public class AppService extends BaseEntity<Long>  {
 	@Column(name="ASSIGN_CONFIG_URL")
 	private String assignConfigUrl;
 
-	@Column(name="CREATED_BY")
-	private String createdBy;
-
-	@Temporal(TemporalType.TIMESTAMP)
-	@Column(name="CREATED_DT")
-	private Date createdDt;
-
 	@Column(name="DASHBOARD_DISPLAY_INDICATOR")
 	private String dashboardDisplayIndicator;
 
@@ -42,13 +35,6 @@ public class AppService extends BaseEntity<Long>  {
 	private String expandSubIndicator;
 
 	private String issuer;
-
-	@Column(name="LAST_UPDATED_BY")
-	private String lastUpdatedBy;
-
-	@Temporal(TemporalType.TIMESTAMP)
-	@Column(name="LAST_UPDATED_DT")
-	private Date lastUpdatedDt;
 
 	@Column(name="MORE_APP_DESCRIPTION")
 	private String moreAppDescription;
@@ -136,8 +122,6 @@ public class AppService extends BaseEntity<Long>  {
 	@Column(name="TERM_CONDITION_INDICATOR")
 	private String termConditionIndicator;
 
-	private int version;
-
 	public AppService() {
 	}
 
@@ -147,22 +131,6 @@ public class AppService extends BaseEntity<Long>  {
 
 	public void setAssignConfigUrl(String assignConfigUrl) {
 		this.assignConfigUrl = assignConfigUrl;
-	}
-
-	public String getCreatedBy() {
-		return this.createdBy;
-	}
-
-	public void setCreatedBy(String createdBy) {
-		this.createdBy = createdBy;
-	}
-
-	public Date getCreatedDt() {
-		return this.createdDt;
-	}
-
-	public void setCreatedDt(Date createdDt) {
-		this.createdDt = createdDt;
 	}
 
 	public String getDashboardDisplayIndicator() {
@@ -187,22 +155,6 @@ public class AppService extends BaseEntity<Long>  {
 
 	public void setIssuer(String issuer) {
 		this.issuer = issuer;
-	}
-
-	public String getLastUpdatedBy() {
-		return this.lastUpdatedBy;
-	}
-
-	public void setLastUpdatedBy(String lastUpdatedBy) {
-		this.lastUpdatedBy = lastUpdatedBy;
-	}
-
-	public Date getLastUpdatedDt() {
-		return this.lastUpdatedDt;
-	}
-
-	public void setLastUpdatedDt(Date lastUpdatedDt) {
-		this.lastUpdatedDt = lastUpdatedDt;
 	}
 
 	public String getMoreAppDescription() {
@@ -427,14 +379,6 @@ public class AppService extends BaseEntity<Long>  {
 
 	public void setTermConditionIndicator(String termConditionIndicator) {
 		this.termConditionIndicator = termConditionIndicator;
-	}
-
-	public int getVersion() {
-		return this.version;
-	}
-
-	public void setVersion(int version) {
-		this.version = version;
 	}
 
 }

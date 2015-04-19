@@ -8,9 +8,17 @@ import org.springframework.beans.factory.annotation.Autowired;
 import com.google.common.collect.Lists;
 import com.saas.entity.AppPackage;
 import com.saas.entity.AppProduct;
+import com.saas.entity.ProvisionIsvService;
+import com.saas.entity.ProvisionIsvServiceDef;
+import com.saas.entity.ProvisionIsvServiceParaDef;
+import com.saas.entity.ProvisionRequest;
+import com.saas.entity.ProvisionServiceResDetail;
 import com.saas.repository.AppGroupRepository;
 import com.saas.repository.AppPackageRepository;
 import com.saas.repository.AppProductRepository;
+import com.saas.repository.AppServiceRepository;
+import com.saas.repository.ProvisionIsvServiceDefRepository;
+import com.saas.repository.ProvisionRequestRepository;
 
 public class EntityTest extends BaseIT {
 
@@ -21,33 +29,72 @@ public class EntityTest extends BaseIT {
 	public AppPackageRepository appPackageRepositoy;
 	@Autowired
 	public AppProductRepository appProductRepository;
-	/*@Test
-    public void testAppGroup() {
-		List<AppGroup> appGroupList = Lists.newArrayList(appGroupRepositoy.findAll());
-		System.out.println(appGroupList.size());
-	}*/
+	@Autowired
+	public AppServiceRepository appServiceRepository;
+	
+	@Autowired
+	public ProvisionIsvServiceDefRepository provisionIsvServiceDefRepository;
+	
+	@Autowired
+	public ProvisionRequestRepository provisionRequestRepository;
 	
 	@Test
     public void testAppPackage() {
 		List<AppPackage> appPackageList = Lists.newArrayList(appPackageRepositoy.findAll());
 		for(AppPackage appPackage : appPackageList){
+			if(appPackage.getAppGroup() != null){
+				System.out.println("Group - " + appPackage.getAppGroup().getGroupName());
+			}
+			
+			System.out.println("Package - " + appPackage.getPackageId());
 			if(appPackage.getAppProductList().size() > 0){
-				System.out.println(appPackage.getPackageName() + "" + appPackage.getAppProductList().size());
+				for(AppProduct appProduct : appPackage.getAppProductList()){
+					System.out.println("Product - " + appProduct.getProductId());
+					if(appProduct.getAppService() != null){
+						System.out.println("Servcie - " + appProduct.getAppService().getServiceId());
+					}
+				}
+				
+				System.out.println("----------------------------- ");
 			}
 		}
 	}
 	
 	@Test
-    public void testAppProduct() {
-		List<AppProduct> appProductList = Lists.newArrayList(appProductRepository.findAll());
-		for(AppProduct appProduct : appProductList){
-//			if(appProduct.getAppPackageList().size() > 0){
-//				System.out.println(appProduct.getProductName() + "" + appProduct.getAppPackageList().size());
-//			}
-			if(appProduct.getAppService() != null){
-				System.out.println(appProduct.getAppService().getServiceName());
+    public void testProvisionIsvServiceDef() {
+		
+		ProvisionIsvServiceDef provisionIsvServiceDef =  provisionIsvServiceDefRepository.findOne(84L);
+		if(provisionIsvServiceDef != null){
+			System.out.println("ISV Adaptor ID - " + provisionIsvServiceDef.getProvisionIsvAdaptor().getIsvAdaptorId());
+			for(ProvisionIsvServiceParaDef provisionIsvServiceParaDef : provisionIsvServiceDef.getProvisionIsvServiceParaDefList()){
+				System.out.println("ISV Param ID - " + provisionIsvServiceParaDef.getIsvServiceParaDefId());
 			}
 			
 		}
+		
 	}
+	
+	@Test
+    public void testProvisionRequest() {
+		
+		ProvisionRequest provisionRequest =  provisionRequestRepository.findOne(3679L);
+		if(provisionRequest != null){
+			System.out.println("Provision Request - " + provisionRequest.getReqNo());
+			for(ProvisionIsvService provisionIsvService : provisionRequest.getProvisionIsvServiceList()){
+				System.out.println("provisionIsvService name - " + provisionIsvService.getServiceName());
+				if(provisionIsvService.getProvisionServiceRes() != null){
+					System.out.println("getProvisionServiceRes- " + provisionIsvService.getProvisionServiceRes().getProvisionResMessage());
+					if(provisionIsvService.getProvisionServiceRes().getProvisionServiceResDetailList() != null){
+						for(ProvisionServiceResDetail provisionServiceResDetail : provisionIsvService.getProvisionServiceRes().getProvisionServiceResDetailList() ){
+							System.out.println("provisionServiceResDetail - " + provisionServiceResDetail.getServiceResFieldName());
+						}
+					}
+				}
+				
+			}
+			
+		}
+		
+	}
+	
 }

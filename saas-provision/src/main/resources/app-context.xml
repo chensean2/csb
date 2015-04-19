@@ -55,7 +55,7 @@
                 <entry key="hibernate.archive.autodetection" value="class"/>
                 <!-- 不检查@NamedQuery -->
                 <entry key="hibernate.query.startup_check" value="false"/>
-
+ <entry key="hibernate.format_sql" value="true"/>
                 <entry key="hibernate.query.substitutions" value="${hibernate.query.substitutions}"/>
                 <entry key="hibernate.default_batch_fetch_size" value="${hibernate.default_batch_fetch_size}"/>
                 <entry key="hibernate.max_fetch_depth" value="${hibernate.max_fetch_depth}"/>
