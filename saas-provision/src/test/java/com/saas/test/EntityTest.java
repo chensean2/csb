@@ -8,6 +8,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import com.google.common.collect.Lists;
 import com.saas.entity.AppPackage;
 import com.saas.entity.AppProduct;
+import com.saas.entity.Order;
+import com.saas.entity.OrderPackage;
+import com.saas.entity.OrderProduct;
 import com.saas.entity.ProvisionIsvService;
 import com.saas.entity.ProvisionIsvServiceDef;
 import com.saas.entity.ProvisionIsvServiceParaDef;
@@ -17,6 +20,7 @@ import com.saas.repository.AppGroupRepository;
 import com.saas.repository.AppPackageRepository;
 import com.saas.repository.AppProductRepository;
 import com.saas.repository.AppServiceRepository;
+import com.saas.repository.OrderRepository;
 import com.saas.repository.ProvisionIsvServiceDefRepository;
 import com.saas.repository.ProvisionRequestRepository;
 
@@ -37,6 +41,8 @@ public class EntityTest extends BaseIT {
 	
 	@Autowired
 	public ProvisionRequestRepository provisionRequestRepository;
+	@Autowired
+	public OrderRepository orderRepository;
 	
 	@Test
     public void testAppPackage() {
@@ -91,6 +97,25 @@ public class EntityTest extends BaseIT {
 					}
 				}
 				
+			}
+			
+		}
+		
+	}
+	
+	@Test
+    public void testOrder() {
+		
+		Order order = orderRepository.findOne(71L);
+		if(order != null){
+			System.out.println("Orde - " + order.getOrderRefNum());
+			for(OrderPackage orderPackage : order.getOrderPackageList()){
+				System.out.println("orderPackage - " + orderPackage.getAppPackage().getPackageId());
+				if(orderPackage.getOrderProductList() != null){
+						for(OrderProduct orderProduct : orderPackage.getOrderProductList() ){
+							System.out.println("orderProduct - " + orderProduct.getAppProduct().getProductId());
+					}
+				}
 			}
 			
 		}
