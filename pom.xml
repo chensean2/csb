@@ -4,16 +4,16 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>com.saas</groupId>
-    <artifactId>saas</artifactId>
+    <groupId>com.csb</groupId>
+    <artifactId>csb</artifactId>
     <version>1.0</version>
-    <name>saas</name>
+    <name>csb</name>
     <packaging>pom</packaging>
 
 
     <modules>
-        <!-- <module>saas-core</module> -->
-        <module>saas-provision</module>
+        <module>csb-core</module>
+        <module>csb-provision</module>
     </modules>
 
 </project>
