@@ -117,6 +117,10 @@ public class EntityTest extends BaseIT {
                     }
                 }
             }
+<<<<<<< HEAD
+=======
+
+>>>>>>> 1b3bed0a37d8daff8396c5e34ffc339c37861194
         }
 
     }
