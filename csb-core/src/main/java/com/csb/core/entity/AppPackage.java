@@ -34,7 +34,7 @@ public class AppPackage extends BaseEntity<Long> {
 	inverseJoinColumns = { @JoinColumn(name = "product_id",referencedColumnName="product_id") })
 //	// Fecth策略定义
 	@Fetch(FetchMode.JOIN)
-	private List<AppProduct> appProductList;
+	private List<AppPlan> appProductList;
 
 	@ManyToOne
 	@JoinColumn(name="PACKAGE_GROUP_ID",referencedColumnName="group_id")
@@ -334,11 +334,11 @@ public class AppPackage extends BaseEntity<Long> {
 		this.unpublishedDt = unpublishedDt;
 	}
 
-	public List<AppProduct> getAppProductList() {
+	public List<AppPlan> getAppProductList() {
 		return appProductList;
 	}
 
-	public void setAppProductList(List<AppProduct> appProductList) {
+	public void setAppProductList(List<AppPlan> appProductList) {
 		this.appProductList = appProductList;
 	}
 

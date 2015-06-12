@@ -33,7 +33,7 @@ public class OrderProduct extends BaseEntity<Long>  {
 
 	@OneToOne
 	@JoinColumn(name="PRODUCT_ID", referencedColumnName="PRODUCT_ID")
-	private AppProduct appProduct;
+	private AppPlan appPlan;
 	
 	@Column(name="PRO_RETRY_COUNT")
 	private Integer proRetryCount;
@@ -131,12 +131,12 @@ public class OrderProduct extends BaseEntity<Long>  {
 		this.proTxId = proTxId;
 	}
 
-	public AppProduct getAppProduct() {
-		return appProduct;
+	public AppPlan getAppProduct() {
+		return appPlan;
 	}
 
-	public void setAppProduct(AppProduct appProduct) {
-		this.appProduct = appProduct;
+	public void setAppProduct(AppPlan appPlan) {
+		this.appPlan = appPlan;
 	}
 
 	public String getProductOrderStatus() {

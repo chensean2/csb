@@ -1,186 +1,125 @@
 package com.csb.core.entity;
 
-import java.util.Date;
 import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
-import javax.persistence.ManyToMany;
+import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
 
 import com.csb.core.common.entity.BaseEntity;
 
 
-/**
- * The persistent class for the tbl_ss_app_product database table.
- * 
- */
 @Entity
-@Table(name="tbl_ss_app_product")
+@Table(name="tbl_csb_app_product")
 public class AppProduct extends BaseEntity<Long>  {
-	
-	@ManyToMany(mappedBy="appProductList")
-	private List<AppPackage> appPackageList;
-	
+	private static final long serialVersionUID = 1L;
+
 	@ManyToOne
-	@JoinColumn(name="service_id", referencedColumnName="service_id")
-	private AppService appService;
+	@JoinColumn(name="APP_PROVIDER_ID")
+	private AppProvider appProvider;
 	
-	@Column(name="AUTO_ASSIGN_INDICATOR")
-	private String autoAssignIndicator;
-
-	private String ext1;
-
-	private String ext2;
-
-	private String ext3;
-
-	@Column(name="MULTI_LICENSE_INDICATOR")
-	private String multiLicenseIndicator;
-
-	@Column(name="PRODUCT_DESC")
-	private String productDesc;
-
-	@Column(name="PRODUCT_ID")
-	private String productId;
-
-	@Column(name="PRODUCT_NAME")
-	private String productName;
-
+	@OneToMany(mappedBy="appProduct")
+	private List<AppPlan> appPlanList;
 	
+	
+	@Column(name="ASSIGN_CONFIG_URL")
+	private String assignConfigUrl;
 
-	@Column(name="UNLIMIT_INDICATOR")
-	private String unlimitIndicator;
 
-	@Column(name="USAGE_QUANTITY")
-	private int usageQuantity;
+	@Column(name="ISSUER")
+	private String issuer;
 
-	@Column(name="USAGE_TYPE")
-	private String usageType;
+	@Column(name="MORE_APP_DESCRIPTION")
+	private String moreAppDescription;
 
-	@Column(name="USAGE_UNIT")
-	private String usageUnit;
+	@Column(name="MORE_APP_ICON_OFF")
+	private String moreAppIconOff;
 
+	@Column(name="MORE_APP_ICON_ON")
+	private String moreAppIconOn;
+
+	@Column(name="MORE_APP_LAUNCH_URL")
+	private String moreAppLaunchUrl;
+
+	@Column(name="MORE_APP_NAME")
+	private String moreAppName;
+
+	@Column(name="PROVISION_CONFIG_UPDATE_URL")
+	private String provisionConfigUpdateUrl;
+
+	@Column(name="PROVISION_CONFIG_URL")
+	private String provisionConfigUrl;
+
+	@Column(name="SERVICE_CATEGORY")
+	private String serviceCategory;
+
+	@Column(name="SERVICE_DEF_NAME")
+	private String serviceDefName;
+
+	@Column(name="SERVICE_DEF_VERSION")
+	private String serviceDefVersion;
+
+	@Column(name="SERVICE_DESCRIPTION")
+	private String serviceDescription;
+
+	@Column(name="SERVICE_ID")
+	private String serviceId;
+
+	@Column(name="SERVICE_LAUNCH_URL")
+	private String serviceLaunchUrl;
+
+	@Lob
+	@Column(name="SERVICE_LOGO")
+	private byte[] serviceLogo;
+
+	@Column(name="SERVICE_LOGO_OFF_PATH")
+	private String serviceLogoOffPath;
+
+	@Column(name="SERVICE_LOGO_ON_PATH")
+	private String serviceLogoOnPath;
+
+	@Column(name="SERVICE_NAME")
+	private String serviceName;
+
+	@Column(name="SERVICE_PASSWORD")
+	private String servicePassword;
+
+	@Column(name="SERVICE_PROVISION_URL")
+	private String serviceProvisionUrl;
+
+	@Column(name="SERVICE_SIGN_OUT_URL")
+	private String serviceSignOutUrl;
+
+	@Column(name="SERVICE_STATUS")
+	private String serviceStatus;
+
+	@Column(name="SERVICE_TYPE")
+	private String serviceType;
+
+	@Column(name="SERVICE_USERNAME")
+	private String serviceUsername;
+
+	@Column(name="SSO_ACS_URL")
+	private String ssoAcsUrl;
+
+	@Column(name="SSO_RELAY_STATE")
+	private String ssoRelayState;
+
+	@Column(name="SSO_URL")
+	private String ssoUrl;
+
+	@Lob
+	@Column(name="TERM_CONDITION_CONTENT")
+	private byte[] termConditionContent;
+
+	@Column(name="TERM_CONDITION_INDICATOR")
+	private String termConditionIndicator;
 
 	public AppProduct() {
 	}
-
-	public String getAutoAssignIndicator() {
-		return this.autoAssignIndicator;
-	}
-
-	public void setAutoAssignIndicator(String autoAssignIndicator) {
-		this.autoAssignIndicator = autoAssignIndicator;
-	}
-
-	public String getExt1() {
-		return this.ext1;
-	}
-
-	public void setExt1(String ext1) {
-		this.ext1 = ext1;
-	}
-
-	public String getExt2() {
-		return this.ext2;
-	}
-
-	public void setExt2(String ext2) {
-		this.ext2 = ext2;
-	}
-
-	public String getExt3() {
-		return this.ext3;
-	}
-
-	public void setExt3(String ext3) {
-		this.ext3 = ext3;
-	}
-
-	public String getMultiLicenseIndicator() {
-		return this.multiLicenseIndicator;
-	}
-
-	public void setMultiLicenseIndicator(String multiLicenseIndicator) {
-		this.multiLicenseIndicator = multiLicenseIndicator;
-	}
-
-	public String getProductDesc() {
-		return this.productDesc;
-	}
-
-	public void setProductDesc(String productDesc) {
-		this.productDesc = productDesc;
-	}
-
-	public String getProductId() {
-		return this.productId;
-	}
-
-	public void setProductId(String productId) {
-		this.productId = productId;
-	}
-
-	public String getProductName() {
-		return this.productName;
-	}
-
-	public void setProductName(String productName) {
-		this.productName = productName;
-	}
-
-	public AppService getAppService() {
-		return appService;
-	}
-
-	public void setAppService(AppService appService) {
-		this.appService = appService;
-	}
-
-
-	public String getUnlimitIndicator() {
-		return this.unlimitIndicator;
-	}
-
-	public void setUnlimitIndicator(String unlimitIndicator) {
-		this.unlimitIndicator = unlimitIndicator;
-	}
-
-	public int getUsageQuantity() {
-		return this.usageQuantity;
-	}
-
-	public void setUsageQuantity(int usageQuantity) {
-		this.usageQuantity = usageQuantity;
-	}
-
-	public String getUsageType() {
-		return this.usageType;
-	}
-
-	public void setUsageType(String usageType) {
-		this.usageType = usageType;
-	}
-
-	public String getUsageUnit() {
-		return this.usageUnit;
-	}
-
-	public void setUsageUnit(String usageUnit) {
-		this.usageUnit = usageUnit;
-	}
-
-	public List<AppPackage> getAppPackageList() {
-		return appPackageList;
-	}
-
-	public void setAppPackageList(List<AppPackage> appPackageList) {
-		this.appPackageList = appPackageList;
-	}
-
 
 }

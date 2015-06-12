@@ -6,7 +6,7 @@ import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.csb.core.entity.AppPackage;
-import com.csb.core.entity.AppProduct;
+import com.csb.core.entity.AppPlan;
 import com.csb.core.entity.Order;
 import com.csb.core.entity.OrderPackage;
 import com.csb.core.entity.OrderProduct;
@@ -54,10 +54,10 @@ public class EntityTest extends BaseIT {
 
             System.out.println("Package - " + appPackage.getPackageId());
             if (appPackage.getAppProductList().size() > 0) {
-                for (AppProduct appProduct : appPackage.getAppProductList()) {
-                    System.out.println("Product - " + appProduct.getProductId());
-                    if (appProduct.getAppService() != null) {
-                        System.out.println("Servcie - " + appProduct.getAppService().getServiceId());
+                for (AppPlan appPlan : appPackage.getAppProductList()) {
+                    System.out.println("Product - " + appPlan.getProductId());
+                    if (appPlan.getAppService() != null) {
+                        System.out.println("Servcie - " + appPlan.getAppService().getServiceId());
                     }
                 }
 
@@ -117,10 +117,7 @@ public class EntityTest extends BaseIT {
                     }
                 }
             }
-<<<<<<< HEAD
-=======
 
->>>>>>> 1b3bed0a37d8daff8396c5e34ffc339c37861194
         }
 
     }
