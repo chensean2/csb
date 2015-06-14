@@ -82,38 +82,16 @@
 	<!-- 预定义依赖项的version,scope与exclusions,子项目中只需定义groupId 与  artifactId 即可 -->
 	<dependencyManagement>
 		<dependencies>
-			<!-- SPRINGSIDE MODULES begin -->
-			<dependency>
-				<groupId>io.springside</groupId>
-				<artifactId>springside-utils</artifactId>
-				<version>${springside.version}</version>
-				<scope>compile</scope>
-			</dependency>
-			<dependency>
-				<groupId>io.springside</groupId>
-				<artifactId>springside-core</artifactId>
-				<version>${springside.version}</version>
-				<scope>compile</scope>
-			</dependency>
-			<dependency>
-				<groupId>io.springside</groupId>
-				<artifactId>springside-extension</artifactId>
-				<version>${springside.version}</version>
-				<scope>compile</scope>
-			</dependency>
-			<dependency>
-				<groupId>io.springside</groupId>
-				<artifactId>springside-metrics</artifactId>
-				<version>${springside.version}</version>
-			</dependency>
-			<dependency>
-				<groupId>io.springside</groupId>
-				<artifactId>springside-redis</artifactId>
-				<version>${springside.version}</version>
-			</dependency>			
-			<!-- SPRINGSIDE MODULES end -->
-			
 			<!-- spring-->
+			
+			<dependency>
+				<groupId>org.springframework</groupId>
+				<artifactId>spring-framework-bom</artifactId>
+				<version>${spring.version}</version>
+				<type>pom</type>
+				<scope>import</scope>
+			</dependency>
+			
 			<!-- 纯粹为了exclude commons-loging -->
 			<dependency>
 				<groupId>cn.org.springframework</groupId>
@@ -200,11 +178,11 @@
 
 			<!-- WEB begin -->
 			<!-- spring -->
-			<dependency>
+			<!-- <dependency>
 				<groupId>org.springframework</groupId>
 				<artifactId>spring-webmvc</artifactId>
 				<version>${spring.version}</version>
-			</dependency>
+			</dependency> -->
 			
 			<!-- sitemesh -->
 			<dependency>
@@ -796,6 +774,7 @@
 				<scope>test</scope>
 			</dependency>
 			<!-- TEST end -->
+			
 		</dependencies>
 	</dependencyManagement>
 

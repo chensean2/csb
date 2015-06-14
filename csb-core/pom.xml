@@ -15,9 +15,8 @@
 	<name>Cloud Service Broker Core Lib</name>
 	<properties>
 		<mysql.version>5.1.27</mysql.version>
-
-		<codegen.version>1.0-SNAPSHOT</codegen.version>
 	</properties>
+	
 	<dependencies>
 
 		<dependency>
@@ -29,31 +28,6 @@
 		<dependency>
 			<groupId>org.slf4j</groupId>
 			<artifactId>slf4j-api</artifactId>
-			<version>${slf4j.version}</version>
-		</dependency>
-
-		<!-- logback -->
-		<dependency>
-			<groupId>ch.qos.logback</groupId>
-			<artifactId>logback-classic</artifactId>
-		</dependency>
-
-		<!-- 代码直接调用log4j会被桥接到slf4j -->
-		<dependency>
-			<groupId>org.slf4j</groupId>
-			<artifactId>log4j-over-slf4j</artifactId>
-		</dependency>
-
-		<!-- 代码直接调用commons-logging会被桥接到slf4j -->
-		<dependency>
-			<groupId>org.slf4j</groupId>
-			<artifactId>jcl-over-slf4j</artifactId>
-		</dependency>
-
-		<!-- 代码直接调用java.util.logging会被桥接到slf4j -->
-		<dependency>
-			<groupId>org.slf4j</groupId>
-			<artifactId>jul-to-slf4j</artifactId>
 		</dependency>
 
 		<!-- log4jdbc -->
@@ -86,10 +60,6 @@
 		<dependency>
 			<groupId>org.springframework.data</groupId>
 			<artifactId>spring-data-jpa</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>org.apache.commons</groupId>
-			<artifactId>commons-lang3</artifactId>
 		</dependency>
 
 		<!-- connection pool -->
@@ -157,7 +127,7 @@
 			<scope>runtime</scope>
 		</dependency>
 	</dependencies>
-
+<!-- 
 	<dependencyManagement>
 		<dependencies>
 			<dependency>
@@ -168,5 +138,5 @@
 				<scope>import</scope>
 			</dependency>
 		</dependencies>
-	</dependencyManagement>
+	</dependencyManagement> -->
 </project>
