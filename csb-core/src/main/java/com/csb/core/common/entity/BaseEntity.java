@@ -17,38 +17,33 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.persistence.Version;
 
-/**
- * <p> 抽象实体基类，提供统一的ID，和相关的基本功能方法
- * 如果是oracle请参考{@link BaseOracleEntity}
- * <p>User: Zhang Kaitao
- * <p>Date: 13-1-12 下午4:05
- * <p>Version: 1.0
- */
 @MappedSuperclass
 public abstract class BaseEntity<ID extends Serializable> extends AbstractEntity<ID> {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "ID")
     private ID id;
 
-    @Column(name="CREATED_BY")
-	private String createdBy;
+    @Column(name = "CREATED_BY")
+    private String createdBy;
 
-	@Temporal(TemporalType.TIMESTAMP)
-	@Column(name="CREATED_DT")
-	private Date createdDt;
+    @Temporal(TemporalType.TIMESTAMP)
+    @Column(name = "CREATED_DT")
+    private Date createdDt;
 
-	@Column(name="LAST_UPDATED_BY")
-	private String lastUpdatedBy;
+    @Column(name = "LAST_UPDATED_BY")
+    private String lastUpdatedBy;
 
-	@Temporal(TemporalType.TIMESTAMP)
-	@Column(name="LAST_UPDATED_DT")
-	private Date lastUpdatedDt;
+    @Temporal(TemporalType.TIMESTAMP)
+    @Column(name = "LAST_UPDATED_DT")
+    private Date lastUpdatedDt;
 
-	@Version
-	private int version;
-	
-	@Override
+    @Version
+    @Column(name="VERSION")
+    private int version;
+
+    @Override
     public ID getId() {
         return id;
     }
@@ -58,46 +53,44 @@ public abstract class BaseEntity<ID extends Serializable> extends AbstractEntity
         this.id = id;
     }
 
-	public String getCreatedBy() {
-		return createdBy;
-	}
+    public String getCreatedBy() {
+        return createdBy;
+    }
 
-	public void setCreatedBy(String createdBy) {
-		this.createdBy = createdBy;
-	}
+    public void setCreatedBy(String createdBy) {
+        this.createdBy = createdBy;
+    }
 
-	public Date getCreatedDt() {
-		return createdDt;
-	}
+    public Date getCreatedDt() {
+        return createdDt;
+    }
 
-	public void setCreatedDt(Date createdDt) {
-		this.createdDt = createdDt;
-	}
+    public void setCreatedDt(Date createdDt) {
+        this.createdDt = createdDt;
+    }
 
-	public String getLastUpdatedBy() {
-		return lastUpdatedBy;
-	}
+    public String getLastUpdatedBy() {
+        return lastUpdatedBy;
+    }
 
-	public void setLastUpdatedBy(String lastUpdatedBy) {
-		this.lastUpdatedBy = lastUpdatedBy;
-	}
+    public void setLastUpdatedBy(String lastUpdatedBy) {
+        this.lastUpdatedBy = lastUpdatedBy;
+    }
 
-	public Date getLastUpdatedDt() {
-		return lastUpdatedDt;
-	}
+    public Date getLastUpdatedDt() {
+        return lastUpdatedDt;
+    }
 
-	public void setLastUpdatedDt(Date lastUpdatedDt) {
-		this.lastUpdatedDt = lastUpdatedDt;
-	}
+    public void setLastUpdatedDt(Date lastUpdatedDt) {
+        this.lastUpdatedDt = lastUpdatedDt;
+    }
 
-	public int getVersion() {
-		return version;
-	}
+    public int getVersion() {
+        return version;
+    }
 
-	public void setVersion(int version) {
-		this.version = version;
-	}
-    
-    
+    public void setVersion(int version) {
+        this.version = version;
+    }
 
 }

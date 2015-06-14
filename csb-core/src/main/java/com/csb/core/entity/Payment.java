@@ -13,17 +13,18 @@ import com.csb.core.common.entity.BaseEntity;
 
 
 @Entity
-@Table(name="tbl_csb_order")
-public class Order extends BaseEntity<Long>  {
+@Table(name="tbl_csb_payment")
+public class Payment extends BaseEntity<Long>  {
 
 	@ManyToOne
 	@JoinColumn(name="COMPANY_ID")
 	private Company company;
 	
-	@OneToMany(mappedBy="order")
-        private List<OrderPlan> orderPlanList;
-
 	@OneToOne
-        @JoinColumn(name="PAYMENT_ID")
-	private Payment payment;
+	@JoinColumn(name="ORDER_ID")
+        private Order order;
+	
+	@OneToMany(mappedBy="payment")
+	private List<PaymentPlan> paymentPlanList;
+
 }

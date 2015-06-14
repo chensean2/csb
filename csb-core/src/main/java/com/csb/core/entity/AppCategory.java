@@ -1,71 +1,33 @@
 package com.csb.core.entity;
 
-import java.util.Date;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.NamedQuery;
+import javax.persistence.FetchType;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.Table;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
+
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
 
 import com.csb.core.common.entity.BaseEntity;
 
-
-/**
- * The persistent class for the tbl_ss_app_group database table.
- * 
- */
 @Entity
-@Table(name="tbl_ss_app_group")
-public class AppGroup extends BaseEntity<Long> {
+@Table(name = "tbl_csb_app_category")
+public class AppCategory extends BaseEntity<Long> {
 
-	@Column(name="ALLOW_DIFF_PACKAGE")
-	private String allowDiffPackage;
-
-	@Column(name="GROUP_DESC")
-	private String groupDesc;
-
-	@Column(name="GROUP_ID")
-	private String groupId;
-
-	@Column(name="GROUP_NAME")
-	private String groupName;
-
-	public AppGroup() {
-	}
-
-	public String getAllowDiffPackage() {
-		return this.allowDiffPackage;
-	}
-
-	public void setAllowDiffPackage(String allowDiffPackage) {
-		this.allowDiffPackage = allowDiffPackage;
-	}
-
-	public String getGroupDesc() {
-		return this.groupDesc;
-	}
-
-	public void setGroupDesc(String groupDesc) {
-		this.groupDesc = groupDesc;
-	}
-
-	public String getGroupId() {
-		return this.groupId;
-	}
-
-	public void setGroupId(String groupId) {
-		this.groupId = groupId;
-	}
-
-	public String getGroupName() {
-		return this.groupName;
-	}
-
-	public void setGroupName(String groupName) {
-		this.groupName = groupName;
-	}
+    @Column(name = "NAME")
+    private String name;
+    
+    @ManyToMany(fetch=FetchType.LAZY)
+    @JoinTable(name = "tbl_ss_app_category_package",
+    joinColumns = { @JoinColumn(name = "CATEGORY_ID") }, 
+    inverseJoinColumns = { @JoinColumn(name = "PACKAGE_ID") })
+    @Fetch(FetchMode.JOIN)
+    private List<AppPackage> appPackageList;
 
 
 }

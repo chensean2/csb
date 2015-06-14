@@ -13,6 +13,7 @@
 
     <modules>
         <module>csb-core</module>
+        <module>csb-parser</module>
         <module>csb-provision</module>
     </modules>
 

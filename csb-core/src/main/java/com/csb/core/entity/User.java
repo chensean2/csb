@@ -12,14 +12,16 @@ import javax.persistence.Table;
 import com.csb.core.common.entity.BaseEntity;
 
 @Entity
-@Table(name = "tbl_csb_app_provider")
-public class AppProvider extends BaseEntity<Long> {
+@Table(name = "tbl_csb_user")
+public class User extends BaseEntity<Long> {
 
-    @OneToMany(mappedBy = "appProvider")
-    private List<AppProduct> appProductList;
+    
+    @OneToMany(mappedBy="appPlan")
+    private List<Subscription> subscriptionList;
 
     @Column(name = "NAME")
     private String name;
-
+    
+    
 
 }
