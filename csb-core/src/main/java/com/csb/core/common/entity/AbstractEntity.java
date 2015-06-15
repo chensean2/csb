@@ -1,8 +1,3 @@
-/**
- * Copyright (c) 2005-2012 https://github.com/zhangkaitao
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- */
 package com.csb.core.common.entity;
 
 import java.io.Serializable;
@@ -13,29 +8,16 @@ public abstract class AbstractEntity<ID extends Serializable> implements Seriali
 
     public abstract ID getId();
 
-    /**
-     * Sets the id of the entity.
-     *
-     * @param id the id to set
-     */
+   
     public abstract void setId(final ID id);
 
-    /*
-     * (non-Javadoc)
-     *
-     * @see org.springframework.data.domain.Persistable#isNew()
-
-     */
+    
     public boolean isNew() {
 
         return null == getId();
     }
 
-    /*
-     * (non-Javadoc)
-     *
-     * @see java.lang.Object#equals(java.lang.Object)
-     */
+   
     @Override
     public boolean equals(Object obj) {
 
@@ -56,11 +38,7 @@ public abstract class AbstractEntity<ID extends Serializable> implements Seriali
         return null == this.getId() ? false : this.getId().equals(that.getId());
     }
 
-    /*
-     * (non-Javadoc)
-     *
-     * @see java.lang.Object#hashCode()
-     */
+   
     @Override
     public int hashCode() {
 
