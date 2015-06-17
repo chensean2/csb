@@ -1,4 +1,4 @@
-package com.csb.platform.controller.model;
+package com.csb.parser.component.model;
 
 import java.util.List;
 

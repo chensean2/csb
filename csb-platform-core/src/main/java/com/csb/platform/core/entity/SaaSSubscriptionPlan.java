@@ -60,6 +60,7 @@ public class SaaSSubscriptionPlan extends BaseEntity<Long> {
 	@Column(name = "NOTIFICATION_TYPE")
 	private String notificationType;
 	
+	//status of the provision, INPROGRESS,SUCCESS,FAILED
 	@Column(name = "STATUS")
 	private String status;
 	
