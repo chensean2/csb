@@ -3,7 +3,7 @@ package com.csb.platform.provision.service;
 import java.util.Map;
 
 
-public class DefaultSaaSProvisionService implements SaaSProvisonService {
+public class DefaultSaaSProvisionService implements SaaSProvisionService {
 
     @Override
     public Map<String, String> createSubscripiton(String eventId) {

@@ -5,7 +5,7 @@ import com.csb.parser.component.model.SubscriptionInfo;
 import com.csb.parser.component.model.ValidationInfo;
 import com.csb.parser.component.model.ValidationResult;
 
-public class DefaultCSBParserService implements CSBParserService {
+public class DefaultParserService implements ParserService {
 
     @Override
     public String parseSubscription(SubscriptionInfo subscriptionInfo) {

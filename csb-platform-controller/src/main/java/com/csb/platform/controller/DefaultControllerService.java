@@ -5,7 +5,7 @@ import java.util.concurrent.Executors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
-import com.csb.broker.component.service.CSBBrokerService;
+import com.csb.broker.component.service.BrokerService;
 import com.csb.parser.component.model.AssignmentInfo;
 import com.csb.parser.component.model.AssignmentResult;
 import com.csb.parser.component.model.AssignmentStatus;
@@ -14,15 +14,15 @@ import com.csb.parser.component.model.SubscriptionResult;
 import com.csb.parser.component.model.SubscriptionStatus;
 import com.csb.parser.component.model.ValidationInfo;
 import com.csb.parser.component.model.ValidationResult;
-import com.csb.parser.component.service.CSBParserService;
+import com.csb.parser.component.service.ParserService;
 
-public class DefaultCSBControllerService implements CSBControllerService {
-
-    @Autowired
-    private CSBParserService csbParserService;
+public class DefaultControllerService implements ControllerService {
 
     @Autowired
-    private CSBBrokerService csbBrokerService;
+    private ParserService csbParserService;
+
+    @Autowired
+    private BrokerService csbBrokerService;
     
     @Override
     public SubscriptionResult createSubscription(SubscriptionInfo subscriptionInfo) {

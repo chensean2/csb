@@ -5,7 +5,7 @@ import com.csb.parser.component.model.SubscriptionInfo;
 import com.csb.parser.component.model.ValidationInfo;
 import com.csb.parser.component.model.ValidationResult;
 
-public interface CSBParserService {
+public interface ParserService {
 
     /**
      * The method will parse the subscription input and save the information to DB

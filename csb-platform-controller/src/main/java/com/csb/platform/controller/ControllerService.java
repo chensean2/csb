@@ -9,7 +9,7 @@ import com.csb.parser.component.model.SubscriptionStatus;
 import com.csb.parser.component.model.ValidationInfo;
 import com.csb.parser.component.model.ValidationResult;
 
-public interface CSBControllerService {
+public interface ControllerService {
 
     /**
      * this method is asynchronous, you need check status via getSubscriptionStatus

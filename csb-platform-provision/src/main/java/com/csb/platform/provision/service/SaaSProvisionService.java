@@ -3,7 +3,7 @@ package com.csb.platform.provision.service;
 import java.util.Map;
 
 
-public interface SaaSProvisonService {
+public interface SaaSProvisionService {
 
     public Map<String, String> createSubscripiton(String eventId);
     
