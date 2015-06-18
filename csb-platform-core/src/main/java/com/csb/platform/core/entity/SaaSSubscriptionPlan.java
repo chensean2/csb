@@ -11,15 +11,7 @@ import javax.persistence.Table;
 @Table(name = "tbl_csb_platform_saas_subscription_plan")
 public class SaaSSubscriptionPlan extends BaseEntity<Long> {
 
-	@Column(name = "TRACE_ID")
-	private String traceId;
 
-	@Column(name = "APP_PROVIDER_ID")
-	private String appProviderId;
-
-	// for the provider query subscription information
-	@Column(name = "UNIQUE_ID")
-	private String uniqueId;
 
 	// CREATE,UPDATE,CANCEL,NOTICE
 	@Column(name = "ACTION")
@@ -60,9 +52,7 @@ public class SaaSSubscriptionPlan extends BaseEntity<Long> {
 	@Column(name = "NOTIFICATION_TYPE")
 	private String notificationType;
 	
-	//status of the provision, INPROGRESS,SUCCESS,FAILED
-	@Column(name = "STATUS")
-	private String status;
+	
 	
 	@OneToMany(mappedBy = "saaSSubscriptionPlan")
 	private List<SaaSSubscriptionPlanItem>  saaSSubscriptionPlanItemList;

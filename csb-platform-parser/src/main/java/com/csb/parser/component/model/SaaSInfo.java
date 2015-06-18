@@ -13,4 +13,7 @@ public class SaaSInfo {
 	
 	//Available when is assignment case
 	private SaaSUserInfo saaSUserInfo;
+	
+	//Available when is subscription case and assignment case
+        private CreatorInfo creatorInfo;
 }

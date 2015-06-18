@@ -1,8 +1,12 @@
 package com.csb.parser.component.model;
 
 public class SubscriptionResult {
-	//INPROGRESS,SUCCESS,FAILED
-	private String status;
 	
-	private String externalAccountId;
+	private Boolean success;
+	
+	private String eventId;
+	
+	private String errorCode;
+	
+	private String errorMessage;
 }
