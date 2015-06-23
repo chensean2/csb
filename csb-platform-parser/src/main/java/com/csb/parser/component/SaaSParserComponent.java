@@ -3,7 +3,6 @@ package com.csb.parser.component;
 import com.csb.parser.component.model.AssignmentInfo;
 import com.csb.parser.component.model.SubscriptionInfo;
 import com.csb.parser.component.model.ValidationInfo;
-import com.csb.parser.component.model.ValidationResult;
 
 public class SaaSParserComponent implements ParserComponent {
 

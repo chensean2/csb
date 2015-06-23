@@ -9,7 +9,7 @@ public class SubscriptionInfo {
     private String appProviderId;
 
     // IAAS,PAAS,SAAS
-    private String type;
+    private String category;
 
     // CREATE,UPDATE,CANCEL,NOTICE
     private String action;
@@ -23,60 +23,5 @@ public class SubscriptionInfo {
     // For SAAS type
     private SaaSInfo saasInfo;
 
-    public String getTraceId() {
-        return traceId;
-    }
-
-    public void setTraceId(String traceId) {
-        this.traceId = traceId;
-    }
-
-    public String getAppProviderId() {
-        return appProviderId;
-    }
-
-    public void setAppProviderId(String appProviderId) {
-        this.appProviderId = appProviderId;
-    }
-
-    public String getType() {
-        return type;
-    }
-
-    public void setType(String type) {
-        this.type = type;
-    }
-
-    public String getAction() {
-        return action;
-    }
-
-    public void setAction(String action) {
-        this.action = action;
-    }
-
-    public IaaSInfo getIaasInfo() {
-        return iaasInfo;
-    }
-
-    public void setIaasInfo(IaaSInfo iaasInfo) {
-        this.iaasInfo = iaasInfo;
-    }
-
-    public PaaSInfo getPaasInfo() {
-        return paasInfo;
-    }
-
-    public void setPaasInfo(PaaSInfo paasInfo) {
-        this.paasInfo = paasInfo;
-    }
-
-    public SaaSInfo getSaasInfo() {
-        return saasInfo;
-    }
-
-    public void setSaasInfo(SaaSInfo saasInfo) {
-        this.saasInfo = saasInfo;
-    }
 
 }
