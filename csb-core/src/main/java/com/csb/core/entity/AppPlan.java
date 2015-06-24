@@ -29,6 +29,13 @@ public class AppPlan extends BaseEntity<Long> {
     @Column(name = "NAME")
     private String name;
     
+    @Column(name = "DESCRIPTION")
+    private String description;
     
+  //ONE_TIME, MONTHLY, QUATERLY, SIX_MONTHS, YEARLY, TWO_YEARS, DAILY
+    @Column(name = "FREQUENCY")
+    private String frequency;
 
+    @Column(name = "TRIAL_DAYS")
+    private Integer trialDays;
 }
