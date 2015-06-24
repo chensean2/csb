@@ -10,7 +10,7 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "tbl_csb_platform_saas_plan")
+@Table(name = "tbl_csb_platform_plan")
 public class Plan extends BaseEntity<Long> {
 
     // for the client/ provider query subscription/assignment information

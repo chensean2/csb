@@ -11,20 +11,19 @@ import javax.persistence.Table;
 
 import com.csb.core.common.entity.BaseEntity;
 
-
 @Entity
-@Table(name="tbl_csb_payment")
-public class Payment extends BaseEntity<Long>  {
+@Table(name = "tbl_csb_payment")
+public class Payment extends BaseEntity<Long> {
 
 	@ManyToOne
-	@JoinColumn(name="COMPANY_ID")
+	@JoinColumn(name = "COMPANY_ID")
 	private Company company;
-	
+
 	@OneToOne
-	@JoinColumn(name="ORDER_ID")
-        private Order order;
-	
-	@OneToMany(mappedBy="payment")
+	@JoinColumn(name = "ORDER_ID")
+	private Order order;
+
+	@OneToMany(mappedBy = "payment")
 	private List<PaymentPlan> paymentPlanList;
 
 }
