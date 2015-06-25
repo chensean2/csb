@@ -14,7 +14,7 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
-import com.csb.core.common.entity.BaseEntity;
+import com.csb.core.common.BaseEntity;
 
 @Entity
 @Table(name = "tbl_csb_subscription")

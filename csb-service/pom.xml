@@ -11,22 +11,17 @@
 		<relativePath>../parent/</relativePath>
 	</parent>
 
-	<artifactId>csb-platform-controller</artifactId>
-	<name>Cloud Service Broker Platform Controller Lib</name>
+	<artifactId>csb-service</artifactId>
+	<name>Cloud Service Broker Service Lib</name>
 	<dependencies>
 	
 		
 		<dependency>
 			<groupId>com.csb</groupId>
-			<artifactId>csb-platform-parser</artifactId>
+			<artifactId>csb-core</artifactId>
 			<version>1.0</version>
 		</dependency>
 		
-		<dependency>
-			<groupId>com.csb</groupId>
-			<artifactId>csb-platform-broker</artifactId>
-			<version>1.0</version>
-		</dependency>
 
 		<dependency>
 			<groupId>org.slf4j</groupId>

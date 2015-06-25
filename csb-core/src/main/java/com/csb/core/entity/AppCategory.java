@@ -13,7 +13,7 @@ import javax.persistence.Table;
 import org.hibernate.annotations.Fetch;
 import org.hibernate.annotations.FetchMode;
 
-import com.csb.core.common.entity.BaseEntity;
+import com.csb.core.common.BaseEntity;
 
 @Entity
 @Table(name = "tbl_csb_app_category")

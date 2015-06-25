@@ -3,10 +3,10 @@ package com.csb.broker.component;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import com.csb.platform.core.PlatformCoreConstant;
-import com.csb.platform.core.entity.Plan;
-import com.csb.platform.core.entity.SaaSPlan;
-import com.csb.platform.core.entity.SaaSSubscriptionPlan;
+import com.csb.core.PlatformCoreConstant;
+import com.csb.core.platform.entity.Plan;
+import com.csb.core.platform.entity.SaaSPlan;
+import com.csb.core.platform.entity.SaaSSubscriptionPlan;
 import com.csb.platform.provision.service.SaaSProvisionService;
 
 @Component("saasBrokerComponent")

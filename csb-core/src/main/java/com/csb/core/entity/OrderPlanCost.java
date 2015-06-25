@@ -8,7 +8,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
-import com.csb.core.common.entity.BaseEntity;
+import com.csb.core.common.BaseEntity;
 
 
 @Entity

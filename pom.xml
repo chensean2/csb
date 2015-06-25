@@ -12,7 +12,8 @@
 
 	<modules>
 		<module>csb-core</module>
-		<module>csb-platform-core</module>
+		<module>csb-service</module>
+		<module>csb-service-platform</module>
 		<module>csb-platform-controller</module>
 		<module>csb-platform-parser</module>
 		<module>csb-platform-broker</module>

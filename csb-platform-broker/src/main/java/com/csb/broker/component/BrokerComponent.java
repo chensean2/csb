@@ -1,6 +1,6 @@
 package com.csb.broker.component;
 
-import com.csb.platform.core.entity.Plan;
+import com.csb.core.platform.entity.Plan;
 
 
 public interface BrokerComponent {

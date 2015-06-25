@@ -4,9 +4,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 
 import com.csb.broker.component.BrokerComponent;
-import com.csb.platform.core.PlatformCoreConstant;
-import com.csb.platform.core.entity.Plan;
-import com.csb.platfrom.core.repository.PlanRepository;
+import com.csb.core.PlatformCoreConstant;
+import com.csb.core.platform.entity.Plan;
+import com.csb.core.platform.repository.PlanRepository;
 
 public class DefaultBrokerService implements BrokerService {
 
