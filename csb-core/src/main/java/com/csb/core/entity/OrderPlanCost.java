@@ -19,9 +19,11 @@ public class OrderPlanCost extends BaseEntity<Long>  {
 	@JoinColumn(name="ORDER_PLAN_ID")
 	private OrderPlan orderPlan;
 	
+	//PAYMENT,DISCOUNT
 	@Column(name = "TYPE")
 	private String type;
 	
+	//Refer to AppPlanCost unit, for DISCOUNT type, the unit will be null
 	@Column(name = "UNIT")
 	private String unit;
 	
@@ -30,6 +32,10 @@ public class OrderPlanCost extends BaseEntity<Long>  {
 
 	@Column(name = "PRICE", scale = 32, precision = 2)
 	private BigDecimal price;
+	
+	//if type is DISCOUNT
+	@Column(name = "DISCOUNT_PERCENTAGE")
+	private float discountPercentage;
 	
 	@Column(name = "TOTAL_PRICE", scale = 32, precision = 2)
 	private BigDecimal totalPrice;

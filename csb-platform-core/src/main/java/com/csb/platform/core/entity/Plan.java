@@ -17,8 +17,11 @@ public class Plan extends BaseEntity<Long> {
     @Column(name = "EVENT_ID", unique=true)
     private String eventId;
     
-    @Column(name = "APP_PROVIDER_ID")
-    private String appProviderId;
+//    @Column(name = "APP_PROVIDER_ID")
+//    private String appProviderId;
+    
+    @Column(name = "APP_PLAN_ID")
+    private String appPlanId;
     
     //IAAS,PAAS,SAAS
     @Column(name = "CATEGORY")
@@ -46,15 +49,15 @@ public class Plan extends BaseEntity<Long> {
         this.eventId = eventId;
     }
 
-    public String getAppProviderId() {
-        return appProviderId;
-    }
+    public String getAppPlanId() {
+		return appPlanId;
+	}
 
-    public void setAppProviderId(String appProviderId) {
-        this.appProviderId = appProviderId;
-    }
+	public void setAppPlanId(String appPlanId) {
+		this.appPlanId = appPlanId;
+	}
 
-    public String getCategory() {
+	public String getCategory() {
         return category;
     }
 

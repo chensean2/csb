@@ -5,8 +5,11 @@ public class SubscriptionInfo {
     // For platform trace the request, e.g. you can use orderPlanId
     private String traceId;
 
-    // the app provider id
-    private String appProviderId;
+   /* // the app provider id
+    private String appProviderId;*/
+    
+    // the app plan id
+    private String appPlanId;
 
     // IAAS,PAAS,SAAS
     private String category;

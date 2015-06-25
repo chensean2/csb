@@ -5,9 +5,11 @@ public class AssignmentInfo {
     // For platform trace the request, e.g. you can use useAssignmentId
     private String traceId;
 
-    // the app provider id
-    private String appProviderId;
-
+    /*// the app provider id
+    private String appProviderId;*/
+    
+    // the app plan id
+    private String appPlanId;
     /**
      * IAAS,PAAS,SAAS
      */
