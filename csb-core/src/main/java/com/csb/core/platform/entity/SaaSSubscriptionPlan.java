@@ -51,6 +51,7 @@ public class SaaSSubscriptionPlan extends BaseEntity<Long> {
 	@Column(name = "PREVIOUS_SUBSCRIPTION_STATUS")
 	private String previousSubscriptionStatus;
 	
+	//DEACTIVATED
 	@Column(name = "NOTIFICATION_TYPE")
 	private String notificationType;
 	
