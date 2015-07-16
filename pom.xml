@@ -11,6 +11,7 @@
 
 
 	<modules>
+		<module>csb-mall</module>
 		<module>csb-core</module>
 		<module>csb-service</module>
 		<module>csb-service-platform</module>
