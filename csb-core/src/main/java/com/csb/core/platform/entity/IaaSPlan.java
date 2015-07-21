@@ -1,20 +1,56 @@
-package com.csb.parser.component.model;
+package com.csb.core.platform.entity;
 
-public class IaaSInfo {
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Table;
 
-	// OPENSTACK
+import com.csb.core.common.BaseEntity;
+
+@Entity
+@Table(name = "tbl_csb_platform_iaas_plan")
+public class IaaSPlan extends BaseEntity<Long> {
+
+    
+    //ASSIGNMENT,SUBSCRIPTION
+    @Column(name = "TYPE")
+    private String type;
+    
+	//OPENSTACK
+    @Column(name = "PROVIDER")
 	private String provider;
-
+	
 	// CREATE,UPDATE,CANCEL,START,STOP,..
+    @Column(name = "ACTION")
 	private String action;
 
+    @Column(name = "INSTANCE_NAME")
 	private String instanceName;
+    
+    @Column(name = "INSTANCE_COUNT")
 	private String instanceCount;
+    
+    @Column(name = "IMAGE_NAME")
 	private String imageName;
+    
+    @Column(name = "FLAVOR")
 	private String flavor;
+    
+    @Column(name = "CPUS")
 	private Integer cpus;
+    
+    @Column(name = "MEMORY")
 	private String memory;
+    
+    @Column(name = "STORAGE")
 	private String storage;
+
+	public String getType() {
+		return type;
+	}
+
+	public void setType(String type) {
+		this.type = type;
+	}
 
 	public String getProvider() {
 		return provider;
@@ -87,5 +123,6 @@ public class IaaSInfo {
 	public void setStorage(String storage) {
 		this.storage = storage;
 	}
-
+	
+    
 }

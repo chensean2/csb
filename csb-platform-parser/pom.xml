@@ -14,17 +14,16 @@
 	<artifactId>csb-platform-parser</artifactId>
 	<name>Cloud Service Broker Platform Parser Lib</name>
 	<dependencies>
-
 		<dependency>
-			<groupId>org.slf4j</groupId>
-			<artifactId>slf4j-api</artifactId>
+			<groupId>com.csb</groupId>
+			<artifactId>csb-common</artifactId>
+			<version>1.0</version>
 		</dependency>
-		
 		<dependency>
-			<groupId>org.springframework</groupId>
-			<artifactId>spring-context-support</artifactId>
+			<groupId>com.csb</groupId>
+			<artifactId>csb-core</artifactId>
+			<version>1.0</version>
 		</dependency>
-		
 		<dependency>
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
@@ -44,21 +43,6 @@
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-test</artifactId>
 		</dependency>
-
-		<dependency>
-			<groupId>org.apache.commons</groupId>
-			<artifactId>commons-lang3</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>com.google.guava</groupId>
-			<artifactId>guava</artifactId>
-		</dependency>
-
-		<dependency>
-			<groupId>org.hibernate</groupId>
-			<artifactId>hibernate-validator</artifactId>
-		</dependency>
-
 	</dependencies>
 
 </project>

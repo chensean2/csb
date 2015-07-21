@@ -1,6 +1,6 @@
-package com.csb.core;
+package com.csb.common.constant;
 
-public interface PlatformCoreConstant {
+public interface PlatformConstant {
 
     final public static String RESOURCE_CATEGORY_IAAS="IAAS";
     final public static String RESOURCE_CATEGORY_PAAS="PAAS";
@@ -15,5 +15,7 @@ public interface PlatformCoreConstant {
     final public static String PROVSION_TYPE_SUBSCRIPTION="SUBSCRIPTION";
     final public static String PROVSION_TYPE_NOTIFICATION="NOTIFICATION";
     final public static String PROVSION_TYPE_VALIDATION="VALIDATION";
+    
+    final public static String IAAS_PROVIDER_OPENSTACK="openstack";
 
 }

@@ -1,4 +1,4 @@
-package com.csb.platform.provision.service;
+package com.csb.platform.provision.saas.service;
 
 import java.util.Map;
 

@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+﻿<?xml version="1.0" encoding="UTF-8"?>
 <project
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
@@ -11,19 +11,13 @@
 		<relativePath>../parent/</relativePath>
 	</parent>
 
-	<artifactId>csb-service</artifactId>
-	<name>Cloud Service Broker Service Lib</name>
-	<dependencies>
+	<artifactId>csb-platform-provision-openstack</artifactId>
+	<name>Cloud Service Broker Platform Provision OpenStack Lib</name>
 
+	<dependencies>
 		<dependency>
 			<groupId>com.csb</groupId>
 			<artifactId>csb-common</artifactId>
-			<version>1.0</version>
-		</dependency>
-
-		<dependency>
-			<groupId>com.csb</groupId>
-			<artifactId>csb-core</artifactId>
 			<version>1.0</version>
 		</dependency>
 		<dependency>
@@ -45,7 +39,6 @@
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-test</artifactId>
 		</dependency>
-
 	</dependencies>
 
 </project>

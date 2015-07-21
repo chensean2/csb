@@ -8,9 +8,9 @@ import com.csb.parser.component.model.ValidationResult;
 public interface ParserComponent {
 
     
-    public String parseSubscription(SubscriptionInfo subscriptionInfo);
+    public String parse(SubscriptionInfo subscriptionInfo);
     
-    public String parseAssignment(AssignmentInfo assignmentInfo);
+    public String parse(AssignmentInfo assignmentInfo);
     
-    public String parseValidation(ValidationInfo validationInfo);
+    public String parse(ValidationInfo validationInfo);
 }

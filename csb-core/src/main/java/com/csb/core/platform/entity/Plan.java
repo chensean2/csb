@@ -38,7 +38,11 @@ public class Plan extends BaseEntity<Long> {
 
 	@OneToOne
 	@JoinColumn(name = "SAAS_PLAN_ID")
-	private SaaSPlan saaSPlan;
+	private SaaSPlan saasPlan;
+	
+	@OneToOne
+	@JoinColumn(name = "SAAS_PLAN_ID")
+	private IaaSPlan iaasPlan;
 
 	public String getEventId() {
 		return eventId;
@@ -88,12 +92,20 @@ public class Plan extends BaseEntity<Long> {
 		this.message = message;
 	}
 
-	public SaaSPlan getSaaSPlan() {
-		return saaSPlan;
+	public SaaSPlan getSaasPlan() {
+		return saasPlan;
 	}
 
-	public void setSaaSPlan(SaaSPlan saaSPlan) {
-		this.saaSPlan = saaSPlan;
+	public void setSaasPlan(SaaSPlan saasPlan) {
+		this.saasPlan = saasPlan;
+	}
+
+	public IaaSPlan getIaasPlan() {
+		return iaasPlan;
+	}
+
+	public void setIaasPlan(IaaSPlan iaasPlan) {
+		this.iaasPlan = iaasPlan;
 	}
 
 }

@@ -4,7 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 
 import com.csb.broker.component.BrokerComponent;
-import com.csb.core.PlatformCoreConstant;
+import com.csb.common.constant.PlatformConstant;
 import com.csb.core.platform.entity.Plan;
 import com.csb.core.platform.repository.PlanRepository;
 
@@ -21,7 +21,7 @@ public class DefaultBrokerService implements BrokerService {
     public void broke(String eventId) {
 
         Plan plan = planRepository.findByEventId(eventId);
-        if (plan != null && PlatformCoreConstant.RESOURCE_CATEGORY_SAAS.equals(plan.getCategory())) {
+        if (plan != null && PlatformConstant.RESOURCE_CATEGORY_SAAS.equals(plan.getCategory())) {
             saasBrokerComponent.broke(plan);
         }
     }

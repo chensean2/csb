@@ -11,21 +11,34 @@
 		<relativePath>../parent/</relativePath>
 	</parent>
 
-	<artifactId>csb-service</artifactId>
-	<name>Cloud Service Broker Service Lib</name>
+	<artifactId>csb-common</artifactId>
+	<name>Cloud Service Broker Common Lib</name>
 	<dependencies>
 
 		<dependency>
-			<groupId>com.csb</groupId>
-			<artifactId>csb-common</artifactId>
-			<version>1.0</version>
+			<groupId>org.slf4j</groupId>
+			<artifactId>slf4j-api</artifactId>
 		</dependency>
 
 		<dependency>
-			<groupId>com.csb</groupId>
-			<artifactId>csb-core</artifactId>
-			<version>1.0</version>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-context-support</artifactId>
 		</dependency>
+
+		<dependency>
+			<groupId>org.apache.commons</groupId>
+			<artifactId>commons-lang3</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>com.google.guava</groupId>
+			<artifactId>guava</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-validator</artifactId>
+		</dependency>
+		
 		<dependency>
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
@@ -45,6 +58,7 @@
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-test</artifactId>
 		</dependency>
+		
 
 	</dependencies>
 

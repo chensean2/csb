@@ -7,19 +7,19 @@ import com.csb.parser.component.model.ValidationInfo;
 public class SaaSParserComponent implements ParserComponent {
 
     @Override
-    public String parseSubscription(SubscriptionInfo subscriptionInfo) {
+    public String parse(SubscriptionInfo subscriptionInfo) {
         // TODO Auto-generated method stub
         return null;
     }
 
     @Override
-    public String parseAssignment(AssignmentInfo assignmentInfo) {
+    public String parse(AssignmentInfo assignmentInfo) {
         // TODO Auto-generated method stub
         return null;
     }
 
     @Override
-    public String parseValidation(ValidationInfo validationInfo) {
+    public String parse(ValidationInfo validationInfo) {
         // TODO Auto-generated method stub
         return null;
     }

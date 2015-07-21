@@ -1,15 +1,36 @@
 package com.csb.parser.component.service;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+
+import com.csb.parser.component.IaaSParserComponent;
+import com.csb.parser.component.SaaSParserComponent;
 import com.csb.parser.component.model.AssignmentInfo;
 import com.csb.parser.component.model.SubscriptionInfo;
 import com.csb.parser.component.model.ValidationInfo;
-import com.csb.parser.component.model.ValidationResult;
 
 public class DefaultParserService implements ParserService {
 
-    @Override
+	@Autowired
+	private SaaSParserComponent saasParserComponent;
+	
+	@Autowired
+	private IaaSParserComponent iaasParserComponent;
+	
+	@Override
     public String parseSubscription(SubscriptionInfo subscriptionInfo) {
         // TODO parse and save to db
+    	if(subscriptionInfo == null){
+    		return null;
+    	}
+    	if("IAAS".equals( subscriptionInfo.getCategory())){
+    		iaasParserComponent.parse(subscriptionInfo);
+    	}else if("SAAS".equals( subscriptionInfo.getCategory())){
+    		
+    	}else if("PAAS".equals( subscriptionInfo.getCategory())){
+    		
+    	}
+    	
         return null;
     }
 
