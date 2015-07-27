@@ -1,6 +1,7 @@
 package com.csb.parser.component;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 import com.csb.common.constant.PlatformConstant;
 import com.csb.common.util.UUIDUtil;
@@ -12,6 +13,7 @@ import com.csb.parser.component.model.IaaSInfo;
 import com.csb.parser.component.model.SubscriptionInfo;
 import com.csb.parser.component.model.ValidationInfo;
 
+@Component("iaasParserComponent")
 public class IaaSParserComponent implements ParserComponent {
 
 	@Autowired

@@ -1,4 +1,4 @@
-package com.csb.broker.component.service;
+package com.csb.platform.broker.component.service;
 
 
 public interface BrokerService {

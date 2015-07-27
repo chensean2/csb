@@ -2,7 +2,9 @@ package com.csb.platform.provision.saas.service;
 
 import java.util.Map;
 
+import org.springframework.stereotype.Service;
 
+@Service
 public class DefaultSaaSProvisionService implements SaaSProvisionService {
 
     @Override

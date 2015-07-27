@@ -4,8 +4,8 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
-import com.csb.broker.component.service.BrokerService;
 import com.csb.parser.component.model.AssignmentInfo;
 import com.csb.parser.component.model.AssignmentResult;
 import com.csb.parser.component.model.AssignmentStatus;
@@ -15,7 +15,9 @@ import com.csb.parser.component.model.SubscriptionStatus;
 import com.csb.parser.component.model.ValidationInfo;
 import com.csb.parser.component.model.ValidationResult;
 import com.csb.parser.component.service.ParserService;
+import com.csb.platform.broker.component.service.BrokerService;
 
+@Service
 public class DefaultControllerService implements ControllerService {
 
     @Autowired
@@ -38,9 +40,10 @@ public class DefaultControllerService implements ControllerService {
             //
             return subscriptionResult;
         }
+        subscriptionResult.setEventId(eventId);
         // TODO, in future, we need use MQ to handle the request asynchronously, current, we use thread to handle.
-        ExecutorService executorService = Executors.newSingleThreadExecutor();
-        executorService.execute(new ParserRunable(eventId));
+        //ExecutorService executorService = Executors.newSingleThreadExecutor();
+        //executorService.execute(new ParserRunable(eventId));
         return subscriptionResult;
     }
 
@@ -101,7 +104,7 @@ public class DefaultControllerService implements ControllerService {
         }
         @Override
         public void run() {
-            
+        	csbBrokerService.broke(eventId);
         }
 
             

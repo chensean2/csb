@@ -1,9 +1,12 @@
 package com.csb.parser.component;
 
+import org.springframework.stereotype.Component;
+
 import com.csb.parser.component.model.AssignmentInfo;
 import com.csb.parser.component.model.SubscriptionInfo;
 import com.csb.parser.component.model.ValidationInfo;
 
+@Component("saasParserComponent")
 public class SaaSParserComponent implements ParserComponent {
 
     @Override

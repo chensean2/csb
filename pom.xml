@@ -19,6 +19,7 @@
 		<module>csb-platform-controller</module>
 		<module>csb-platform-parser</module>
 		<module>csb-platform-broker</module>
+		<module>csb-platform-provision</module>
 		<module>csb-platform-provision-openstack</module>
 		<module>csb-platform-openapi</module>
 		<module>csb-platform-sso</module>

@@ -14,26 +14,31 @@
 	<artifactId>csb-platform-controller</artifactId>
 	<name>Cloud Service Broker Platform Controller Lib</name>
 	<dependencies>
-	
-		
+
+
 		<dependency>
 			<groupId>com.csb</groupId>
 			<artifactId>csb-common</artifactId>
 			<version>1.0</version>
 		</dependency>
-		
+
 		<dependency>
 			<groupId>com.csb</groupId>
 			<artifactId>csb-platform-parser</artifactId>
 			<version>1.0</version>
 		</dependency>
-		
+
 		<dependency>
 			<groupId>com.csb</groupId>
 			<artifactId>csb-platform-broker</artifactId>
 			<version>1.0</version>
 		</dependency>
-	<dependency>
+		<dependency>
+			<groupId>com.csb</groupId>
+			<artifactId>csb-platform-provision-openstack</artifactId>
+			<version>1.0</version>
+		</dependency>
+		<dependency>
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
 		</dependency>

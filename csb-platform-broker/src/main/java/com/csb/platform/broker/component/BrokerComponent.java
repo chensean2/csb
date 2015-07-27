@@ -1,4 +1,4 @@
-package com.csb.broker.component;
+package com.csb.platform.broker.component;
 
 import com.csb.core.platform.entity.Plan;
 

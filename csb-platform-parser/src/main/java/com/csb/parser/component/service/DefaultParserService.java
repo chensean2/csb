@@ -1,21 +1,24 @@
 package com.csb.parser.component.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.stereotype.Service;
 
-import com.csb.parser.component.IaaSParserComponent;
-import com.csb.parser.component.SaaSParserComponent;
+import com.csb.parser.component.ParserComponent;
 import com.csb.parser.component.model.AssignmentInfo;
 import com.csb.parser.component.model.SubscriptionInfo;
 import com.csb.parser.component.model.ValidationInfo;
 
+@Service
 public class DefaultParserService implements ParserService {
 
 	@Autowired
-	private SaaSParserComponent saasParserComponent;
+	@Qualifier("saasParserComponent")
+	private ParserComponent saasParserComponent;
 	
 	@Autowired
-	private IaaSParserComponent iaasParserComponent;
+	@Qualifier("iaasParserComponent")
+	private ParserComponent iaasParserComponent;
 	
 	@Override
     public String parseSubscription(SubscriptionInfo subscriptionInfo) {
@@ -23,15 +26,16 @@ public class DefaultParserService implements ParserService {
     	if(subscriptionInfo == null){
     		return null;
     	}
+    	String eventId = null;
     	if("IAAS".equals( subscriptionInfo.getCategory())){
-    		iaasParserComponent.parse(subscriptionInfo);
+    		eventId = iaasParserComponent.parse(subscriptionInfo);
     	}else if("SAAS".equals( subscriptionInfo.getCategory())){
     		
     	}else if("PAAS".equals( subscriptionInfo.getCategory())){
     		
     	}
     	
-        return null;
+        return eventId;
     }
 
     @Override

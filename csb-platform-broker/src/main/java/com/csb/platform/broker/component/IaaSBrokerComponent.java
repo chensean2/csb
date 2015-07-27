@@ -1,4 +1,4 @@
-package com.csb.broker.component;
+package com.csb.platform.broker.component;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -18,7 +18,9 @@ public class IaaSBrokerComponent implements BrokerComponent {
         IaaSPlan iaasPlan = plan.getIaasPlan();
         if(iaasPlan != null){
             if(PlatformConstant.PROVSION_TYPE_SUBSCRIPTION.equals(iaasPlan.getType())){
-                
+                if("CREATE".equals(iaasPlan.getAction())){
+                	iaasProvisionService.createServer(plan);
+                }
             }
         }else{
             //TODO

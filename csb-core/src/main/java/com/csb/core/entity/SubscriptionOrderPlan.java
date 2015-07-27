@@ -20,7 +20,6 @@ public class SubscriptionOrderPlan extends BaseEntity<Long> {
 	@JoinColumn(name = "ORDER_PLAN_ID")
 	private OrderPlan orderPlan;
 
-	@OneToOne
 	@JoinColumn(name = "IS_ACTIVE")
 	private Boolean isActive;
 

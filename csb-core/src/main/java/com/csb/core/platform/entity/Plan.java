@@ -1,5 +1,6 @@
 package com.csb.core.platform.entity;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
@@ -36,12 +37,12 @@ public class Plan extends BaseEntity<Long> {
 	@Column(name = "MESSAGE")
 	private String message;
 
-	@OneToOne
+	@OneToOne(cascade=CascadeType.ALL)
 	@JoinColumn(name = "SAAS_PLAN_ID")
 	private SaaSPlan saasPlan;
 	
-	@OneToOne
-	@JoinColumn(name = "SAAS_PLAN_ID")
+	@OneToOne(cascade=CascadeType.ALL)
+	@JoinColumn(name = "IAAS_PLAN_ID")
 	private IaaSPlan iaasPlan;
 
 	public String getEventId() {
