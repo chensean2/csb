@@ -1,9 +1,20 @@
 package com.csb.test;
 
+import java.io.StringReader;
+import java.nio.file.FileSystems;
+import java.nio.file.Files;
+import java.nio.file.Path;
+
+import javax.xml.bind.JAXBContext;
+import javax.xml.stream.XMLInputFactory;
+import javax.xml.stream.XMLStreamReader;
+
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 
+import com.csb.common.manifest.CordsManifest;
+import com.csb.common.util.JaxbUpperCaseStreamReaderDelegate;
 import com.csb.parser.component.model.IaaSInfo;
 import com.csb.parser.component.model.SubscriptionInfo;
 import com.csb.parser.component.model.SubscriptionResult;
@@ -19,7 +30,7 @@ public class PlatformControllerTest extends BaseIT {
 	@Autowired
 	private BrokerService csbBrokerService;
 
-	@Test
+	// @Test
 	public void testAppPackage() {
 		SubscriptionInfo s = new SubscriptionInfo();
 		s.setTraceId("00001");
@@ -40,8 +51,33 @@ public class PlatformControllerTest extends BaseIT {
 		s.setIaasInfo(iaasInfo);
 		SubscriptionResult result = controllerService.createSubscription(s);
 
-		if(result.getEventId() != null){
+		if (result.getEventId() != null) {
 			csbBrokerService.broke(result.getEventId());
+		}
+	}
+
+	@Test
+	public void textManifest() {
+
+	
+		try {
+			Path path = FileSystems.getDefault().getPath("C:\\Users\\gengjun\\Downloads", "xwiki.xml");
+			
+			String manifestStr = new String(Files.readAllBytes(path));
+			CordsManifest manifest = null;
+			JAXBContext jc;
+
+			jc = JAXBContext.newInstance("com.csb.common.manifest");
+
+			XMLInputFactory xif = XMLInputFactory.newInstance();
+			StringReader reader = new StringReader(manifestStr);
+			XMLStreamReader xsr = xif.createXMLStreamReader(reader);
+			xsr = new JaxbUpperCaseStreamReaderDelegate(xsr);
+			manifest = (CordsManifest) jc.createUnmarshaller().unmarshal(xsr);
+			System.out.println(manifest);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
 	}
 
