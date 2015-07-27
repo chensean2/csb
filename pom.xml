@@ -10,6 +10,7 @@
 	<packaging>pom</packaging>
 
 
+
 	<modules>
 		<module>csb-mall</module>
 		<module>csb-common</module>
