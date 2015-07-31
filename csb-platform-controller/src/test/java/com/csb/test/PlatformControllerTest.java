@@ -72,7 +72,8 @@ public class PlatformControllerTest extends BaseIT {
 			jc = JAXBContext.newInstance(com.csb.common.manifest.ObjectFactory.class);
 
 			Unmarshaller unmarshaller = jc.createUnmarshaller(); 
-			manifest = (CordsManifest)((JAXBElement<DocumentType>) unmarshaller.unmarshal(new File("/Users/gengjun/dev/saas-base-workspace/xwiki.xml"))).getValue(); 
+			//manifest = (CordsManifest)((JAXBElement<DocumentType>) unmarshaller.unmarshal(new File("/Users/gengjun/dev/saas-base-workspace/xwiki.xml"))).getValue(); 
+			manifest = (CordsManifest)((JAXBElement<DocumentType>) unmarshaller.unmarshal(new File("C:\\Users\\gengjun\\Downloads\\xwiki.xml"))).getValue(); 
 			System.out.println(manifest);
 			CordsNode node = manifest.getNode().get(0);
 			String provider = node.getProvider();
