@@ -13,6 +13,30 @@
 
 	<artifactId>csb-mall</artifactId>
 	<name>Cloud Service Broker Mall Web</name>
+	<build>
+	  <plugins>
+            <plugin>
+                <groupId>org.apache.tomcat.maven</groupId>
+                <artifactId>tomcat7-maven-plugin</artifactId>
+                <configuration>
+                    <port>8080</port>
+                    <ajpPort>8009</ajpPort>
+                    <systemProperties>
+                        <JAVA_OPTS>-Xms128m -Xmx1024m -XX:PermSize=128M -XX:MaxPermSize=256m</JAVA_OPTS>
+                    </systemProperties>
+                </configuration>
+                <dependencies>
+                    <dependency>
+                        <groupId>mysql</groupId>
+                        <artifactId>mysql-connector-java</artifactId>
+                        <version>${mysql.version}</version>
+                    </dependency>
+                </dependencies>
+            </plugin>
+          
+        </plugins>
+    </build>
+    
 	<dependencies>
 	
 		<dependency>
@@ -32,6 +56,28 @@
 			<artifactId>junit</artifactId>
 		</dependency>
 
+	<!-- WEB begin -->
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-webmvc</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>jstl</artifactId>
+			<version>1.2</version>
+		</dependency>
+
+		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>servlet-api</artifactId>
+			<version>2.5</version>
+			<scope>provided</scope>
+		</dependency>
+		<!-- WEB end -->
+		
+	
+		
 		<dependency>
 			<groupId>org.assertj</groupId>
 			<artifactId>assertj-core</artifactId>
