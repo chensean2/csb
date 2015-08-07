@@ -33,4 +33,6 @@ public interface ControllerService {
     public SubscriptionStatus getSubscriptionStatus(String requestId);
     
     public AssignmentStatus getAssignmentStatus(String requestId);
+    
+    public void broke(String eventId);
 }

@@ -95,6 +95,7 @@ public class DefaultControllerService implements ControllerService {
         return null;
     }
     
+    
     class ParserRunable implements Runnable{
 
         private String eventId;
@@ -109,4 +110,10 @@ public class DefaultControllerService implements ControllerService {
 
             
     }
+
+
+	@Override
+	public void broke(String eventId) {
+		csbBrokerService.broke(eventId);
+	}
 }

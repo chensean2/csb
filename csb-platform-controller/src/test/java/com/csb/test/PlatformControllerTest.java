@@ -31,7 +31,7 @@ public class PlatformControllerTest extends BaseIT {
 	private BrokerService csbBrokerService;
 
 	// @Test
-	public void testAppPackage() {
+	public void testIaaSSubscription() {
 		SubscriptionInfo s = new SubscriptionInfo();
 		s.setTraceId("00001");
 		s.setAppPlanId("iaas-plan-00001");
@@ -52,61 +52,61 @@ public class PlatformControllerTest extends BaseIT {
 		SubscriptionResult result = controllerService.createSubscription(s);
 
 		if (result.getEventId() != null) {
-			csbBrokerService.broke(result.getEventId());
+			controllerService.broke(result.getEventId());
 		}
 	}
 
 	@Test
 	public void textManifest() {
 
-	
 		try {
-			//Path path = FileSystems.getDefault().getPath("/Users/gengjun/dev/saas-base-workspace", "xwiki.xml");
-			
-			//String manifestStr = new String(Files.readAllBytes(path));
-		    
-		    
+			// Path path =
+			// FileSystems.getDefault().getPath("/Users/gengjun/dev/saas-base-workspace",
+			// "xwiki.xml");
+
+			// String manifestStr = new String(Files.readAllBytes(path));
+
 			CordsManifest manifest = null;
 			JAXBContext jc;
 
 			jc = JAXBContext.newInstance(com.csb.common.manifest.ObjectFactory.class);
 
-			Unmarshaller unmarshaller = jc.createUnmarshaller(); 
-			//manifest = (CordsManifest)((JAXBElement<DocumentType>) unmarshaller.unmarshal(new File("/Users/gengjun/dev/saas-base-workspace/xwiki.xml"))).getValue(); 
-			manifest = (CordsManifest)((JAXBElement<DocumentType>) unmarshaller.unmarshal(new File("C:\\Users\\gengjun\\Downloads\\xwiki.xml"))).getValue(); 
+			Unmarshaller unmarshaller = jc.createUnmarshaller();
+			// manifest = (CordsManifest)((JAXBElement<DocumentType>)
+			// unmarshaller.unmarshal(new
+			// File("/Users/gengjun/dev/saas-base-workspace/xwiki.xml"))).getValue();
+			manifest = (CordsManifest) ((JAXBElement<DocumentType>) unmarshaller
+					.unmarshal(new File("C:\\Users\\gengjun\\Downloads\\xwiki.xml"))).getValue();
 			System.out.println(manifest);
 			CordsNode node = manifest.getNode().get(0);
 			String provider = node.getProvider();
 			CordsImage image = node.getImage();
 			String instanceName = node.getName();
-			CordsInfrastructure infra = node.getInfrastructure(); 
+			CordsInfrastructure infra = node.getInfrastructure();
 			SubscriptionInfo s = new SubscriptionInfo();
-			
-	                s.setTraceId("00001");
-	                s.setAppPlanId("iaas-plan-00001");
-	                s.setCategory("IAAS");
 
-	                IaaSInfo iaasInfo = new IaaSInfo();
-	                iaasInfo.setProvider(provider);
-	                iaasInfo.setAction("CREATE");
-	                iaasInfo.setCpus(Integer.parseInt(infra.getCompute().getCores()));
-	                iaasInfo.setInstanceName(instanceName);
-	                iaasInfo.setMemory(infra.getCompute().getMemory().toLowerCase()+"b");
-	                iaasInfo.setImageName(image.getSystem().getName());
-	                iaasInfo.setStorage(infra.getStorage().getSize().toLowerCase()+"b");
-	                // m1.1gb.1cpu.10gb
-	                iaasInfo.setFlavor(
-	                                "m1." + iaasInfo.getMemory() + "." + iaasInfo.getCpus() + "cpu." + iaasInfo.getStorage());
-	                s.setIaasInfo(iaasInfo);
-	                SubscriptionResult result = controllerService.createSubscription(s);
+			s.setTraceId("00001");
+			s.setAppPlanId("iaas-plan-00001");
+			s.setCategory("IAAS");
 
-	                if (result.getEventId() != null) {
-	                        csbBrokerService.broke(result.getEventId());
-	                }
-	                
-			
-			
-			
+			IaaSInfo iaasInfo = new IaaSInfo();
+			iaasInfo.setProvider(provider);
+			iaasInfo.setAction("CREATE");
+			iaasInfo.setCpus(Integer.parseInt(infra.getCompute().getCores()));
+			iaasInfo.setInstanceName(instanceName);
+			iaasInfo.setMemory(infra.getCompute().getMemory().toLowerCase() + "b");
+			iaasInfo.setImageName(image.getSystem().getName());
+			iaasInfo.setStorage(infra.getStorage().getSize().toLowerCase() + "b");
+			// m1.1gb.1cpu.10gb
+			iaasInfo.setFlavor(
+					"m1." + iaasInfo.getMemory() + "." + iaasInfo.getCpus() + "cpu." + iaasInfo.getStorage());
+			s.setIaasInfo(iaasInfo);
+			SubscriptionResult result = controllerService.createSubscription(s);
+
+			if (result.getEventId() != null) {
+				csbBrokerService.broke(result.getEventId());
+			}
+
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

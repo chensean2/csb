@@ -49,13 +49,13 @@ public class Subscription extends BaseEntity<Long> {
 	@Temporal(TemporalType.TIMESTAMP)
 	@Column(name = "END_DT")
 	private Date endDt;
-	
+
 	@Column(name = "IS_TRAIL")
-        private Boolean isTrail;
-	
+	private Boolean isTrail;
+
 	@Temporal(TemporalType.TIMESTAMP)
-        @Column(name = "TRIAL_END_DT")
-        private Date TrialEndDt;
+	@Column(name = "TRIAL_END_DT")
+	private Date TrialEndDt;
 
 	@Column(name = "EXTERNAL_ACCOUNT_ID")
 	private String externalAccountId;
