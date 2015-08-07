@@ -13,6 +13,7 @@
 
 	<artifactId>csb-mall</artifactId>
 	<name>Cloud Service Broker Mall Web</name>
+	<packaging>war</packaging>
 	<build>
 	  <plugins>
             <plugin>
@@ -22,6 +23,7 @@
                     <port>8080</port>
                     <ajpPort>8009</ajpPort>
                     <systemProperties>
+						<spring.profiles.active>dev</spring.profiles.active>
                         <JAVA_OPTS>-Xms128m -Xmx1024m -XX:PermSize=128M -XX:MaxPermSize=256m</JAVA_OPTS>
                     </systemProperties>
                 </configuration>
