@@ -2,6 +2,7 @@ package com.csb.core.platform.entity;
 
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
@@ -20,15 +21,15 @@ public class SaaSPlan extends BaseEntity<Long> {
     @Column(name = "TYPE")
     private String type;
     
-    @OneToOne
+    @OneToOne(cascade=CascadeType.ALL)
     @JoinColumn(name="SAAS_SUBSCRIPTION_PLAN_ID")
     private SaaSSubscriptionPlan saaSSubscriptionPlan;
 
-    @OneToOne
+    @OneToOne(cascade=CascadeType.ALL)
     @JoinColumn(name="SAAS_ASSIGNMENT_PLAN")
     private SaaSAssignmentPlan saaSAssignmentPlan;
     
-    @OneToMany(mappedBy = "saasPlan")
+    @OneToMany(mappedBy = "saasPlan",cascade=CascadeType.ALL)
     private List<SaaSValidationPlan> saaSValidationPlanList;
 
     public String getType() {

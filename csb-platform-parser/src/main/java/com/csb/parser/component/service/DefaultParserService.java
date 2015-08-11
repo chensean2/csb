@@ -30,7 +30,7 @@ public class DefaultParserService implements ParserService {
     	if("IAAS".equals( subscriptionInfo.getCategory())){
     		eventId = iaasParserComponent.parse(subscriptionInfo);
     	}else if("SAAS".equals( subscriptionInfo.getCategory())){
-    		
+    		eventId = saasParserComponent.parse(subscriptionInfo);
     	}else if("PAAS".equals( subscriptionInfo.getCategory())){
     		
     	}

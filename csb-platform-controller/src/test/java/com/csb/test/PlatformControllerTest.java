@@ -1,6 +1,8 @@
 package com.csb.test;
 
 import java.io.File;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBElement;
@@ -15,7 +17,13 @@ import com.csb.common.manifest.CordsImage;
 import com.csb.common.manifest.CordsInfrastructure;
 import com.csb.common.manifest.CordsManifest;
 import com.csb.common.manifest.CordsNode;
+import com.csb.common.util.UUIDUtil;
+import com.csb.parser.component.model.CompanyInfo;
+import com.csb.parser.component.model.CreatorInfo;
 import com.csb.parser.component.model.IaaSInfo;
+import com.csb.parser.component.model.SaaSInfo;
+import com.csb.parser.component.model.SaaSPlanInfo;
+import com.csb.parser.component.model.SaaSPlanItemInfo;
 import com.csb.parser.component.model.SubscriptionInfo;
 import com.csb.parser.component.model.SubscriptionResult;
 import com.csb.platform.broker.component.service.BrokerService;
@@ -56,7 +64,7 @@ public class PlatformControllerTest extends BaseIT {
 		}
 	}
 
-	@Test
+	//@Test
 	public void textManifest() {
 
 		try {
@@ -112,5 +120,47 @@ public class PlatformControllerTest extends BaseIT {
 			e.printStackTrace();
 		}
 	}
+	
+	@Test
+        public void testSaaSSubscription() {
+                SubscriptionInfo s = new SubscriptionInfo();
+                s.setTraceId("00001");
+                s.setAppPlanId("iaas-plan-00001");
+                s.setCategory("SAAS");
+
+                SaaSInfo saasInfo = new SaaSInfo();
+                saasInfo.setAction("CREATE");
+                
+                SaaSPlanInfo saasPlanInfo = new SaaSPlanInfo();
+                saasPlanInfo.setPlanCode("advanced");
+                
+                List<SaaSPlanItemInfo> saasPlanItemInfoList = new ArrayList<SaaSPlanItemInfo>();
+                SaaSPlanItemInfo saasPlanItemInfo = new SaaSPlanItemInfo();
+                saasPlanItemInfo.setQuantity(10);
+                saasPlanItemInfo.setUnit("User");
+                saasPlanItemInfoList.add(saasPlanItemInfo);
+                saasPlanInfo.setSaasPlanItemInfoList(saasPlanItemInfoList);
+                saasInfo.setSaaSPlanInfo(saasPlanInfo);
+                
+                CompanyInfo companyInfo = new CompanyInfo();
+                companyInfo.setName("TestCompany");
+                companyInfo.setPhoneNumber("18999999999");
+                companyInfo.setUuid(UUIDUtil.generate());
+                saasInfo.setCompanyInfo(companyInfo);
+                
+                CreatorInfo creatorInfo = new CreatorInfo();
+                creatorInfo.setEmail("gengjun@outlook.com");
+                creatorInfo.setFirstName("Jun");
+                creatorInfo.setLastName("Geng");
+                creatorInfo.setOpenId("http://openid.com/gengjun");
+                saasInfo.setCreatorInfo(creatorInfo);
+                
+                s.setSaasInfo(saasInfo);
+                SubscriptionResult result = controllerService.createSubscription(s);
+
+                if (result.getEventId() != null) {
+                        controllerService.broke(result.getEventId());
+                }
+        }
 
 }
