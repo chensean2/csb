@@ -60,6 +60,12 @@
 		</dependency>
 		
 		<dependency>
+			<groupId>com.csb</groupId>
+			<artifactId>csb-platform-openapi</artifactId>
+			<version>1.0</version>
+		</dependency>
+		
+		<dependency>
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
 		</dependency>

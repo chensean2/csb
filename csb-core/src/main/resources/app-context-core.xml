@@ -3,6 +3,7 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:aop="http://www.springframework.org/schema/aop"
 	xmlns:context="http://www.springframework.org/schema/context"
 	xmlns:jdbc="http://www.springframework.org/schema/jdbc" xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:p="http://www.springframework.org/schema/p"
 	xmlns:jpa="http://www.springframework.org/schema/data/jpa"
 	xsi:schemaLocation="
 		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
@@ -90,10 +91,15 @@
 	<!-- hibernate validator -->
 	<bean id="validator"
 		class="org.springframework.validation.beanvalidation.LocalValidatorFactoryBean" />
-
+ 	
+ 	<bean id="dataSource" class="org.springframework.jdbc.datasource.SimpleDriverDataSource"
+          p:username="${jdbc.username}"
+          p:password="${jdbc.password}"
+          p:driverClass="${jdbc.driver}"
+          p:url="${jdbc.url}"/>
 
 	<!-- 数据源配置,使用应用内的Tomcat JDBC连接池 -->
-	<bean id="dataSource" class="org.apache.tomcat.jdbc.pool.DataSource"
+	<bean id="dataSource1" class="org.apache.tomcat.jdbc.pool.DataSource"
 		destroy-method="close">
 		<!-- Connection Info -->
 		<property name="driverClassName" value="${jdbc.driver}" />

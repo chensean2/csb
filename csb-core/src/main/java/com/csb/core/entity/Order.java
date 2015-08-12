@@ -23,8 +23,7 @@ public class Order extends BaseEntity<Long> {
 	@OneToMany(mappedBy = "order")
 	private List<OrderPlan> orderPlanList;
 
-	@OneToOne
-	@JoinColumn(name = "PAYMENT_ID")
+	@OneToOne(mappedBy="order")
 	private Payment payment;
 	
 	//SUBMITTED,PAYMENT_SUCCESS,PAYMENT_FAILED,REMOTE_INPROGRESS,FAILED,SUCCESS

@@ -5,6 +5,7 @@ import java.util.concurrent.Executors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.csb.parser.component.model.AssignmentInfo;
 import com.csb.parser.component.model.AssignmentResult;
@@ -26,6 +27,7 @@ public class DefaultControllerService implements ControllerService {
     @Autowired
     private BrokerService csbBrokerService;
     
+    @Transactional
     @Override
     public SubscriptionResult createSubscription(SubscriptionInfo subscriptionInfo) {
         SubscriptionResult subscriptionResult = new SubscriptionResult();

@@ -2,10 +2,12 @@ package com.csb.platform.provision.saas.service;
 
 import java.util.Map;
 
+import com.csb.core.platform.entity.Plan;
+
 
 public interface SaaSProvisionService {
 
-    public Map<String, String> createSubscripiton(String eventId);
+    public Map<String, String> createSubscripiton(Plan plan);
     
     public Map<String, String> updateSubscripiton(String eventId);
     

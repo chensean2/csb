@@ -64,6 +64,7 @@ public class SaaSParserComponent implements ParserComponent {
             SaaSSubscriptionPlanItem saasSubscriptionPlanItem = new SaaSSubscriptionPlanItem();
             saasSubscriptionPlanItem.setQuantity(saasPlanItemInfo.getQuantity());
             saasSubscriptionPlanItem.setUnit(saasPlanItemInfo.getUnit());
+            saasSubscriptionPlanItem.setSaaSSubscriptionPlan(saasSubscriptionPlan);
             saasSubscriptionPlanItemList.add(saasSubscriptionPlanItem);
         }
         saasSubscriptionPlan.setSaaSSubscriptionPlanItemList(saasSubscriptionPlanItemList);
