@@ -30,9 +30,9 @@ public interface ControllerService {
     
     public AssignmentResult unAssign(AssignmentInfo AssignmentInfo);
     
-    public SubscriptionStatus getSubscriptionStatus(String requestId);
+    public SubscriptionStatus getSubscriptionStatus(String eventId);
     
-    public AssignmentStatus getAssignmentStatus(String requestId);
+    public AssignmentStatus getAssignmentStatus(String eventId);
     
     public void broke(String eventId);
 }

@@ -8,6 +8,7 @@ import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
+import javax.persistence.OrderBy;
 import javax.persistence.Table;
 
 import com.csb.core.common.BaseEntity;
@@ -31,6 +32,10 @@ public class SaaSPlan extends BaseEntity<Long> {
     
     @OneToMany(mappedBy = "saasPlan",cascade=CascadeType.ALL)
     private List<SaaSValidationPlan> saaSValidationPlanList;
+    
+    @OneToMany(mappedBy = "saasPlan",cascade=CascadeType.ALL)
+    //@OrderBy("ID DESC")
+    private List<SaaSProvisionResponse> saaSProvisionResponseList;
 
     public String getType() {
         return type;
@@ -63,6 +68,16 @@ public class SaaSPlan extends BaseEntity<Long> {
     public void setSaaSValidationPlanList(List<SaaSValidationPlan> saaSValidationPlanList) {
         this.saaSValidationPlanList = saaSValidationPlanList;
     }
+
+	public List<SaaSProvisionResponse> getSaaSProvisionResponseList() {
+		return saaSProvisionResponseList;
+	}
+
+	public void setSaaSProvisionResponseList(List<SaaSProvisionResponse> saaSProvisionResponseList) {
+		this.saaSProvisionResponseList = saaSProvisionResponseList;
+	}
+    
+    
 
     
 }

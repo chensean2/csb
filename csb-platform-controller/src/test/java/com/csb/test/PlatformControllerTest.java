@@ -9,6 +9,8 @@ import javax.xml.bind.JAXBElement;
 import javax.xml.bind.Unmarshaller;
 
 import org.junit.Test;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.w3c.dom.DocumentType;
@@ -17,6 +19,17 @@ import com.csb.common.manifest.CordsImage;
 import com.csb.common.manifest.CordsInfrastructure;
 import com.csb.common.manifest.CordsManifest;
 import com.csb.common.manifest.CordsNode;
+import com.csb.common.saas.manifest.AccountType;
+import com.csb.common.saas.manifest.CompanyType;
+import com.csb.common.saas.manifest.CreatorType;
+import com.csb.common.saas.manifest.CustomeAttributeType;
+import com.csb.common.saas.manifest.CustomeAttributesType;
+import com.csb.common.saas.manifest.ItemType;
+import com.csb.common.saas.manifest.ModuleType;
+import com.csb.common.saas.manifest.ModulesType;
+import com.csb.common.saas.manifest.OrderType;
+import com.csb.common.saas.manifest.PackageType;
+import com.csb.common.saas.manifest.SaasManifest;
 import com.csb.common.util.UUIDUtil;
 import com.csb.parser.component.model.CompanyInfo;
 import com.csb.parser.component.model.CreatorInfo;
@@ -32,6 +45,7 @@ import com.csb.platform.controller.ControllerService;
 @ContextConfiguration(locations = { "classpath:app-test-context-platform-controller.xml" })
 public class PlatformControllerTest extends BaseIT {
 
+	private static Logger logger = LoggerFactory.getLogger(PlatformControllerTest.class);
 	@Autowired
 	public ControllerService controllerService;
 
@@ -64,8 +78,8 @@ public class PlatformControllerTest extends BaseIT {
 		}
 	}
 
-	//@Test
-	public void textManifest() {
+	// @Test
+	public void testIaaSManifest() {
 
 		try {
 			// Path path =
@@ -120,47 +134,133 @@ public class PlatformControllerTest extends BaseIT {
 			e.printStackTrace();
 		}
 	}
-	
+
+	//@Test
+	public void testSaaSSubscription() {
+		SubscriptionInfo s = new SubscriptionInfo();
+		s.setTraceId("00001");
+		s.setAppPlanId("iaas-plan-00001");
+		s.setCategory("SAAS");
+
+		SaaSInfo saasInfo = new SaaSInfo();
+		saasInfo.setAction("CREATE");
+
+		SaaSPlanInfo saasPlanInfo = new SaaSPlanInfo();
+		saasPlanInfo.setPlanCode("advanced");
+
+		List<SaaSPlanItemInfo> saasPlanItemInfoList = new ArrayList<SaaSPlanItemInfo>();
+		SaaSPlanItemInfo saasPlanItemInfo = new SaaSPlanItemInfo();
+		saasPlanItemInfo.setQuantity(10);
+		saasPlanItemInfo.setUnit("User");
+		saasPlanItemInfoList.add(saasPlanItemInfo);
+		saasPlanInfo.setSaasPlanItemInfoList(saasPlanItemInfoList);
+		saasInfo.setSaaSPlanInfo(saasPlanInfo);
+
+		CompanyInfo companyInfo = new CompanyInfo();
+		companyInfo.setName("TestCompany");
+		companyInfo.setPhoneNumber("18999999999");
+		companyInfo.setUuid(UUIDUtil.generate());
+		saasInfo.setCompanyInfo(companyInfo);
+
+		CreatorInfo creatorInfo = new CreatorInfo();
+		creatorInfo.setEmail("gengjun@outlook.com");
+		creatorInfo.setFirstName("Jun");
+		creatorInfo.setLastName("Geng");
+		creatorInfo.setOpenId("http://openid.com/gengjun");
+		saasInfo.setCreatorInfo(creatorInfo);
+
+		s.setSaasInfo(saasInfo);
+		SubscriptionResult result = controllerService.createSubscription(s);
+
+		if (result.getEventId() != null) {
+			controllerService.broke(result.getEventId());
+		}
+	}
+
 	@Test
-        public void testSaaSSubscription() {
-                SubscriptionInfo s = new SubscriptionInfo();
-                s.setTraceId("00001");
-                s.setAppPlanId("iaas-plan-00001");
-                s.setCategory("SAAS");
+	public void testSaaSManifest() {
 
-                SaaSInfo saasInfo = new SaaSInfo();
-                saasInfo.setAction("CREATE");
-                
-                SaaSPlanInfo saasPlanInfo = new SaaSPlanInfo();
-                saasPlanInfo.setPlanCode("advanced");
-                
-                List<SaaSPlanItemInfo> saasPlanItemInfoList = new ArrayList<SaaSPlanItemInfo>();
-                SaaSPlanItemInfo saasPlanItemInfo = new SaaSPlanItemInfo();
-                saasPlanItemInfo.setQuantity(10);
-                saasPlanItemInfo.setUnit("User");
-                saasPlanItemInfoList.add(saasPlanItemInfo);
-                saasPlanInfo.setSaasPlanItemInfoList(saasPlanItemInfoList);
-                saasInfo.setSaaSPlanInfo(saasPlanInfo);
-                
-                CompanyInfo companyInfo = new CompanyInfo();
-                companyInfo.setName("TestCompany");
-                companyInfo.setPhoneNumber("18999999999");
-                companyInfo.setUuid(UUIDUtil.generate());
-                saasInfo.setCompanyInfo(companyInfo);
-                
-                CreatorInfo creatorInfo = new CreatorInfo();
-                creatorInfo.setEmail("gengjun@outlook.com");
-                creatorInfo.setFirstName("Jun");
-                creatorInfo.setLastName("Geng");
-                creatorInfo.setOpenId("http://openid.com/gengjun");
-                saasInfo.setCreatorInfo(creatorInfo);
-                
-                s.setSaasInfo(saasInfo);
-                SubscriptionResult result = controllerService.createSubscription(s);
+		try {
+			// Path path =
+			// FileSystems.getDefault().getPath("/Users/gengjun/dev/saas-base-workspace",
+			// "xwiki.xml");
 
-                if (result.getEventId() != null) {
-                        controllerService.broke(result.getEventId());
-                }
-        }
+			// String manifestStr = new String(Files.readAllBytes(path));
+			logger.debug("Provision SaaS Manifest Start...");
+			SaasManifest manifest = null;
+			JAXBContext jc;
+
+			jc = JAXBContext.newInstance(com.csb.common.saas.manifest.ObjectFactory.class);
+
+			Unmarshaller unmarshaller = jc.createUnmarshaller();
+			// manifest = (CordsManifest)((JAXBElement<DocumentType>)
+			// unmarshaller.unmarshal(new
+			// File("/Users/gengjun/dev/saas-base-workspace/xwiki.xml"))).getValue();
+			manifest = (SaasManifest) ((JAXBElement<DocumentType>) unmarshaller
+					.unmarshal(new File("C:\\Users\\gengjun\\Downloads\\saas-manifest.xml"))).getValue();
+		
+			PackageType packageType=manifest.getPackage();
+			String action = packageType.getAction();
+			ModulesType modules = packageType.getModules();
+			List<ModuleType> module = modules.getModule();
+			CustomeAttributesType attributes = packageType.getCustomeAttributes();
+			List<CustomeAttributeType> attr = attributes.getAttribute();
+			
+			OrderType order = manifest.getOrder();
+			List<ItemType> orderItems = order.getItem();
+			AccountType account = manifest.getAccount();
+			
+			CompanyType company = account.getCompany();
+			CreatorType creator = account.getCreator();
+			
+			SubscriptionInfo s = new SubscriptionInfo();
+			s.setTraceId("00001");
+			s.setAppPlanId("iaas-plan-00001");
+			s.setCategory("SAAS");
+
+			SaaSInfo saasInfo = new SaaSInfo();
+			saasInfo.setAction(action);
+
+			SaaSPlanInfo saasPlanInfo = new SaaSPlanInfo();
+			saasPlanInfo.setPlanCode(packageType.getEdition());
+
+			List<SaaSPlanItemInfo> saasPlanItemInfoList = new ArrayList<SaaSPlanItemInfo>();
+			for(ItemType item: orderItems){
+				SaaSPlanItemInfo saasPlanItemInfo = new SaaSPlanItemInfo();
+				saasPlanItemInfo.setQuantity(item.getQuantity().intValue());
+				saasPlanItemInfo.setUnit(item.getUnit());
+				saasPlanItemInfoList.add(saasPlanItemInfo);
+			}
+			
+			
+			saasPlanInfo.setSaasPlanItemInfoList(saasPlanItemInfoList);
+			saasInfo.setSaaSPlanInfo(saasPlanInfo);
+
+			CompanyInfo companyInfo = new CompanyInfo();
+			companyInfo.setName(company.getName());
+			
+			companyInfo.setUuid(company.getUuid());
+			saasInfo.setCompanyInfo(companyInfo);
+
+			CreatorInfo creatorInfo = new CreatorInfo();
+			creatorInfo.setEmail(creator.getEmail());
+			creatorInfo.setFirstName("");
+			creatorInfo.setLastName(creator.getName());
+			creatorInfo.setOpenId(creator.getOpenid());
+			saasInfo.setCreatorInfo(creatorInfo);
+
+			s.setSaasInfo(saasInfo);
+			SubscriptionResult result = controllerService.createSubscription(s);
+
+			if (result.getEventId() != null) {
+				controllerService.broke(result.getEventId());
+			}
+			logger.debug("Provision SaaS Manifest End ...");
+
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
 
 }

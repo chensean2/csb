@@ -28,6 +28,7 @@ import com.csb.parser.component.model.SaaSPlanInfo;
 import com.csb.parser.component.model.SaaSPlanItemInfo;
 import com.csb.parser.component.model.SubscriptionInfo;
 import com.csb.parser.component.model.SubscriptionResult;
+import com.csb.parser.component.model.SubscriptionStatus;
 import com.csb.platform.controller.ControllerService;
 
 /**
@@ -133,8 +134,9 @@ public class SubscriptionController {
 		if (result.getEventId() != null) {
 			controllerService.broke(result.getEventId());
 		}
+		SubscriptionStatus status = controllerService.getSubscriptionStatus(result.getEventId());
 		
-		return new ResponseEntity<String>(result.getEventId(),HttpStatus.CREATED);
+		return new ResponseEntity<String>(status.getRaw(),HttpStatus.CREATED);
 	}
 
 }

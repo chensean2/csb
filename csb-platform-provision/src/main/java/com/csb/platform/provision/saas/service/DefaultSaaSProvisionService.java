@@ -1,5 +1,6 @@
 package com.csb.platform.provision.saas.service;
 
+import java.util.HashMap;
 import java.util.Map;
 
 import org.apache.http.HttpEntity;
@@ -22,7 +23,8 @@ public class DefaultSaaSProvisionService implements SaaSProvisionService {
 
 	@Override
 	public Map<String, String> createSubscripiton(Plan plan) {
-		String saasURL = "http://localhost:8080/csb-mall/example/provision";
+		Map<String, String> responseMap = new HashMap<String, String>();
+		String saasURL = "http://localhost:9090/saas/provision";
 		String eventURL = "http://localhost:8080/csb-mall/api/integration/events/" + plan.getEventId();
 		String provisionURL = saasURL+"?url="+eventURL;
 		CloseableHttpClient httpclient = HttpClients.createDefault();
@@ -33,12 +35,8 @@ public class DefaultSaaSProvisionService implements SaaSProvisionService {
 			try {
 				HttpEntity entity = response.getEntity();
 			    if (entity != null) {
-			        long len = entity.getContentLength();
-			        if (len != -1 && len < 2048) {
-			        	logger.debug(EntityUtils.toString(entity));
-			        } else {
-			        	logger.debug("Stream content out");
-			        }
+			    	String provisionResponse = EntityUtils.toString(entity);
+			    	responseMap.put("response", provisionResponse);
 			    }
 			} finally {
 				response.close();
@@ -53,7 +51,7 @@ public class DefaultSaaSProvisionService implements SaaSProvisionService {
 			}
 		}
 
-		return null;
+		return responseMap;
 	}
 
 	@Override

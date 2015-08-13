@@ -1,4 +1,4 @@
-package com.csb.mall.controller;
+package com.csb.sample.saas.controller;
 
 import org.apache.http.HttpEntity;
 import org.apache.http.client.methods.CloseableHttpResponse;
@@ -8,22 +8,23 @@ import org.apache.http.impl.client.HttpClients;
 import org.apache.http.util.EntityUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.RestController;
 
-@Controller
-@RequestMapping(value = "/example")
+@RestController
+@EnableAutoConfiguration
 public class SaaSExampleController {
 
 	private static Logger logger = LoggerFactory.getLogger(SaaSExampleController.class);
-
-
-	@RequestMapping(value = "/provision", method = RequestMethod.POST)
+	
+	@RequestMapping(value = "/saas/provision", method = { RequestMethod.GET, RequestMethod.POST })
 	@ResponseBody
 	public ResponseEntity<String> post(@RequestParam("url") String url) {
 		
@@ -57,4 +58,8 @@ public class SaaSExampleController {
 		return new ResponseEntity<String>(returnBody,HttpStatus.OK);
 	}
 
+	public static void main(String[] args) throws Exception {
+        SpringApplication.run(SaaSExampleController.class, args);
+    }
+	
 }

@@ -1,12 +1,13 @@
 package com.csb.platform.controller;
 
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.csb.core.platform.entity.Plan;
+import com.csb.core.platform.entity.SaaSPlan;
+import com.csb.core.platform.entity.SaaSProvisionResponse;
+import com.csb.core.platform.repository.PlanRepository;
 import com.csb.parser.component.model.AssignmentInfo;
 import com.csb.parser.component.model.AssignmentResult;
 import com.csb.parser.component.model.AssignmentStatus;
@@ -26,6 +27,9 @@ public class DefaultControllerService implements ControllerService {
 
     @Autowired
     private BrokerService csbBrokerService;
+    
+    @Autowired
+    private PlanRepository planRepository;
     
     @Transactional
     @Override
@@ -86,13 +90,29 @@ public class DefaultControllerService implements ControllerService {
     }
 
     @Override
-    public SubscriptionStatus getSubscriptionStatus(String requestId) {
+    public SubscriptionStatus getSubscriptionStatus(String eventId) {
+    	SubscriptionStatus status = new SubscriptionStatus();
+    	//TODO
+    	status.setStatus("INPROCESS");
+    	Plan plan = planRepository.findByEventId(eventId);
+    	if(plan != null){
+    		SaaSPlan saasPlan = plan.getSaasPlan();
+    		if(saasPlan != null && saasPlan.getSaaSProvisionResponseList().size() >0){
+    			SaaSProvisionResponse saasProvisionResponse = saasPlan.getSaaSProvisionResponseList().get(0);
+    			if(saasProvisionResponse.getSuccessCode().equals("true")){
+    				status.setStatus("SUCCESS");
+    			}else{
+    				status.setStatus("FAILED");
+    			}
+    			status.setRaw(saasProvisionResponse.getRaw());
+    		}
+    	}
         // TODO Auto-generated method stub
-        return null;
+        return status;
     }
 
     @Override
-    public AssignmentStatus getAssignmentStatus(String requestId) {
+    public AssignmentStatus getAssignmentStatus(String eventId) {
         // TODO Auto-generated method stub
         return null;
     }
