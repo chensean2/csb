@@ -1,5 +1,7 @@
 package com.csb.platform.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -8,6 +10,7 @@ import com.csb.core.platform.entity.Plan;
 import com.csb.core.platform.entity.SaaSPlan;
 import com.csb.core.platform.entity.SaaSProvisionResponse;
 import com.csb.core.platform.repository.PlanRepository;
+import com.csb.core.platform.repository.SaaSProvisionResponseRepository;
 import com.csb.parser.component.model.AssignmentInfo;
 import com.csb.parser.component.model.AssignmentResult;
 import com.csb.parser.component.model.AssignmentStatus;
@@ -30,6 +33,9 @@ public class DefaultControllerService implements ControllerService {
     
     @Autowired
     private PlanRepository planRepository;
+    
+    @Autowired
+    private SaaSProvisionResponseRepository saasProvisionResponseRepository;
     
     @Transactional
     @Override
@@ -90,15 +96,18 @@ public class DefaultControllerService implements ControllerService {
     }
 
     @Override
+    @Transactional
     public SubscriptionStatus getSubscriptionStatus(String eventId) {
     	SubscriptionStatus status = new SubscriptionStatus();
     	//TODO
     	status.setStatus("INPROCESS");
     	Plan plan = planRepository.findByEventId(eventId);
+    	
     	if(plan != null){
     		SaaSPlan saasPlan = plan.getSaasPlan();
-    		if(saasPlan != null && saasPlan.getSaaSProvisionResponseList().size() >0){
-    			SaaSProvisionResponse saasProvisionResponse = saasPlan.getSaaSProvisionResponseList().get(0);
+    		List<SaaSProvisionResponse> saaSProvisionResponseList = saasProvisionResponseRepository.findBySaasPlan(saasPlan);
+    		if(saaSProvisionResponseList != null && saaSProvisionResponseList.size() >0){
+    			SaaSProvisionResponse saasProvisionResponse = saaSProvisionResponseList.get(0);
     			if(saasProvisionResponse.getSuccessCode().equals("true")){
     				status.setStatus("SUCCESS");
     			}else{

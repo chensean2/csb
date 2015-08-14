@@ -3,6 +3,7 @@ package com.csb.platform.broker.component.service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.csb.common.constant.PlatformConstant;
 import com.csb.core.platform.entity.Plan;
@@ -25,6 +26,7 @@ public class DefaultBrokerService implements BrokerService {
     private PlanRepository planRepository;
 
     @Override
+    @Transactional
     public void broke(String eventId) {
 
         Plan plan = planRepository.findByEventId(eventId);
