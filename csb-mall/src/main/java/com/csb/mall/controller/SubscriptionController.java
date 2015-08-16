@@ -17,6 +17,7 @@ import org.springframework.core.io.Resource;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
+import org.springframework.util.ResourceUtils;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -25,6 +26,10 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.w3c.dom.DocumentType;
 
 import com.csb.common.constant.MediaTypes;
+import com.csb.common.manifest.CordsImage;
+import com.csb.common.manifest.CordsInfrastructure;
+import com.csb.common.manifest.CordsManifest;
+import com.csb.common.manifest.CordsNode;
 import com.csb.common.saas.manifest.AccountType;
 import com.csb.common.saas.manifest.CompanyType;
 import com.csb.common.saas.manifest.CreatorType;
@@ -77,12 +82,12 @@ public class SubscriptionController {
 		return iaas;
 	}
 
-	@RequestMapping(value = "/iaas/create}",method = RequestMethod.POST, consumes = MediaTypes.JSON)
+	@RequestMapping(value = "/iaas/create",method = RequestMethod.GET)
 	@ResponseBody
 	public ResponseEntity<?> createIaaS(@RequestBody PocIaaSInfoTO iaas) {
 		SubscriptionInfo s = new SubscriptionInfo();
 
-		s.setTraceId("00001");
+		s.setTraceId("IaaS-00001");
 		s.setAppPlanId("iaas-plan-00001");
 		s.setCategory("IAAS");
 
@@ -110,13 +115,72 @@ public class SubscriptionController {
 
 		return new ResponseEntity(HttpStatus.CREATED);
 	}
+	
+	@RequestMapping(value = "/iaas/manifest/create",method = RequestMethod.GET)
+        @ResponseBody
+        public ResponseEntity<?> createManifestIaaS() {
+	    try {
+	            // Path path =
+	            // FileSystems.getDefault().getPath("/Users/gengjun/dev/saas-base-workspace",
+	            // "xwiki.xml");
+
+	            // String manifestStr = new String(Files.readAllBytes(path));
+
+	            CordsManifest manifest = null;
+	            JAXBContext jc;
+
+	            jc = JAXBContext.newInstance(com.csb.common.manifest.ObjectFactory.class);
+
+	            Unmarshaller unmarshaller = jc.createUnmarshaller();
+	           
+	            Resource resource = new ClassPathResource("manifest/iaas-manifest.xml");
+	            manifest = (CordsManifest) ((JAXBElement<DocumentType>) unmarshaller.unmarshal(resource.getInputStream())).getValue();
+	            System.out.println(manifest);
+	            CordsNode node = manifest.getNode().get(0);
+	            String provider = node.getProvider();
+	            CordsImage image = node.getImage();
+	            String instanceName = node.getName();
+	            CordsInfrastructure infra = node.getInfrastructure();
+	            SubscriptionInfo s = new SubscriptionInfo();
+
+	            s.setTraceId("IaaS-00002");
+	            s.setAppPlanId("iaas-plan-00002");
+	            s.setCategory("IAAS");
+
+	            IaaSInfo iaasInfo = new IaaSInfo();
+	            iaasInfo.setProvider(provider);
+	            iaasInfo.setAction("CREATE");
+	            iaasInfo.setCpus(Integer.parseInt(infra.getCompute().getCores()));
+	            iaasInfo.setInstanceName(instanceName);
+	            iaasInfo.setMemory(infra.getCompute().getMemory().toLowerCase() + "b");
+	            iaasInfo.setImageName(image.getSystem().getName());
+	            iaasInfo.setStorage(infra.getStorage().getSize().toLowerCase() + "b");
+	            // m1.1gb.1cpu.10gb
+	            iaasInfo.setFlavor("m1." + iaasInfo.getMemory() + "." + iaasInfo.getCpus() + "cpu." + iaasInfo.getStorage());
+	            s.setIaasInfo(iaasInfo);
+	            SubscriptionResult result = controllerService.createSubscription(s);
+
+	            if (result.getEventId() != null) {
+	                controllerService.broke(result.getEventId());
+	            }
+	            String returnBody = "{" + "\"success\": \"true\"," + "\"message\": \""+instanceName+ "订购成功\""
+	                    + "}";
+	            return new ResponseEntity<String>(returnBody,HttpStatus.CREATED);
+
+	        } catch (Exception e) {
+	            // TODO Auto-generated catch block
+	            e.printStackTrace();
+	        }
+	    return new ResponseEntity<String>(HttpStatus.INTERNAL_SERVER_ERROR);
+	   
+        }
 
 	@RequestMapping(value = "/saas/create",method = RequestMethod.GET)
 	@ResponseBody
 	public ResponseEntity<?> createSaaS() {
 		SubscriptionInfo s = new SubscriptionInfo();
-		s.setTraceId("00001");
-		s.setAppPlanId("iaas-plan-00001");
+		s.setTraceId("saas-00001");
+		s.setAppPlanId("saas-plan-00001");
 		s.setCategory("SAAS");
 
 		SaaSInfo saasInfo = new SaaSInfo();
@@ -173,7 +237,7 @@ public class SubscriptionController {
 
 	            jc = JAXBContext.newInstance(com.csb.common.saas.manifest.ObjectFactory.class);
 
-	            Resource resource = new ClassPathResource("saas-manifest.xml");
+	            Resource resource = new ClassPathResource("manifest/saas-manifest.xml");
 	            Unmarshaller unmarshaller = jc.createUnmarshaller();
 	            manifest = (SaasManifest) ((JAXBElement<DocumentType>) unmarshaller.unmarshal(resource.getInputStream())).getValue();
 	            
@@ -192,8 +256,8 @@ public class SubscriptionController {
 	            CreatorType creator = account.getCreator();
 
 	            SubscriptionInfo s = new SubscriptionInfo();
-	            s.setTraceId("00001");
-	            s.setAppPlanId("iaas-plan-00002");
+	            s.setTraceId("saas-00002");
+	            s.setAppPlanId("saas-plan-00002");
 	            s.setCategory("SAAS");
 
 	            SaaSInfo saasInfo = new SaaSInfo();

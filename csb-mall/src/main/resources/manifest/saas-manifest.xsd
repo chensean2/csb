@@ -1,0 +1,114 @@
+<xs:schema 
+    xmlns:xs="http://www.w3.org/2001/XMLSchema" 
+    targetNamespace="http://www.compatibleone.fr/schemes/saas-manifest.xsd" 
+    xmlns="http://www.compatibleone.fr/schemes/saas-manifest.xsd" 
+    elementFormDefault="qualified">
+
+<xs:element name="manifest" type="saasManifest"/>
+
+	<xs:complexType name="saasManifest">
+		<xs:sequence>
+			<xs:element type="xs:string" name="description"/>
+			<xs:element name="package" type="packageType"/>
+			<xs:element name="order" type="orderType"/>
+			<xs:element name="account" type="accountType"/>
+			<xs:element name="assignment" type="assignmentType"/>
+		</xs:sequence>
+		<xs:attribute type="xs:string" name="name"/>
+	</xs:complexType>
+	<xs:complexType name="packageType">
+		<xs:sequence>
+			<xs:element type="xs:string" name="action"/>
+			<xs:element name="modules" type="modulesType" />
+			<xs:element name="customeAttributes" type="customeAttributesType" minOccurs="0" maxOccurs="1"/>
+		</xs:sequence>
+		<xs:attribute type="xs:string" name="id"/>
+		<xs:attribute type="xs:string" name="name"/>
+		<xs:attribute type="xs:string" name="edition"/>
+		<xs:attribute type="xs:string" name="provider"/>
+	</xs:complexType>
+	<xs:complexType name="orderType">
+		<xs:sequence>
+			<xs:element name="item" type="itemType" maxOccurs="unbounded" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="accountType">
+		<xs:sequence>
+			<xs:element name="company" type="companyType"/>
+			<xs:element name="creator" type="creatorType" />
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="assignmentType">
+		<xs:sequence>
+			<xs:element type="xs:string" name="action"/>
+			<xs:element name="user">
+				<xs:complexType>
+					<xs:simpleContent>
+						<xs:extension base="xs:string">
+							<xs:attribute type="xs:string" name="openid"/>
+							<xs:attribute type="xs:string" name="name"/>
+							<xs:attribute type="xs:string" name="email"/>
+						</xs:extension>
+					</xs:simpleContent>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="customeAttributes" type="customeAttributesType" minOccurs="0" maxOccurs="1"/>
+		</xs:sequence>
+		<xs:attribute type="xs:string" name="name"/>
+	</xs:complexType>
+	<xs:complexType name="modulesType">
+		<xs:sequence>
+			<xs:element name="module" type="moduleType" maxOccurs="unbounded" minOccurs="0" />
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="moduleType">
+		<xs:simpleContent>
+			<xs:extension base="xs:string">
+				<xs:attribute type="xs:string" name="name" use="optional"/>
+				<xs:attribute type="xs:string" name="code" use="optional"/>
+			</xs:extension>
+		</xs:simpleContent>
+	</xs:complexType>	
+	<xs:complexType name="itemType">
+		<xs:simpleContent>
+			<xs:extension base="xs:string">
+				<xs:attribute type="xs:string" name="name" use="optional"/>
+				<xs:attribute type="xs:integer" name="quantity" use="optional"/>
+				<xs:attribute type="xs:string" name="unit" use="optional"/>
+			</xs:extension>
+		</xs:simpleContent>
+	</xs:complexType>
+	<xs:complexType name="companyType">
+		<xs:simpleContent>
+			<xs:extension base="xs:string">
+				<xs:attribute type="xs:string" name="uuid"/>
+				<xs:attribute type="xs:string" name="name"/>
+			</xs:extension>
+		</xs:simpleContent>
+	</xs:complexType>
+	<xs:complexType name="creatorType">
+		<xs:simpleContent>
+			<xs:extension base="xs:string">
+				<xs:attribute type="xs:string" name="openid"/>
+				<xs:attribute type="xs:string" name="name"/>
+				<xs:attribute type="xs:string" name="email"/>
+			</xs:extension>
+		</xs:simpleContent>
+	</xs:complexType>
+	<xs:complexType name ="customeAttributesType">
+		<xs:sequence>
+			<xs:element name="attribute" type="customeAttributeType" maxOccurs="unbounded" minOccurs="0" />
+
+
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="customeAttributeType">
+		<xs:simpleContent>
+			<xs:extension base="xs:string">
+				<xs:attribute type="xs:string" name="name" use="optional"/>
+				<xs:attribute type="xs:string" name="value" use="optional"/>
+			</xs:extension>
+		</xs:simpleContent>
+	</xs:complexType>
+</xs:schema>

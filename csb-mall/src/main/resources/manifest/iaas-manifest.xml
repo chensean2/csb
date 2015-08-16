@@ -2,14 +2,14 @@
 
 <!-- This is the manifest for starting a virtual machine with an XWiki server -->
 
-<manifest name="xwiki" xmlns="http://www.compatibleone.fr/schemes/manifest.xsd">
+<manifest name="csb-iaas" xmlns="http://www.compatibleone.fr/schemes/manifest.xsd">
 	<description>The xwiki service</description>
 	<!-- Use a node that contain the MySQL service as specified in the MySQL manifest 
 	<node name="database" type="mysql"/>-->
-	<node name="xwiki-test2" type="simple" access="public" scope="normal" provider="openstack" >
-		<infrastructure name="xwiki">
-			<compute name="xwiki" architecture="x86" cores="1" memory="1G" speed="1G"/>
-			<storage name="xwiki" size="10G"/>
+	<node name="csb-test1" type="simple" access="public" scope="normal" provider="openstack" >
+		<infrastructure name="csb">
+			<compute name="csb" architecture="x86" cores="1" memory="1G" speed="1G"/>
+			<storage name="csb" size="10G"/>
 			<!-- Define which port should be open so that external clients can connect to the services on this machine.
                              We open the SSH port, the COSACS port used to configure the machine and, of course, the 8080 port for connecting to XWiki -->
 			<network name="xwiki" label="ethernet" vlan="100M">
@@ -25,8 +25,8 @@
 	</node>
 	<!-- Tell COSACS what to do once the machine is provisioned. -->
 	
-	<interface name="xwiki"/>
-	<account name="test"/>
-	<security name="xwiki"/>
+	<interface name="csb"/>
+	<account name="csb"/>
+	<security name="csb"/>
 </manifest>
 
