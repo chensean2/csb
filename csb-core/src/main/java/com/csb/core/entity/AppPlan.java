@@ -24,6 +24,9 @@ public class AppPlan extends BaseEntity<Long> {
     private AppProduct appProduct;
     
     @OneToMany(mappedBy="appPlan")
+    private List<AppPlanCost> appPlanCostList;
+    
+    @OneToMany(mappedBy="appPlan")
     private List<Subscription> subscriptionList;
 
     @Column(name = "NAME")

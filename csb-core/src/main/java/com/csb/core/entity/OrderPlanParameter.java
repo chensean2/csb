@@ -1,5 +1,6 @@
 package com.csb.core.entity;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
@@ -16,6 +17,10 @@ public class OrderPlanParameter extends BaseEntity<Long>  {
 	@JoinColumn(name="ORDER_PLAN_ID")
 	private OrderPlan orderPlan;
 	
-
+	@Column(name="NAME")
+	private String name;
+	
+	@Column(name="VALUE")
+	private String value;
 
 }
