@@ -27,7 +27,7 @@ public class SaaSBrokerComponent implements BrokerComponent {
         if(saasPlan != null){
             if(PlatformConstant.PROVSION_TYPE_SUBSCRIPTION.equals(saasPlan.getType())){
                 SaaSSubscriptionPlan saasSubscriptionPlan = saasPlan.getSaaSSubscriptionPlan();
-                if(saasSubscriptionPlan != null && "CREATE".equals(saasSubscriptionPlan.getAction())){
+                if(saasSubscriptionPlan != null && "CREATE".equalsIgnoreCase(saasSubscriptionPlan.getAction())){
                     Map<String,String> responseMap = saasProvisionService.createSubscripiton(plan);
                     if(responseMap != null && responseMap.get("response") != null){
                     	String provisionResponse = responseMap.get("response");

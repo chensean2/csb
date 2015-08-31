@@ -125,28 +125,28 @@ public class OpenstackIaaSProvisionService implements IaaSProvisionService {
 		Server server = os.compute().servers().boot(
 				Builders.server().name(iaasPlan.getInstanceName()).flavor(flavor.getId()).image(image.getId()).keypairName("gjtest1").addSecurityGroup("default").addAdminPass("nosupportnow").build());
 
-		FloatingIP ip = null;
-		List<? extends FloatingIP> ips = os.compute().floatingIps().list();
-		for(FloatingIP mIP : ips){
-			if(mIP.getInstanceId() == null){
-				ip=mIP;
-			}
-		}
-		int tryCount = 20;
-		while(!os.compute().servers().get(server.getId()).getVmState().equals("active")){
-			if(tryCount-- ==0){
-				break;
-			}
-			try {
-				Thread.sleep(10*1000);
-			} catch (InterruptedException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-				break;
-			}
-		}
-		ActionResponse r = os.compute().floatingIps().addFloatingIP(server,  ip.getFloatingIpAddress());
-		System.out.println(r.getCode());
+//		FloatingIP ip = null;
+//		List<? extends FloatingIP> ips = os.compute().floatingIps().list();
+//		for(FloatingIP mIP : ips){
+//			if(mIP.getInstanceId() == null){
+//				ip=mIP;
+//			}
+//		}
+//		int tryCount = 20;
+//		while(!os.compute().servers().get(server.getId()).getVmState().equals("active")){
+//			if(tryCount-- ==0){
+//				break;
+//			}
+//			try {
+//				Thread.sleep(10*1000);
+//			} catch (InterruptedException e) {
+//				// TODO Auto-generated catch block
+//				e.printStackTrace();
+//				break;
+//			}
+//		}
+		//ActionResponse r = os.compute().floatingIps().addFloatingIP(server,  ip.getFloatingIpAddress());
+		//System.out.println(r.getCode());
 		return null;
 	}
 
