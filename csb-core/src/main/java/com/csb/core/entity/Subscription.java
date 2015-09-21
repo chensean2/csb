@@ -24,10 +24,6 @@ public class Subscription extends BaseEntity<Long> {
 	@JoinColumn(name = "COMPANY_ID")
 	private Company company;
 
-	@ManyToOne
-	@JoinColumn(name = "APP_PLAN_ID")
-	private AppPlan appPlan;
-
 	@OneToMany(mappedBy = "subscription")
 	private List<Assignment> assignmentList;
 
@@ -40,31 +36,9 @@ public class Subscription extends BaseEntity<Long> {
 	// private OrderPlan activeOrderPlan;
 
 	@OneToMany(mappedBy = "subscription")
-	List<SubscriptionOrderPlan> subscriptionOrderPlanList;
-
-	@Temporal(TemporalType.TIMESTAMP)
-	@Column(name = "START_DT")
-	private Date startDt;
-
-	@Temporal(TemporalType.TIMESTAMP)
-	@Column(name = "END_DT")
-	private Date endDt;
-
-	@Column(name = "IS_TRAIL")
-	private Boolean isTrail;
-
-	@Temporal(TemporalType.TIMESTAMP)
-	@Column(name = "TRIAL_END_DT")
-	private Date TrialEndDt;
+	List<SubscriptionDetail> subscriptionOrderPlanList;
 
 	@Column(name = "EXTERNAL_ACCOUNT_ID")
 	private String externalAccountId;
-
-	@Column(name = "MAX_USER")
-	private Integer maxUser;
-
-	@ManyToOne
-	@JoinColumn(name = "USER_ID")
-	private User user;
 
 }
