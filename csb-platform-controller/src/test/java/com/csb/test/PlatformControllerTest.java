@@ -82,7 +82,7 @@ public class PlatformControllerTest extends BaseIT {
 
         try {
             // Path path =
-            // FileSystems.getDefault().getPath("/Users/gengjun/dev/saas-base-workspace",
+            // FileSystems.getDefault().getPath("/Users/yanliang/dev/saas-base-workspace",
             // "xwiki.xml");
 
             // String manifestStr = new String(Files.readAllBytes(path));
@@ -95,8 +95,8 @@ public class PlatformControllerTest extends BaseIT {
             Unmarshaller unmarshaller = jc.createUnmarshaller();
             // manifest = (CordsManifest)((JAXBElement<DocumentType>)
             // unmarshaller.unmarshal(new
-            // File("/Users/gengjun/dev/saas-base-workspace/xwiki.xml"))).getValue();
-            manifest = (CordsManifest) ((JAXBElement<DocumentType>) unmarshaller.unmarshal(new File("C:\\Users\\gengjun\\Downloads\\xwiki.xml"))).getValue();
+            // File("/Users/yanliang/dev/saas-base-workspace/xwiki.xml"))).getValue();
+            manifest = (CordsManifest) ((JAXBElement<DocumentType>) unmarshaller.unmarshal(new File("C:\\Users\\yanliang\\Downloads\\xwiki.xml"))).getValue();
             System.out.println(manifest);
             CordsNode node = manifest.getNode().get(0);
             String provider = node.getProvider();
@@ -179,7 +179,7 @@ public class PlatformControllerTest extends BaseIT {
 
         try {
             // Path path =
-            // FileSystems.getDefault().getPath("/Users/gengjun/dev/saas-base-workspace",
+            // FileSystems.getDefault().getPath("/Users/yanliang/dev/saas-base-workspace",
             // "xwiki.xml");
 
             // String manifestStr = new String(Files.readAllBytes(path));
@@ -190,9 +190,9 @@ public class PlatformControllerTest extends BaseIT {
             jc = JAXBContext.newInstance(com.csb.common.saas.manifest.ObjectFactory.class);
 
             Unmarshaller unmarshaller = jc.createUnmarshaller();
-            manifest = (SaasManifest) ((JAXBElement<DocumentType>) unmarshaller.unmarshal(new File("/Users/gengjun/dev/saas-base-workspace/saas-manifest.xml"))).getValue();
+            manifest = (SaasManifest) ((JAXBElement<DocumentType>) unmarshaller.unmarshal(new File("/Users/yanliang/dev/saas-base-workspace/saas-manifest.xml"))).getValue();
             // manifest = (SaasManifest) ((JAXBElement<DocumentType>) unmarshaller
-            // .unmarshal(new File("C:\\Users\\gengjun\\Downloads\\saas-manifest.xml"))).getValue();
+            // .unmarshal(new File("C:\\Users\\yanliang\\Downloads\\saas-manifest.xml"))).getValue();
 
             PackageType packageType = manifest.getPackage();
             String action = packageType.getAction();

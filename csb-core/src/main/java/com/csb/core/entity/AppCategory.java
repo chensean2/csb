@@ -20,9 +20,19 @@ import com.csb.core.common.BaseEntity;
 public class AppCategory extends BaseEntity<Long> {
 
     @Column(name = "NAME")
-    private String name;
+    private String name;  
     
-    @ManyToMany(fetch=FetchType.LAZY)
+    public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+
+
+	@ManyToMany(fetch=FetchType.LAZY)
     @JoinTable(name = "tbl_ss_app_category_package",
     joinColumns = { @JoinColumn(name = "CATEGORY_ID") }, 
     inverseJoinColumns = { @JoinColumn(name = "PACKAGE_ID") })

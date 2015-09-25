@@ -121,7 +121,7 @@ public class SubscriptionController {
         public ResponseEntity<?> createManifestIaaS() {
 	    try {
 	            // Path path =
-	            // FileSystems.getDefault().getPath("/Users/gengjun/dev/saas-base-workspace",
+	            // FileSystems.getDefault().getPath("/Users/yanliang/dev/saas-base-workspace",
 	            // "xwiki.xml");
 
 	            // String manifestStr = new String(Files.readAllBytes(path));
@@ -227,7 +227,7 @@ public class SubscriptionController {
 
 	        try {
 	            // Path path =
-	            // FileSystems.getDefault().getPath("/Users/gengjun/dev/saas-base-workspace",
+	            // FileSystems.getDefault().getPath("/Users/yanliang/dev/saas-base-workspace",
 	            // "xwiki.xml");
 
 	            // String manifestStr = new String(Files.readAllBytes(path));

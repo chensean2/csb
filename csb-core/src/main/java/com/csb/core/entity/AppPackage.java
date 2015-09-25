@@ -29,6 +29,7 @@ public class AppPackage extends BaseEntity<Long> {
 	@Column(name = "TYPE")
 	private String type;
 
+	//only for MULTIPLE type, Package is combination for appPlan
 	@OneToMany(mappedBy = "appPackage")
 	private List<AppPlan> appPlanList;
 

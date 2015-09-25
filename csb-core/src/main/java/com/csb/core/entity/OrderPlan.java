@@ -62,7 +62,7 @@ public class OrderPlan extends BaseEntity<Long> {
 	@Column(name = "END_DT")
 	private Date endDt;
 
-	@Column(name = "PRICE", scale = 32, precision = 2)
+	@Column(name = "PRICE", scale = 30, precision = 2)
 	private BigDecimal price;
 
 	@ManyToOne

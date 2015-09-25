@@ -15,6 +15,7 @@ import com.csb.core.common.BaseEntity;
 @Table(name = "tbl_csb_app_plan")
 public class AppPlan extends BaseEntity<Long> {
 
+	//only for MULTIPLE type, Package is combination for appPlan,  so here need a foreign key to connect 
     @ManyToOne
     @JoinColumn(name = "APP_PACKAGE_ID")
     private AppPackage appPackage;
