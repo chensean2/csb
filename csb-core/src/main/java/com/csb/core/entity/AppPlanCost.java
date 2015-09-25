@@ -30,7 +30,7 @@ public class AppPlanCost extends BaseEntity<Long> {
     @Column(name = "MAX_UNITS")
     private Integer maxUnits;
 
-    @Column(name = "PRICE", scale = 32, precision = 2)
+    @Column(name = "PRICE", scale = 30, precision = 2)
     private BigDecimal price;
 
 }

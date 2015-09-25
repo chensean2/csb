@@ -1,6 +1,10 @@
 package com.csb.test;
 
 import org.junit.Test;
+import org.springframework.beans.factory.annotation.Autowired;
+
+import com.csb.core.entity.AppCategory;
+import com.csb.core.service.AppCategoryService;
 
 public class EntityTest extends BaseIT {
 
@@ -21,10 +25,20 @@ public class EntityTest extends BaseIT {
 //    public ProvisionRequestRepository provisionRequestRepository;
 //    //@Autowired
 //    public OrderRepository orderRepository;
+	
+	@Autowired
+	private AppCategoryService appCategoryService;
+	
+	
+	@Test
+	public void testAppCategory() {
+		 AppCategory appCategory =  appCategoryService.getAppCategory("1");
+		 System.out.println("-----------" + appCategory.getName());
+	}
 
     @Test
     public void testAppPackage() {
-        //List<AppPackage> appPackageList = Lists.newArrayList(appPackageRepositoy.findAll());
+//        List<AppPackage> appPackageList = Lists.newArrayList(appPackageRepositoy.findAll());
 //        for (AppPackage appPackage : appPackageList) {
 //            if (appPackage.getAppGroup() != null) {
 //                System.out.println("Group - " + appPackage.getAppGroup().getGroupName());
