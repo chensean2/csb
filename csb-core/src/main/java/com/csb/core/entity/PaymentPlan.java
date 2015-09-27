@@ -12,15 +12,15 @@ import javax.persistence.Table;
 import com.csb.core.common.BaseEntity;
 
 @Entity
-@Table(name = "tbl_csb_payment_plan")
+@Table(name = "csb_payment_plan")
 public class PaymentPlan extends BaseEntity<Long> {
 
 	@ManyToOne
-	@JoinColumn(name = "PAYMENT_ID")
+	@JoinColumn(name = "payment_id")
 	private Payment payment;
 
 	@OneToOne
-	@JoinColumn(name = "ORDER_PLAN_ID")
+	@JoinColumn(name = "order_plan_id")
 	private OrderPlan orderPlan;
 
 }

@@ -12,16 +12,16 @@ import javax.persistence.Table;
 import com.csb.core.common.BaseEntity;
 
 @Entity
-@Table(name = "tbl_csb_app_plan")
+@Table(name = "csb_app_plan")
 public class AppPlan extends BaseEntity<Long> {
 
 	//only for MULTIPLE type, Package is combination for appPlan,  so here need a foreign key to connect 
     @ManyToOne
-    @JoinColumn(name = "APP_PACKAGE_ID")
+    @JoinColumn(name = "app_package_id")
     private AppPackage appPackage;
 
     @ManyToOne
-    @JoinColumn(name = "APP_PRODUCT_ID")
+    @JoinColumn(name = "app_product_id")
     private AppProduct appProduct;
     
     @OneToMany(mappedBy="appPlan")
@@ -30,16 +30,16 @@ public class AppPlan extends BaseEntity<Long> {
     @OneToMany(mappedBy="appPlan")
     private List<Subscription> subscriptionList;
 
-    @Column(name = "NAME")
+    @Column(name = "name")
     private String name;
     
-    @Column(name = "DESCRIPTION")
+    @Column(name = "description")
     private String description;
     
   //ONE_TIME, MONTHLY, QUATERLY, SIX_MONTHS, YEARLY, TWO_YEARS, DAILY
-    @Column(name = "FREQUENCY")
+    @Column(name = "frequency")
     private String frequency;
 
-    @Column(name = "TRIAL_DAYS")
+    @Column(name = "trial_days")
     private Integer trialDays;
 }

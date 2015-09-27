@@ -12,13 +12,13 @@ import javax.persistence.Table;
 import com.csb.core.common.BaseEntity;
 
 @Entity
-@Table(name = "tbl_csb_app_provider")
+@Table(name = "csb_app_provider")
 public class AppProvider extends BaseEntity<Long> {
 
     @OneToMany(mappedBy = "appProvider")
     private List<AppProduct> appProductList;
 
-    @Column(name = "NAME")
+    @Column(name = "name")
     private String name;
 
 

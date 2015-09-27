@@ -13,22 +13,22 @@ import javax.persistence.Table;
 import com.csb.core.common.BaseEntity;
 
 @Entity
-@Table(name = "tbl_csb_order")
+@Table(name = "csb_order")
 public class Order extends BaseEntity<Long> {
 
 	@ManyToOne
-	@JoinColumn(name = "COMPANY_ID")
+	@JoinColumn(name = "company_id")
 	private Company company;
 
 	@OneToMany(mappedBy = "order")
 	private List<OrderPlan> orderPlanList;
 
 	@OneToOne
-	@JoinColumn(name="PAYMENT_ID")
+	@JoinColumn(name="payment_id")
 	private Payment payment;
 	
 	//SUBMITTED,PAYMENT_SUCCESS,PAYMENT_FAILED,REMOTE_INPROGRESS,FAILED,SUCCESS
-	@Column(name="STATUS")
+	@Column(name="status")
 	private String status;
 	
 }

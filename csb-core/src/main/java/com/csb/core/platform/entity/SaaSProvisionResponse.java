@@ -9,59 +9,58 @@ import javax.persistence.Table;
 import com.csb.core.common.BaseEntity;
 
 @Entity
-@Table(name = "tbl_csb_platform_saas_provision_response")
+@Table(name = "csb_platform_saas_provision_response")
 public class SaaSProvisionResponse extends BaseEntity<Long> {
 
-	private static final long serialVersionUID = -9108760868920972643L;
+    private static final long serialVersionUID = -9108760868920972643L;
 
-	@Column(name = "SUCCESS_CODE")
+    @Column(name = "success_code")
     private String successCode;
 
-    @Column(name = "MESSAGE")
+    @Column(name = "message")
     private String message;
-    
-    @Column(name = "RAW")
+
+    @Column(name = "raw")
     private String raw;
 
     @ManyToOne
-    @JoinColumn(name = "SAAS_PLAN_ID")
+    @JoinColumn(name = "saas_plan_id")
     private SaaSPlan saasPlan;
 
-	public String getSuccessCode() {
-		return successCode;
-	}
+    public String getSuccessCode() {
+        return successCode;
+    }
 
-	public void setSuccessCode(String successCode) {
-		this.successCode = successCode;
-	}
+    public void setSuccessCode(String successCode) {
+        this.successCode = successCode;
+    }
 
-	public String getMessage() {
-		return message;
-	}
+    public String getMessage() {
+        return message;
+    }
 
-	public void setMessage(String message) {
-		this.message = message;
-	}
+    public void setMessage(String message) {
+        this.message = message;
+    }
 
-	public String getRaw() {
-		return raw;
-	}
+    public String getRaw() {
+        return raw;
+    }
 
-	public void setRaw(String raw) {
-		this.raw = raw;
-	}
+    public void setRaw(String raw) {
+        this.raw = raw;
+    }
 
-	public SaaSPlan getSaasPlan() {
-		return saasPlan;
-	}
+    public SaaSPlan getSaasPlan() {
+        return saasPlan;
+    }
 
-	public void setSaasPlan(SaaSPlan saasPlan) {
-		this.saasPlan = saasPlan;
-	}
+    public void setSaasPlan(SaaSPlan saasPlan) {
+        this.saasPlan = saasPlan;
+    }
 
-	public static long getSerialversionuid() {
-		return serialVersionUID;
-	}
-    
-    
+    public static long getSerialversionuid() {
+        return serialVersionUID;
+    }
+
 }

@@ -10,17 +10,17 @@ import com.csb.core.common.BaseEntity;
 
 
 @Entity
-@Table(name="tbl_csb_order_plan_item")
+@Table(name="csb_order_plan_item")
 public class OrderPlanParameter extends BaseEntity<Long>  {
 
 	@ManyToOne
-	@JoinColumn(name="ORDER_PLAN_ID")
+	@JoinColumn(name="order_plan_id")
 	private OrderPlan orderPlan;
 	
-	@Column(name="NAME")
+	@Column(name="name")
 	private String name;
 	
-	@Column(name="VALUE")
+	@Column(name="value")
 	private String value;
 
 }

@@ -9,17 +9,17 @@ import javax.persistence.Table;
 import com.csb.core.common.BaseEntity;
 
 @Entity
-@Table(name = "tbl_csb_platform_saas_subscription_plan_item")
+@Table(name = "csb_platform_saas_subscription_plan_item")
 public class SaaSSubscriptionPlanItem extends BaseEntity<Long> {
 
-    @Column(name = "QUANTITY")
+    @Column(name = "quantity")
     private Integer quantity;
 
-    @Column(name = "UNIT")
+    @Column(name = "unit")
     private String unit;
 
     @ManyToOne
-    @JoinColumn(name = "SAAS_SUBSCRIPTION_PLAN_ID")
+    @JoinColumn(name = "saas_subscription_plan_id")
     private SaaSSubscriptionPlan saaSSubscriptionPlan;
 
     public Integer getQuantity() {

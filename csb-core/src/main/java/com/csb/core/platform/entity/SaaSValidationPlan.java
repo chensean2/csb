@@ -9,16 +9,16 @@ import javax.persistence.Table;
 import com.csb.core.common.BaseEntity;
 
 @Entity
-@Table(name = "tbl_csb_platform_saas_validation_plan")
+@Table(name = "csb_platform_saas_validation_plan")
 public class SaaSValidationPlan extends BaseEntity<Long> {
 
-    @Column(name = "NAME")
+    @Column(name = "name")
     private String name;
 
-    @Column(name = "VALUE")
+    @Column(name = "value")
     private String value;
 
     @ManyToOne
-    @JoinColumn(name = "SAAS_PLAN_ID")
+    @JoinColumn(name = "saas_plan_id")
     private SaaSPlan saasPlan;
 }

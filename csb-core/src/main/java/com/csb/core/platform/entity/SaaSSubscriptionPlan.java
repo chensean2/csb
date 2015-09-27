@@ -11,47 +11,47 @@ import javax.persistence.Table;
 import com.csb.core.common.BaseEntity;
 
 @Entity
-@Table(name = "tbl_csb_platform_saas_subscription_plan")
+@Table(name = "csb_platform_saas_subscription_plan")
 public class SaaSSubscriptionPlan extends BaseEntity<Long> {
 
     // CREATE,UPDATE,CANCEL,NOTICE
-    @Column(name = "ACTION")
+    @Column(name = "action")
     private String action;
 
-    @Column(name = "PLAN_CODE")
+    @Column(name = "plan_code")
     private String planCode;
 
-    @Column(name = "COMPANY_UUID")
+    @Column(name = "company_uuid")
     private String companyUUID;
 
-    @Column(name = "COMPANY_NAME")
+    @Column(name = "company_name")
     private String companyName;
 
-    @Column(name = "COMPANY_PHONENUMBER")
+    @Column(name = "company_phonenumber")
     private String companyPhoneNumber;
 
-    @Column(name = "CREATOR_OPENID")
+    @Column(name = "creator_openid")
     private String creatorOpenId;
 
-    @Column(name = "CREATOR_EMAIL")
+    @Column(name = "creator_email")
     private String creatorEmail;
 
-    @Column(name = "CREATOR_FIRSTNAME")
+    @Column(name = "creator_firstname")
     private String creatorFirstName;
 
-    @Column(name = "CREATOR_LASTNAME")
+    @Column(name = "creator_lastname")
     private String creatorLastName;
 
-    @Column(name = "EXTERNAL_ACCOUT_ID")
+    @Column(name = "external_accout_id")
     private String externalAccoutId;
 
     // this is for notification case, which is current status of the subscription
     // FREE_TRIAL,FREE_TRIAL_EXPIRED,ACTIVE,SUSPENDED,CANCELLED
-    @Column(name = "PREVIOUS_SUBSCRIPTION_STATUS")
+    @Column(name = "previous_subscription_status")
     private String previousSubscriptionStatus;
 
     // DEACTIVATED
-    @Column(name = "NOTIFICATION_TYPE")
+    @Column(name = "notification_type")
     private String notificationType;
 
     @OneToMany(mappedBy = "saaSSubscriptionPlan",cascade=CascadeType.ALL)

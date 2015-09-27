@@ -17,28 +17,32 @@ import javax.persistence.TemporalType;
 import com.csb.core.common.BaseEntity;
 
 @Entity
-@Table(name = "tbl_csb_subscription")
+@Table(name = "csb_subscription")
 public class Subscription extends BaseEntity<Long> {
 
-	@ManyToOne
-	@JoinColumn(name = "COMPANY_ID")
-	private Company company;
+    @ManyToOne
+    @JoinColumn(name = "company_id")
+    private Company company;
 
-	@OneToMany(mappedBy = "subscription")
-	private List<Assignment> assignmentList;
+    @OneToMany(mappedBy = "subscription")
+    private List<Assignment> assignmentList;
 
-	// ACTIVE,SUSPENDED,CANCELLED,FREE_TRIAL,,FREE_TRIAL_EXPIRED
-	@Column(name = "STATUS")
-	private String status;
+    // ACTIVE,SUSPENDED,CANCELLED,FREE_TRIAL,,FREE_TRIAL_EXPIRED
+    @Column(name = "status")
+    private String status;
 
-	// @OneToOne
-	// @JoinColumn(name="ORDER_PLAN_ID")
-	// private OrderPlan activeOrderPlan;
+    // @OneToOne
+    // @JoinColumn(name="ORDER_PLAN_ID")
+    // private OrderPlan activeOrderPlan;
 
-	@OneToMany(mappedBy = "subscription")
-	List<SubscriptionDetail> subscriptionOrderPlanList;
+    @OneToMany(mappedBy = "subscription")
+    List<SubscriptionDetail> subscriptionOrderPlanList;
 
-	@Column(name = "EXTERNAL_ACCOUNT_ID")
-	private String externalAccountId;
+    @Column(name = "external_account_id")
+    private String externalAccountId;
+
+    @ManyToOne
+    @JoinColumn(name = "app_plan_id")
+    private AppPlan appPlan;
 
 }

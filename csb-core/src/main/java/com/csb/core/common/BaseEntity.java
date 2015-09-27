@@ -17,25 +17,25 @@ public abstract class BaseEntity<ID extends Serializable> extends AbstractEntity
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "ID")
+    @Column(name = "id")
     private ID id;
 
-    @Column(name = "CREATED_BY")
+    @Column(name = "created_by")
     private String createdBy;
 
     @Temporal(TemporalType.TIMESTAMP)
-    @Column(name = "CREATED_DT")
+    @Column(name = "created_dt")
     private Date createdDt;
 
-    @Column(name = "LAST_UPDATED_BY")
+    @Column(name = "last_updated_by")
     private String lastUpdatedBy;
 
     @Temporal(TemporalType.TIMESTAMP)
-    @Column(name = "LAST_UPDATED_DT")
+    @Column(name = "last_updated_dt")
     private Date lastUpdatedDt;
 
     @Version
-    @Column(name="VERSION")
+    @Column(name="version")
     private int version;
 
     @Override

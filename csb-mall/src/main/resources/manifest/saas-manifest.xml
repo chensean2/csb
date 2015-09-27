@@ -1,11 +1,11 @@
- <?xml version="1.0" encoding="UTF-8"?>
-<!-- This is the manifest for SaaS -->
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- This is the manifest for starting a virtual machine with an XWiki server -->
 <manifest name="saas"
 	xmlns="http://www.compatibleone.fr/schemes/saas-manifest.xsd">
 	<description>The saas service</description>
 	<subscription id="saas-subscription-erp-0001">
-		<saaspackage name="saaserp"
-			edition="standard" provider="erp-company">
+		<saaspackage name="saaserp" edition="standard" provider="erp-company">
 			<action>create</action>
 			<!-- optional, if provider support modules -->
 			<modules>
@@ -48,6 +48,6 @@
 			<attribute name="companyTitle" value="Project Manager" />
 		</customeAttributes>
 	</assignment>
-</manifest>
 
+</manifest>
 

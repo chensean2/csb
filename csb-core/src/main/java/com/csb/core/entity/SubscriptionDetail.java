@@ -14,40 +14,40 @@ import javax.persistence.TemporalType;
 import com.csb.core.common.BaseEntity;
 
 @Entity
-@Table(name = "tbl_csb_subscription_detail")
+@Table(name = "csb_subscription_detail")
 public class SubscriptionDetail extends BaseEntity<Long> {
 
 	@ManyToOne
-	@JoinColumn(name = "SUBSCRIPTION_ID")
+	@JoinColumn(name = "subscription_id")
 	private Subscription subscription;
 
 	@ManyToOne
-	@JoinColumn(name = "ORDER_PLAN_ID")
+	@JoinColumn(name = "order_plan_id")
 	private OrderPlan orderPlan;
 
-	@JoinColumn(name = "IS_ACTIVE")
+	@JoinColumn(name = "is_active")
 	private Boolean isActive;
 	
 	@ManyToOne
-        @JoinColumn(name = "APP_PLAN_ID")
+        @JoinColumn(name = "app_plan_id")
         private AppPlan appPlan;
 	
 	@Temporal(TemporalType.TIMESTAMP)
-        @Column(name = "START_DT")
+        @Column(name = "start_dt")
         private Date startDt;
 
         @Temporal(TemporalType.TIMESTAMP)
-        @Column(name = "END_DT")
+        @Column(name = "end_dt")
         private Date endDt;
 
-        @Column(name = "IS_TRAIL")
+        @Column(name = "is_trail")
         private Boolean isTrail;
 
         @Temporal(TemporalType.TIMESTAMP)
-        @Column(name = "TRIAL_END_DT")
+        @Column(name = "trial_end_dt")
         private Date TrialEndDt;
         
-        @Column(name = "MAX_USER")
+        @Column(name = "max_user")
         private Integer maxUser;
 
 }

@@ -17,15 +17,15 @@ import javax.persistence.TemporalType;
 import com.csb.core.common.BaseEntity;
 
 @Entity
-@Table(name = "tbl_csb_order_plan")
+@Table(name = "csb_order_plan")
 public class OrderPlan extends BaseEntity<Long> {
 
 	@ManyToOne
-	@JoinColumn(name = "ORDER_ID")
+	@JoinColumn(name = "order_id")
 	private Order order;
 
 	@ManyToOne
-	@JoinColumn(name = "APP_PLAN_ID")
+	@JoinColumn(name = "app_plan_id")
 	private AppPlan appPlan;
 
 	@OneToMany(mappedBy = "orderPlan")
@@ -35,44 +35,44 @@ public class OrderPlan extends BaseEntity<Long> {
 	private List<OrderPlanParameter> orderPlanParameterList;
 
 	@OneToOne
-	@JoinColumn(name = "PAYMENT_PLAN_ID")
+	@JoinColumn(name = "payment_plan_id")
 	private PaymentPlan paymentPlan;
 
 	// SUBMITTED,REMOTE_INPROGRESS,FAILED,SUCCESS
-	@Column(name = "STATUS")
+	@Column(name = "status")
 	private String status;
 
 	// FREE_TRIAL,NORMAL
-	@Column(name = "TYPE")
+	@Column(name = "type")
 	private String type;
 
 	// CREATE,UPDATE
-	@Column(name = "ACTION")
+	@Column(name = "action")
 	private String action;
 	
 	//ONE_TIME, MONTHLY, QUATERLY, SIX_MONTHS, YEARLY, TWO_YEARS, DAILY
-	@Column(name = "FREQUENCY")
+	@Column(name = "frequency")
 	private String frequency;
 
 	@Temporal(TemporalType.TIMESTAMP)
-	@Column(name = "START_DT")
+	@Column(name = "start_dt")
 	private Date startDt;
 	
 	@Temporal(TemporalType.TIMESTAMP)
-	@Column(name = "END_DT")
+	@Column(name = "end_dt")
 	private Date endDt;
 
-	@Column(name = "PRICE", scale = 30, precision = 2)
+	@Column(name = "price", scale = 30, precision = 2)
 	private BigDecimal price;
 
 	@ManyToOne
-	@JoinColumn(name = "USER_ID")
+	@JoinColumn(name = "user_id")
 	private User user;
 
 	@ManyToOne
-	@JoinColumn(name = "COMPANY_ID")
+	@JoinColumn(name = "company_id")
 	private Company company;
 
-	@Column(name = "DISCOUNT")
+	@Column(name = "discount")
 	private Float discount;
 }

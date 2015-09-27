@@ -7,46 +7,46 @@ import javax.persistence.Table;
 import com.csb.core.common.BaseEntity;
 
 @Entity
-@Table(name = "tbl_csb_platform_saas_assignment_plan")
+@Table(name = "csb_platform_saas_assignment_plan")
 public class SaaSAssignmentPlan extends BaseEntity<Long> {
 
     // ASSIGN,UNASSIGN
-	@Column(name = "ACTION")
-	private String action;
+    @Column(name = "action")
+    private String action;
 
-	@Column(name = "CREATOR_OPENID")
-	private String creatorOpenId;
+    @Column(name = "creator_openid")
+    private String creatorOpenId;
 
-	@Column(name = "CREATOR_EMAIL")
-	private String creatorEmail;
+    @Column(name = "creator_email")
+    private String creatorEmail;
 
-	@Column(name = "CREATOR_FIRSTNAME")
-	private String creatorFirstName;
-	
-	@Column(name = "CREATOR_LASTNAME")
-	private String creatorLastName;
-	
-	@Column(name = "EXTERNAL_ACCOUT_ID")
-	private String externalAccoutId;
-	
-	//for provider return a unique id for this assignment if there is
-	@Column(name = "EXTERNAL_ASSIGNMENT_ID")
-        private String externalAssignmentId;
-	
-	@Column(name = "USER_OPENID")
-        private String userOpenId;
+    @Column(name = "creator_firstname")
+    private String creatorFirstName;
 
-        @Column(name = "USER_EMAIL")
-        private String userEmail;
+    @Column(name = "creator_lastname")
+    private String creatorLastName;
 
-        @Column(name = "USER_FIRSTNAME")
-        private String userFirstName;
-        
-        @Column(name = "USER_LASTNAME")
-        private String userLastName;
-        
-	//status of the provision, INPROGRESS,SUCCESS,FAILED
-	@Column(name = "STATUS")
-	private String status;
-	
+    @Column(name = "external_accout_id")
+    private String externalAccoutId;
+
+    // for provider return a unique id for this assignment if there is
+    @Column(name = "external_assignment_id")
+    private String externalAssignmentId;
+
+    @Column(name = "user_openid")
+    private String userOpenId;
+
+    @Column(name = "user_email")
+    private String userEmail;
+
+    @Column(name = "user_firstname")
+    private String userFirstName;
+
+    @Column(name = "user_lastname")
+    private String userLastName;
+
+    // status of the provision, INPROGRESS,SUCCESS,FAILED
+    @Column(name = "status")
+    private String status;
+
 }

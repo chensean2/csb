@@ -15,62 +15,63 @@
 	<name>Cloud Service Broker Mall Web</name>
 	<packaging>war</packaging>
 	<build>
-	  <plugins>
-            <plugin>
-                <groupId>org.apache.tomcat.maven</groupId>
-                <artifactId>tomcat7-maven-plugin</artifactId>
-                <configuration>
-                    <port>8080</port>
-                    <ajpPort>8009</ajpPort>
-                    <systemProperties>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.tomcat.maven</groupId>
+				<artifactId>tomcat7-maven-plugin</artifactId>
+				<configuration>
+					<port>8080</port>
+					<ajpPort>8009</ajpPort>
+					<systemProperties>
 						<spring.profiles.active>dev</spring.profiles.active>
-                        <JAVA_OPTS>-Xms128m -Xmx1024m -XX:PermSize=128M -XX:MaxPermSize=256m</JAVA_OPTS>
-                    </systemProperties>
-                </configuration>
-                <dependencies>
-                    <dependency>
-                        <groupId>mysql</groupId>
-                        <artifactId>mysql-connector-java</artifactId>
-                        <version>${mysql.version}</version>
-                    </dependency>
-                </dependencies>
-            </plugin>
-          
-        </plugins>
-    </build>
-    
+						<JAVA_OPTS>-Xms128m -Xmx1024m -XX:PermSize=128M
+							-XX:MaxPermSize=256m</JAVA_OPTS>
+					</systemProperties>
+				</configuration>
+				<dependencies>
+					<dependency>
+						<groupId>mysql</groupId>
+						<artifactId>mysql-connector-java</artifactId>
+						<version>${mysql.version}</version>
+					</dependency>
+				</dependencies>
+			</plugin>
+
+		</plugins>
+	</build>
+
 	<dependencies>
-	
+
 		<dependency>
 			<groupId>com.csb</groupId>
 			<artifactId>csb-common</artifactId>
 			<version>1.0</version>
 		</dependency>
-		
+
 		<dependency>
 			<groupId>com.csb</groupId>
 			<artifactId>csb-core</artifactId>
 			<version>1.0</version>
 		</dependency>
-		
+
 		<dependency>
 			<groupId>com.csb</groupId>
 			<artifactId>csb-platform-controller</artifactId>
 			<version>1.0</version>
 		</dependency>
-		
+
 		<dependency>
 			<groupId>com.csb</groupId>
 			<artifactId>csb-platform-openapi</artifactId>
 			<version>1.0</version>
 		</dependency>
-		
+
 		<dependency>
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
 		</dependency>
 
-	<!-- WEB begin -->
+		<!-- WEB begin -->
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-webmvc</artifactId>
@@ -89,9 +90,9 @@
 			<scope>provided</scope>
 		</dependency>
 		<!-- WEB end -->
-		
-	
-		
+
+
+
 		<dependency>
 			<groupId>org.assertj</groupId>
 			<artifactId>assertj-core</artifactId>
@@ -106,6 +107,25 @@
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-test</artifactId>
 		</dependency>
+		
+		
+		<dependency>
+			<groupId>org.springframework.security</groupId>
+			<artifactId>spring-security-config</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.security</groupId>
+			<artifactId>spring-security-core</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.security</groupId>
+			<artifactId>spring-security-web</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.security</groupId>
+			<artifactId>spring-security-taglibs</artifactId>
+		</dependency>
+
 	</dependencies>
 
 </project>

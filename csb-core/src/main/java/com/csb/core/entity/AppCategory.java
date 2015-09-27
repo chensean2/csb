@@ -16,10 +16,10 @@ import org.hibernate.annotations.FetchMode;
 import com.csb.core.common.BaseEntity;
 
 @Entity
-@Table(name = "tbl_csb_app_category")
+@Table(name = "csb_app_category")
 public class AppCategory extends BaseEntity<Long> {
 
-    @Column(name = "NAME")
+    @Column(name = "name")
     private String name;  
     
     public String getName() {
@@ -33,9 +33,9 @@ public class AppCategory extends BaseEntity<Long> {
 
 
 	@ManyToMany(fetch=FetchType.LAZY)
-    @JoinTable(name = "tbl_ss_app_category_package",
-    joinColumns = { @JoinColumn(name = "CATEGORY_ID") }, 
-    inverseJoinColumns = { @JoinColumn(name = "PACKAGE_ID") })
+    @JoinTable(name = "csb_app_category_package",
+    joinColumns = { @JoinColumn(name = "category_id") }, 
+    inverseJoinColumns = { @JoinColumn(name = "package_id") })
     @Fetch(FetchMode.JOIN)
     private List<AppPackage> appPackageList;
 
