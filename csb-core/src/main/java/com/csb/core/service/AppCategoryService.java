@@ -4,6 +4,6 @@ import com.csb.core.entity.AppCategory;
 
 public interface AppCategoryService {
 	
-	public AppCategory getAppCategory(String id);
+	public AppCategory selectById(long id) ;
 	
 }

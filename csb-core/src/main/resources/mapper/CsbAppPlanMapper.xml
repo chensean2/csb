@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.csb.core.mapper.CsbAppPlanMapper">
+  <resultMap id="BaseResultMap" type="com.csb.core.model.CsbAppPlan">
+    <!--
+      WARNING - @mbggenerated
+    -->
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="created_by" jdbcType="VARCHAR" property="createdBy" />
+    <result column="created_dt" jdbcType="TIMESTAMP" property="createdDt" />
+    <result column="last_updated_by" jdbcType="VARCHAR" property="lastUpdatedBy" />
+    <result column="last_updated_dt" jdbcType="TIMESTAMP" property="lastUpdatedDt" />
+    <result column="version" jdbcType="INTEGER" property="version" />
+    <result column="description" jdbcType="VARCHAR" property="description" />
+    <result column="frequency" jdbcType="VARCHAR" property="frequency" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="trial_days" jdbcType="INTEGER" property="trialDays" />
+    <result column="app_package_id" jdbcType="BIGINT" property="appPackageId" />
+    <result column="app_product_id" jdbcType="BIGINT" property="appProductId" />
+  </resultMap>
+</mapper>

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.csb.core.mapper.CsbPlatformIaasPlanMapper">
+  <resultMap id="BaseResultMap" type="com.csb.core.model.CsbPlatformIaasPlan">
+    <!--
+      WARNING - @mbggenerated
+    -->
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="created_by" jdbcType="VARCHAR" property="createdBy" />
+    <result column="created_dt" jdbcType="TIMESTAMP" property="createdDt" />
+    <result column="last_updated_by" jdbcType="VARCHAR" property="lastUpdatedBy" />
+    <result column="last_updated_dt" jdbcType="TIMESTAMP" property="lastUpdatedDt" />
+    <result column="version" jdbcType="INTEGER" property="version" />
+    <result column="action" jdbcType="VARCHAR" property="action" />
+    <result column="cpus" jdbcType="INTEGER" property="cpus" />
+    <result column="flavor" jdbcType="VARCHAR" property="flavor" />
+    <result column="image_name" jdbcType="VARCHAR" property="imageName" />
+    <result column="instance_count" jdbcType="VARCHAR" property="instanceCount" />
+    <result column="instance_name" jdbcType="VARCHAR" property="instanceName" />
+    <result column="memory" jdbcType="VARCHAR" property="memory" />
+    <result column="provider" jdbcType="VARCHAR" property="provider" />
+    <result column="storage" jdbcType="VARCHAR" property="storage" />
+    <result column="type" jdbcType="VARCHAR" property="type" />
+  </resultMap>
+</mapper>

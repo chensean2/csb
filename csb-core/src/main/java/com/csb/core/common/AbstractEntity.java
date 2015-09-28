@@ -53,4 +53,5 @@ public abstract class AbstractEntity<ID extends Serializable> implements Seriali
     public String toString() {
         return ReflectionToStringBuilder.toString(this);
     }
+
 }

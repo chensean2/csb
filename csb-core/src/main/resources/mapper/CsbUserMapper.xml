@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.csb.core.mapper.CsbUserMapper">
+  <resultMap id="BaseResultMap" type="com.csb.core.model.CsbUser">
+    <!--
+      WARNING - @mbggenerated
+    -->
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="created_by" jdbcType="VARCHAR" property="createdBy" />
+    <result column="created_dt" jdbcType="TIMESTAMP" property="createdDt" />
+    <result column="last_updated_by" jdbcType="VARCHAR" property="lastUpdatedBy" />
+    <result column="last_updated_dt" jdbcType="TIMESTAMP" property="lastUpdatedDt" />
+    <result column="version" jdbcType="INTEGER" property="version" />
+    <result column="accountStatus" jdbcType="VARCHAR" property="accountstatus" />
+    <result column="email" jdbcType="VARCHAR" property="email" />
+    <result column="emailVerifiedDate" jdbcType="TIMESTAMP" property="emailverifieddate" />
+    <result column="firstName" jdbcType="VARCHAR" property="firstname" />
+    <result column="lastLoginDate" jdbcType="TIMESTAMP" property="lastlogindate" />
+    <result column="lastLoginIp" jdbcType="VARCHAR" property="lastloginip" />
+    <result column="lastName" jdbcType="VARCHAR" property="lastname" />
+    <result column="login_id" jdbcType="VARCHAR" property="loginId" />
+    <result column="mobileNumber" jdbcType="VARCHAR" property="mobilenumber" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="password" jdbcType="VARCHAR" property="password" />
+    <result column="passwordModifiedDate" jdbcType="TIMESTAMP" property="passwordmodifieddate" />
+    <result column="passwordReset" jdbcType="INTEGER" property="passwordreset" />
+    <result column="username" jdbcType="VARCHAR" property="username" />
+  </resultMap>
+</mapper>
