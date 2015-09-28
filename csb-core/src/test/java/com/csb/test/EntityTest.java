@@ -32,7 +32,7 @@ public class EntityTest extends BaseIT {
 	
 	@Test
 	public void testAppCategory() {
-		 AppCategory appCategory =  appCategoryService.getAppCategory("1");
+		 AppCategory appCategory =  appCategoryService.selectById(1);
 		 System.out.println("-----------" + appCategory.getName());
 	}
 

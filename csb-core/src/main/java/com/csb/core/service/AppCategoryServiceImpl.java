@@ -6,20 +6,18 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.csb.core.entity.AppCategory;
-import com.csb.core.mybatis.AppCategoryRepositoryMybatis;
+import com.csb.core.mapper.CsbAppCategoryMapper;
 
 @Service("appCategoryService")
 public class AppCategoryServiceImpl implements AppCategoryService
 {
 	@Autowired
-	private AppCategoryRepositoryMybatis appCategoryRepositoryMybatis;
+	private CsbAppCategoryMapper csbAppCategoryMapper;
 	
 	@Transactional
 	@Override
-	public AppCategory getAppCategory(String id)
+	public AppCategory selectById(long id)
 	{
-		AppCategory appCategory = new AppCategory();
-		appCategory = appCategoryRepositoryMybatis.findById(id);
-		return appCategory;
+		 return csbAppCategoryMapper.selectByPrimaryKey(id);
 	}
 }

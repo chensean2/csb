@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.csb.core.mapper.CsbAppProductIntegrationDefinitionMapper">
+  <resultMap id="BaseResultMap" type="com.csb.core.model.CsbAppProductIntegrationDefinition">
+    <!--
+      WARNING - @mbggenerated
+    -->
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="created_by" jdbcType="VARCHAR" property="createdBy" />
+    <result column="created_dt" jdbcType="TIMESTAMP" property="createdDt" />
+    <result column="last_updated_by" jdbcType="VARCHAR" property="lastUpdatedBy" />
+    <result column="last_updated_dt" jdbcType="TIMESTAMP" property="lastUpdatedDt" />
+    <result column="version" jdbcType="INTEGER" property="version" />
+    <result column="assignment_url" jdbcType="VARCHAR" property="assignmentUrl" />
+    <result column="oauth_consumer_key" jdbcType="VARCHAR" property="oauthConsumerKey" />
+    <result column="oauth_consumer_secret" jdbcType="VARCHAR" property="oauthConsumerSecret" />
+    <result column="sso_url" jdbcType="VARCHAR" property="ssoUrl" />
+    <result column="subscription_cancel_url" jdbcType="VARCHAR" property="subscriptionCancelUrl" />
+    <result column="subscription_create_url" jdbcType="VARCHAR" property="subscriptionCreateUrl" />
+    <result column="subscription_notify_url" jdbcType="VARCHAR" property="subscriptionNotifyUrl" />
+    <result column="subscription_update_url" jdbcType="VARCHAR" property="subscriptionUpdateUrl" />
+    <result column="subscription_validate_url" jdbcType="VARCHAR" property="subscriptionValidateUrl" />
+    <result column="un_assignment_url" jdbcType="VARCHAR" property="unAssignmentUrl" />
+  </resultMap>
+</mapper>
