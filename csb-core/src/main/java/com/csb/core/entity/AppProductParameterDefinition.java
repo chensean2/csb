@@ -10,23 +10,23 @@ import com.csb.core.common.BaseEntity;
 
 
 @Entity
-@Table(name="tbl_csb_app_product_parameter_definition")
+@Table(name="csb_app_product_parameter_definition")
 public class AppProductParameterDefinition extends BaseEntity<Long>  {
 
 	@ManyToOne
-	@JoinColumn(name="APP_PRODUCT_ID")
+	@JoinColumn(name="app_product_id")
 	private AppProduct appProduct;
 	
-	@Column(name="NAME")
+	@Column(name="name")
 	private String name;
 	
-	@Column(name="TYPE")
+	@Column(name="type")
 	private String type;
 	
-	@Column(name="MAX_LENGTH")
+	@Column(name="max_length")
 	private Integer maxLength;
 	
-	@Column(name="SEQUENCE")
+	@Column(name="sequence")
 	private Integer sequence;
 
 }

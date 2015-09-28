@@ -10,42 +10,42 @@ import com.csb.core.common.BaseEntity;
 
 
 @Entity
-@Table(name="tbl_csb_app_product_integration_definition")
+@Table(name="csb_app_product_integration_definition")
 public class AppProductIntegrationDefinition extends BaseEntity<Long>  {
 
 	@OneToOne(mappedBy="appProductIntegrationDefinition")
 	private AppProduct appProduct;
 	
-	@Column(name="SSO_URL")
+	@Column(name="sso_url")
 	private String ssoUrl;
 	
-	@Column(name="SUBSCRIPTION_CREATE_URL")
+	@Column(name="subscription_create_url")
 	private String subscriptionCreateUrl;
 	
-	@Column(name="SUBSCRIPTION_UPDATE_URL")
+	@Column(name="subscription_update_url")
 	private String subscriptionUpdateUrl;
 	
-	@Column(name="SUBSCRIPTION_CANCEL_URL")
+	@Column(name="subscription_cancel_url")
 	private String subscriptionCancelUrl;
 
-	@Column(name="SUBSCRIPTION_VALIDATE_URL")
+	@Column(name="subscription_validate_url")
 	private String subscriptionValidateUrl;
 	
-	@Column(name="SUBSCRIPTION_NOTIFY_URL")
+	@Column(name="subscription_notify_url")
 	private String subscriptionNotifyUrl;
 
 	
-	@Column(name="ASSIGNMENT_URL")
+	@Column(name="assignment_url")
 	private String assignmentURL;
 
-	@Column(name="UN_ASSIGNMENT_URL")
+	@Column(name="un_assignment_url")
 	private String unAssignmentURL;
 	
-	@Column(name="OAUTH_CONSUMER_KEY")
+	@Column(name="oauth_consumer_key")
 	private String oauthConsumerKey;
 
 	
-	@Column(name="OAUTH_CONSUMER_SECRET")
+	@Column(name="oauth_consumer_secret")
 	private String oauthConsumerSecret;
 
 

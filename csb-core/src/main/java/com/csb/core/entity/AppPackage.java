@@ -12,21 +12,21 @@ import javax.persistence.Table;
 import com.csb.core.common.BaseEntity;
 
 @Entity
-@Table(name = "tbl_csb_app_package")
+@Table(name = "csb_app_package")
 public class AppPackage extends BaseEntity<Long> {
 
 	@ManyToMany(mappedBy = "appPackageList")
 	private List<AppCategory> appCategoryList;
 
-	@Column(name = "NAME")
+	@Column(name = "name")
 	private String name;
 
-	@Column(name = "DESCRIPTION")
+	@Column(name = "description")
 	private String description;
 
 	// SINGLE: it contains AppPlans which belong to one single product
 	// MULTIPLE: TODO: it contains AppPlans which belong to multiple product
-	@Column(name = "TYPE")
+	@Column(name = "type")
 	private String type;
 
 	//only for MULTIPLE type, Package is combination for appPlan

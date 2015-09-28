@@ -10,39 +10,39 @@ import javax.persistence.Table;
 import com.csb.core.common.BaseEntity;
 
 @Entity
-@Table(name = "tbl_csb_platform_plan")
+@Table(name = "csb_platform_plan")
 public class Plan extends BaseEntity<Long> {
 
 	// for the client/ provider query subscription/assignment information
-	@Column(name = "EVENT_ID", unique = true)
+	@Column(name = "event_id", unique = true)
 	private String eventId;
 
 	// @Column(name = "APP_PROVIDER_ID")
 	// private String appProviderId;
 
-	@Column(name = "APP_PLAN_ID")
+	@Column(name = "app_plan_id")
 	private String appPlanId;
 
 	// IAAS,PAAS,SAAS
-	@Column(name = "CATEGORY")
+	@Column(name = "category")
 	private String category;
 
-	@Column(name = "TRACE_ID")
+	@Column(name = "trace_id")
 	private String traceId;
 
 	// status of the provision,PENDING INPROGRESS,SUCCESS,FAILED
-	@Column(name = "STATUS")
+	@Column(name = "status")
 	private String status;
 
-	@Column(name = "MESSAGE")
+	@Column(name = "message")
 	private String message;
 
 	@OneToOne(cascade=CascadeType.ALL)
-	@JoinColumn(name = "SAAS_PLAN_ID")
+	@JoinColumn(name = "saas_plan_id")
 	private SaaSPlan saasPlan;
 	
 	@OneToOne(cascade=CascadeType.ALL)
-	@JoinColumn(name = "IAAS_PLAN_ID")
+    @JoinColumn(name = "iaas_plan_id")
 	private IaaSPlan iaasPlan;
 
 	public String getEventId() {

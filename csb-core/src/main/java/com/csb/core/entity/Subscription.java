@@ -17,54 +17,32 @@ import javax.persistence.TemporalType;
 import com.csb.core.common.BaseEntity;
 
 @Entity
-@Table(name = "tbl_csb_subscription")
+@Table(name = "csb_subscription")
 public class Subscription extends BaseEntity<Long> {
 
-	@ManyToOne
-	@JoinColumn(name = "COMPANY_ID")
-	private Company company;
+    @ManyToOne
+    @JoinColumn(name = "company_id")
+    private Company company;
 
-	@ManyToOne
-	@JoinColumn(name = "APP_PLAN_ID")
-	private AppPlan appPlan;
+    @OneToMany(mappedBy = "subscription")
+    private List<Assignment> assignmentList;
 
-	@OneToMany(mappedBy = "subscription")
-	private List<Assignment> assignmentList;
+    // ACTIVE,SUSPENDED,CANCELLED,FREE_TRIAL,,FREE_TRIAL_EXPIRED
+    @Column(name = "status")
+    private String status;
 
-	// ACTIVE,SUSPENDED,CANCELLED,FREE_TRIAL,,FREE_TRIAL_EXPIRED
-	@Column(name = "STATUS")
-	private String status;
+    // @OneToOne
+    // @JoinColumn(name="ORDER_PLAN_ID")
+    // private OrderPlan activeOrderPlan;
 
-	// @OneToOne
-	// @JoinColumn(name="ORDER_PLAN_ID")
-	// private OrderPlan activeOrderPlan;
+    @OneToMany(mappedBy = "subscription")
+    List<SubscriptionDetail> subscriptionOrderPlanList;
 
-	@OneToMany(mappedBy = "subscription")
-	List<SubscriptionOrderPlan> subscriptionOrderPlanList;
+    @Column(name = "external_account_id")
+    private String externalAccountId;
 
-	@Temporal(TemporalType.TIMESTAMP)
-	@Column(name = "START_DT")
-	private Date startDt;
-
-	@Temporal(TemporalType.TIMESTAMP)
-	@Column(name = "END_DT")
-	private Date endDt;
-
-	@Column(name = "IS_TRAIL")
-	private Boolean isTrail;
-
-	@Temporal(TemporalType.TIMESTAMP)
-	@Column(name = "TRIAL_END_DT")
-	private Date TrialEndDt;
-
-	@Column(name = "EXTERNAL_ACCOUNT_ID")
-	private String externalAccountId;
-
-	@Column(name = "MAX_USER")
-	private Integer maxUser;
-
-	@ManyToOne
-	@JoinColumn(name = "USER_ID")
-	private User user;
+    @ManyToOne
+    @JoinColumn(name = "app_plan_id")
+    private AppPlan appPlan;
 
 }

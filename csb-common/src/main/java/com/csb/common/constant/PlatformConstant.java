@@ -18,4 +18,9 @@ public interface PlatformConstant {
     
     final public static String IAAS_PROVIDER_OPENSTACK="openstack";
 
+    
+    public static final String ACCOUNT_STATUS_NEW = "NEW";
+    public static final String ACCOUNT_STATUS_ACTIVE = "ACTIVE";
+    public static final String ACCOUNT_STATUS_LOCKED = "LOCKED";
+    
 }

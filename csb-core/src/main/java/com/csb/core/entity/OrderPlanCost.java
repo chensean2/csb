@@ -12,31 +12,31 @@ import com.csb.core.common.BaseEntity;
 
 
 @Entity
-@Table(name="tbl_csb_order_plan_cost")
+@Table(name="csb_order_plan_cost")
 public class OrderPlanCost extends BaseEntity<Long>  {
 
 	@ManyToOne
-	@JoinColumn(name="ORDER_PLAN_ID")
+	@JoinColumn(name="order_plan_id")
 	private OrderPlan orderPlan;
 	
 	//PAYMENT,DISCOUNT
-	@Column(name = "TYPE")
+	@Column(name = "type")
 	private String type;
 	
 	//Refer to AppPlanCost unit, for DISCOUNT type, the unit will be null
-	@Column(name = "UNIT")
+	@Column(name = "unit")
 	private String unit;
 	
-	@Column(name = "QUANTITY")
+	@Column(name = "quantity")
 	private Integer quantity;
 
-	@Column(name = "PRICE", scale = 30, precision = 2)
+	@Column(name = "price", scale = 30, precision = 2)
 	private BigDecimal price;
 	
 	//if type is DISCOUNT
-	@Column(name = "DISCOUNT_PERCENTAGE")
+	@Column(name = "discount_percentage")
 	private float discountPercentage;
 	
-	@Column(name = "TOTAL_PRICE", scale = 32, precision = 2)
+	@Column(name = "total_price", scale = 32, precision = 2)
 	private BigDecimal totalPrice;
 }

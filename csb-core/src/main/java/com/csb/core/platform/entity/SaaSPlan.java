@@ -14,20 +14,20 @@ import javax.persistence.Table;
 import com.csb.core.common.BaseEntity;
 
 @Entity
-@Table(name = "tbl_csb_platform_saas_plan")
+@Table(name = "csb_platform_saas_plan")
 public class SaaSPlan extends BaseEntity<Long> {
 
     
     //ASSIGNMENT,SUBSCRIPTION,NOTIFICATION,VALIDATION
-    @Column(name = "TYPE")
+    @Column(name = "type")
     private String type;
     
     @OneToOne(cascade=CascadeType.ALL)
-    @JoinColumn(name="SAAS_SUBSCRIPTION_PLAN_ID")
+    @JoinColumn(name="saas_subscription_plan_id")
     private SaaSSubscriptionPlan saaSSubscriptionPlan;
 
     @OneToOne(cascade=CascadeType.ALL)
-    @JoinColumn(name="SAAS_ASSIGNMENT_PLAN")
+    @JoinColumn(name="saas_assignment_plan")
     private SaaSAssignmentPlan saaSAssignmentPlan;
     
     @OneToMany(mappedBy = "saasPlan",cascade=CascadeType.ALL)

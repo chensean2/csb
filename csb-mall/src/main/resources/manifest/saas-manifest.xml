@@ -1,46 +1,53 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<!-- This is the manifest for SaaS -->
-
-<manifest name="saas" xmlns="http://www.compatibleone.fr/schemes/saas-manifest.xsd">
+<!-- This is the manifest for starting a virtual machine with an XWiki server -->
+<manifest name="saas"
+	xmlns="http://www.compatibleone.fr/schemes/saas-manifest.xsd">
 	<description>The saas service</description>
-
-	<!-- id will be empty if action is create -->
-	<package id="saas-erp-11111111111" name="saaserp" edition="standard" provider="erp-company">
-		<action>create</action>
-
-		<!-- optional, if provider support modules-->
+	<subscription id="saas-subscription-erp-0001">
+		<saaspackage name="saaserp" edition="standard" provider="erp-company">
+			<action>create</action>
+			<!-- optional, if provider support modules -->
+			<modules>
+				<module name="billing" code="MODULE_BILLING" />
+				<module name="hr" code="MODULE_HR" />
+			</modules>
+			<customeAttributes>
+				<attribute name="domain" value="test.com" />
+				<attribute name="mobileNumber" value="18912341234" />
+			</customeAttributes>
+		</saaspackage>
+		<order>
+			<item name="o1" quantity="10" unit="user" />
+			<item name="o2" quantity="20" unit="gigabit" />
+			<item name="o3" quantity="30" unit="api" />
+		</order>
+		<account id="acbdxxxcvfdffeefefefef1234334ee" name="mycompany1">
+			<users>
+				<user id="https://www.yun.com/openid/id/111" name="xiaoming"
+					email="xiaoming@example.com" />
+			</users>
+		</account>
+	</subscription>
+	<assignment name="saas-assignment" externalId="saas-erp-11111111111">
+		<action>assign</action>
+		<account id="acbdxxxcvfdffeefefefef1234334ee" name="mycompany1">
+			<users>
+				<user id="https://www.yun.com/openid/id/111" name="xiaoming"
+					email="xiaoming@example.com" />
+				<user id="https://www.yun.com/openid/id/111" name="xiaoming"
+					email="xiaoming@example.com" />
+			</users>
+		</account>
 		<modules>
 			<module name="billing" code="MODULE_BILLING" />
 			<module name="hr" code="MODULE_HR" />
 		</modules>
-
-		<customeAttributes>
-			<attribute name="domain" value="test.com" />
-			<attribute name="mobileNumber" value="18912341234" />
-		</customeAttributes>
-	</package>
-
-	<order>
-		<item name="o1" quantity="10" unit="user"/>
-		<item name="o2" quantity="20" unit="gigabit"/>
-		<item name="o3" quantity="30" unit="api"/>
-	</order>
-
-	<account>
-		<company uuid="acbdxxxcvfdffeefefefef1234334ee" name="mycomany1" />
-		<creator openid="https://www.yun.com/openid/id/111" name="xiaoming" email="xiaoming@example.com"/>
-	</account>
-
-	<!-- for assign/unassign user to package-->
-	<assignment name="saas-assignment">
-		<action>assign</action>
-		<user openid="xxxx" name="testuser2" email="xiaowang@example.com"/>
-
 		<customeAttributes>
 			<attribute name="companyDepartment" value="HR" />
 			<attribute name="companyTitle" value="Project Manager" />
 		</customeAttributes>
 	</assignment>
+
 </manifest>
 

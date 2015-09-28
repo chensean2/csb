@@ -13,12 +13,12 @@ import javax.persistence.Table;
 import com.csb.core.common.BaseEntity;
 
 @Entity
-@Table(name = "tbl_csb_app_product")
+@Table(name = "csb_app_product")
 public class AppProduct extends BaseEntity<Long> {
     private static final long serialVersionUID = 1L;
 
     @ManyToOne
-    @JoinColumn(name = "APP_PROVIDER_ID")
+    @JoinColumn(name = "app_provider_id")
     private AppProvider appProvider;
 
     @OneToMany(mappedBy = "appProduct")
@@ -28,23 +28,23 @@ public class AppProduct extends BaseEntity<Long> {
     private List<AppProductParameterDefinition> appProductParameterDefinitionList;
     
     @OneToOne
-	@JoinColumn(name="App_Product_Integration_Definition")
+	@JoinColumn(name="app_product_integration_definition_id")
     private AppProductIntegrationDefinition appProductIntegrationDefinition;
     
-	@Column(name="NAME")
+	@Column(name="name")
 	private String name;
 	
-	@Column(name="DESCRIPTION")
+	@Column(name="description")
 	private String description;
 	
 	//for default, a AppProduct must mapped to a AppPackage which is belong to SINGLE type
 	@OneToOne
-	@JoinColumn(name="APP_PACKAGE_ID")
+	@JoinColumn(name="app_package_id")
 	private AppPackage appPackage;
 	
-	@Column(name="LIST_LOGO")
+	@Column(name="list_logo")
 	private String listLogo;
 	
-	@Column(name="PROFILE_LOGO")
+	@Column(name="profile_logo")
 	private String profileLogo;
 }

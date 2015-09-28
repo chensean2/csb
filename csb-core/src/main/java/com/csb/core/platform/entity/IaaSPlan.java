@@ -7,122 +7,120 @@ import javax.persistence.Table;
 import com.csb.core.common.BaseEntity;
 
 @Entity
-@Table(name = "tbl_csb_platform_iaas_plan")
+@Table(name = "csb_platform_iaas_plan")
 public class IaaSPlan extends BaseEntity<Long> {
 
-    
-    //ASSIGNMENT,SUBSCRIPTION
-    @Column(name = "TYPE")
+    // ASSIGNMENT,SUBSCRIPTION
+    @Column(name = "type")
     private String type;
-    
-	//OPENSTACK
-    @Column(name = "PROVIDER")
-	private String provider;
-	
-	// CREATE,UPDATE,CANCEL,START,STOP,..
-    @Column(name = "ACTION")
-	private String action;
 
-    @Column(name = "INSTANCE_NAME")
-	private String instanceName;
-    
-    @Column(name = "INSTANCE_COUNT")
-	private String instanceCount;
-    
-    @Column(name = "IMAGE_NAME")
-	private String imageName;
-    
-    @Column(name = "FLAVOR")
-	private String flavor;
-    
-    @Column(name = "CPUS")
-	private Integer cpus;
-    
-    @Column(name = "MEMORY")
-	private String memory;
-    
-    @Column(name = "STORAGE")
-	private String storage;
+    // OPENSTACK
+    @Column(name = "provider")
+    private String provider;
 
-	public String getType() {
-		return type;
-	}
+    // CREATE,UPDATE,CANCEL,START,STOP,..
+    @Column(name = "action")
+    private String action;
 
-	public void setType(String type) {
-		this.type = type;
-	}
+    @Column(name = "instance_name")
+    private String instanceName;
 
-	public String getProvider() {
-		return provider;
-	}
+    @Column(name = "instance_count")
+    private String instanceCount;
 
-	public void setProvider(String provider) {
-		this.provider = provider;
-	}
+    @Column(name = "image_name")
+    private String imageName;
 
-	public String getAction() {
-		return action;
-	}
+    @Column(name = "flavor")
+    private String flavor;
 
-	public void setAction(String action) {
-		this.action = action;
-	}
+    @Column(name = "cpus")
+    private Integer cpus;
 
-	public String getInstanceName() {
-		return instanceName;
-	}
+    @Column(name = "memory")
+    private String memory;
 
-	public void setInstanceName(String instanceName) {
-		this.instanceName = instanceName;
-	}
+    @Column(name = "storage")
+    private String storage;
 
-	public String getInstanceCount() {
-		return instanceCount;
-	}
+    public String getType() {
+        return type;
+    }
 
-	public void setInstanceCount(String instanceCount) {
-		this.instanceCount = instanceCount;
-	}
+    public void setType(String type) {
+        this.type = type;
+    }
 
-	public String getImageName() {
-		return imageName;
-	}
+    public String getProvider() {
+        return provider;
+    }
 
-	public void setImageName(String imageName) {
-		this.imageName = imageName;
-	}
+    public void setProvider(String provider) {
+        this.provider = provider;
+    }
 
-	public String getFlavor() {
-		return flavor;
-	}
+    public String getAction() {
+        return action;
+    }
 
-	public void setFlavor(String flavor) {
-		this.flavor = flavor;
-	}
+    public void setAction(String action) {
+        this.action = action;
+    }
 
-	public Integer getCpus() {
-		return cpus;
-	}
+    public String getInstanceName() {
+        return instanceName;
+    }
 
-	public void setCpus(Integer cpus) {
-		this.cpus = cpus;
-	}
+    public void setInstanceName(String instanceName) {
+        this.instanceName = instanceName;
+    }
 
-	public String getMemory() {
-		return memory;
-	}
+    public String getInstanceCount() {
+        return instanceCount;
+    }
 
-	public void setMemory(String memory) {
-		this.memory = memory;
-	}
+    public void setInstanceCount(String instanceCount) {
+        this.instanceCount = instanceCount;
+    }
 
-	public String getStorage() {
-		return storage;
-	}
+    public String getImageName() {
+        return imageName;
+    }
 
-	public void setStorage(String storage) {
-		this.storage = storage;
-	}
-	
-    
+    public void setImageName(String imageName) {
+        this.imageName = imageName;
+    }
+
+    public String getFlavor() {
+        return flavor;
+    }
+
+    public void setFlavor(String flavor) {
+        this.flavor = flavor;
+    }
+
+    public Integer getCpus() {
+        return cpus;
+    }
+
+    public void setCpus(Integer cpus) {
+        this.cpus = cpus;
+    }
+
+    public String getMemory() {
+        return memory;
+    }
+
+    public void setMemory(String memory) {
+        this.memory = memory;
+    }
+
+    public String getStorage() {
+        return storage;
+    }
+
+    public void setStorage(String storage) {
+        this.storage = storage;
+    }
+
 }

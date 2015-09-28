@@ -13,24 +13,24 @@ import javax.persistence.Table;
 import com.csb.core.common.BaseEntity;
 
 @Entity
-@Table(name = "tbl_csb_app_plan_cost")
+@Table(name = "csb_app_plan_cost")
 public class AppPlanCost extends BaseEntity<Long> {
 
     @ManyToOne
-    @JoinColumn(name = "APP_PLAN_ID")
+    @JoinColumn(name = "app_plan_id")
     private AppPlan appPlan;
     
     //ONE_TIME_SETUP,FLAT_RATE,USER,GIGABYTE
-    @Column(name = "UNIT")
+    @Column(name = "unit")
     private String unit;
     
-    @Column(name = "MIN_UNITS")
+    @Column(name = "min_units")
     private Integer minUnits;
     
-    @Column(name = "MAX_UNITS")
+    @Column(name = "max_units")
     private Integer maxUnits;
 
-    @Column(name = "PRICE", scale = 30, precision = 2)
+    @Column(name = "price", scale = 30, precision = 2)
     private BigDecimal price;
 
 }

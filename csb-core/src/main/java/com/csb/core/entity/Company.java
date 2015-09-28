@@ -10,7 +10,7 @@ import javax.persistence.Table;
 import com.csb.core.common.BaseEntity;
 
 @Entity
-@Table(name = "tbl_csb_company")
+@Table(name = "csb_company")
 public class Company extends BaseEntity<Long> {
 
     @OneToMany(mappedBy = "company")
@@ -19,7 +19,7 @@ public class Company extends BaseEntity<Long> {
     @OneToMany(mappedBy = "company")
     private List<Order> orderList;
     
-    @Column(name = "NAME")
+    @Column(name = "name")
     private String name;
 
 
