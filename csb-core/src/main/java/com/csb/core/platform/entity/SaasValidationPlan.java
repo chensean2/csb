@@ -10,7 +10,7 @@ import com.csb.core.common.BaseEntity;
 
 @Entity
 @Table(name = "csb_platform_saas_validation_plan")
-public class SaaSValidationPlan extends BaseEntity<Long> {
+public class SaasValidationPlan extends BaseEntity<Long> {
 
     @Column(name = "name")
     private String name;
@@ -20,5 +20,5 @@ public class SaaSValidationPlan extends BaseEntity<Long> {
 
     @ManyToOne
     @JoinColumn(name = "saas_plan_id")
-    private SaaSPlan saasPlan;
+    private SaasPlan saasPlan;
 }

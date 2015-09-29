@@ -3,8 +3,8 @@ package com.csb.test;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 
-import com.csb.core.model.CsbAppCategory;
-import com.csb.core.model.CsbPlatformPlan;
+import com.csb.core.model.AppCategory;
+import com.csb.core.model.PlatformPlan;
 import com.csb.core.service.AppCategoryService;
 import com.csb.core.service.PlanService;
 
@@ -35,13 +35,13 @@ public class EntityTest extends BaseIT {
     
     @Test
     public void testAppCategory() {
-        CsbAppCategory appCategory = appCategoryService.selectById(1);
+        AppCategory appCategory = appCategoryService.get(1L);
         System.out.println("-----------" + appCategory.getName());
     }
 
     @Test
     public void testPlan() {
-        CsbPlatformPlan plan = planService.get(1L);
+        PlatformPlan plan = planService.get(1L);
         System.out.println("-----------" + plan.getEventId());
     }
 

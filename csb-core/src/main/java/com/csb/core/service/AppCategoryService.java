@@ -1,9 +1,8 @@
 package com.csb.core.service;
 
-import com.csb.core.model.CsbAppCategory;
+import com.csb.core.model.AppCategory;
 
-public interface AppCategoryService {
+public interface AppCategoryService extends BaseService<AppCategory>{
 	
-	public CsbAppCategory selectById(long id) ;
 	
 }

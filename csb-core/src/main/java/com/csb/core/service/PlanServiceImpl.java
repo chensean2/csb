@@ -2,14 +2,14 @@ package com.csb.core.service;
 
 import org.springframework.stereotype.Service;
 
-import com.csb.core.mapper.CsbPlatformPlanMapper;
-import com.csb.core.model.CsbPlatformPlan;;
+import com.csb.core.mapper.PlatformPlanMapper;
+import com.csb.core.model.PlatformPlan;
 
-@Service
-public class PlanServiceImpl extends BaseServiceImpl<CsbPlatformPlan> implements PlanService {
+@Service("planService")
+public class PlanServiceImpl extends BaseServiceImpl<PlatformPlan> implements PlanService {
     
-    public CsbPlatformPlanMapper getMapper() {
-        return (CsbPlatformPlanMapper)mapper;
+    public PlatformPlanMapper getMapper() {
+        return (PlatformPlanMapper)mapper;
     }
     
     

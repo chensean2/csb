@@ -16,16 +16,15 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.csb.core.platform.entity.Plan;
-import com.csb.core.platform.entity.SaaSPlan;
-import com.csb.core.platform.entity.SaaSSubscriptionPlan;
-import com.csb.core.platform.entity.SaaSSubscriptionPlanItem;
+import com.csb.core.platform.entity.SaasPlan;
+import com.csb.core.platform.entity.SaasSubscriptionPlan;
+import com.csb.core.platform.entity.SaasSubscriptionPlanItem;
 import com.csb.core.platform.repository.PlanRepository;
 import com.csb.openapi.event.model.Company;
 import com.csb.openapi.event.model.Creator;
 import com.csb.openapi.event.model.Order;
 import com.csb.openapi.event.model.OrderItem;
 import com.csb.openapi.event.model.Subscription;
-import com.google.common.collect.Lists;
 
 @Controller
 @RequestMapping(value = "/api/integration/events")
@@ -45,8 +44,8 @@ public class OpenApiEventController {
 	public Subscription get(@PathVariable("id") String eventId) {
 		Subscription subscription = new Subscription();
 		Plan plan = planRepository.findByEventId(eventId);
-		SaaSPlan saasPlan = plan.getSaasPlan();
-		SaaSSubscriptionPlan saasSubscriptionPlan = saasPlan.getSaaSSubscriptionPlan();
+		SaasPlan saasPlan = plan.getSaasPlan();
+		SaasSubscriptionPlan saasSubscriptionPlan = saasPlan.getSaaSSubscriptionPlan();
 		if (saasPlan != null) {
 
 			subscription.setTerm(saasPlan.getType());
@@ -65,7 +64,7 @@ public class OpenApiEventController {
 			Order order = new Order();
 			order.setPlanCode(saasSubscriptionPlan.getPlanCode());
 			List<OrderItem> items = new ArrayList<OrderItem>();
-			for (SaaSSubscriptionPlanItem saasSubscriptionPlanItem : saasSubscriptionPlan.getSaaSSubscriptionPlanItemList()) {
+			for (SaasSubscriptionPlanItem saasSubscriptionPlanItem : saasSubscriptionPlan.getSaaSSubscriptionPlanItemList()) {
 				OrderItem orderItem = new OrderItem();
 				orderItem.setQuantity(saasSubscriptionPlanItem.getQuantity());
 				orderItem.setUnit(saasSubscriptionPlanItem.getUnit());

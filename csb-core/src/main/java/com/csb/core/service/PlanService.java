@@ -1,7 +1,7 @@
 package com.csb.core.service;
 
-import com.csb.core.model.CsbPlatformPlan;
+import com.csb.core.model.PlatformPlan;
 
 
-public interface PlanService extends BaseService<CsbPlatformPlan>{
+public interface PlanService extends BaseService<PlatformPlan>{
 }

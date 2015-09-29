@@ -9,9 +9,9 @@ import org.springframework.stereotype.Component;
 import com.csb.common.constant.PlatformConstant;
 import com.csb.common.util.UUIDUtil;
 import com.csb.core.platform.entity.Plan;
-import com.csb.core.platform.entity.SaaSPlan;
-import com.csb.core.platform.entity.SaaSSubscriptionPlan;
-import com.csb.core.platform.entity.SaaSSubscriptionPlanItem;
+import com.csb.core.platform.entity.SaasPlan;
+import com.csb.core.platform.entity.SaasSubscriptionPlan;
+import com.csb.core.platform.entity.SaasSubscriptionPlanItem;
 import com.csb.core.platform.repository.PlanRepository;
 import com.csb.parser.component.model.AssignmentInfo;
 import com.csb.parser.component.model.CompanyInfo;
@@ -43,11 +43,11 @@ public class SaaSParserComponent implements ParserComponent {
         SaaSPlanInfo saasPlanInfo = saasInfo.getSaaSPlanInfo();
         List<SaaSPlanItemInfo> saasPlanItemInfoList = saasPlanInfo.getSaasPlanItemInfoList();
         
-        SaaSPlan saasPlan = new SaaSPlan();
+        SaasPlan saasPlan = new SaasPlan();
         saasPlan.setType(PlatformConstant.PROVSION_TYPE_SUBSCRIPTION);
         
         
-        SaaSSubscriptionPlan saasSubscriptionPlan = new SaaSSubscriptionPlan();
+        SaasSubscriptionPlan saasSubscriptionPlan = new SaasSubscriptionPlan();
         saasSubscriptionPlan.setAction(saasInfo.getAction());
         saasSubscriptionPlan.setCompanyName(companyInfo.getName());
         saasSubscriptionPlan.setCompanyPhoneNumber(companyInfo.getPhoneNumber());
@@ -59,9 +59,9 @@ public class SaaSParserComponent implements ParserComponent {
         saasSubscriptionPlan.setCreatorOpenId(creatorInfo.getOpenId());
         
         saasSubscriptionPlan.setPlanCode(saasPlanInfo.getPlanCode());
-        List<SaaSSubscriptionPlanItem> saasSubscriptionPlanItemList = new ArrayList<SaaSSubscriptionPlanItem>();
+        List<SaasSubscriptionPlanItem> saasSubscriptionPlanItemList = new ArrayList<SaasSubscriptionPlanItem>();
         for(SaaSPlanItemInfo saasPlanItemInfo : saasPlanItemInfoList){
-            SaaSSubscriptionPlanItem saasSubscriptionPlanItem = new SaaSSubscriptionPlanItem();
+            SaasSubscriptionPlanItem saasSubscriptionPlanItem = new SaasSubscriptionPlanItem();
             saasSubscriptionPlanItem.setQuantity(saasPlanItemInfo.getQuantity());
             saasSubscriptionPlanItem.setUnit(saasPlanItemInfo.getUnit());
             saasSubscriptionPlanItem.setSaaSSubscriptionPlan(saasSubscriptionPlan);

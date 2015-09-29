@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.csb.core.mapper.SubscriptionDetailMapper">
+  <resultMap id="BaseResultMap" type="com.csb.core.model.SubscriptionDetail">
+    <!--
+      WARNING - @mbggenerated
+    -->
+    <id column="ID" jdbcType="BIGINT" property="id" />
+    <result column="CREATED_BY" jdbcType="VARCHAR" property="createdBy" />
+    <result column="CREATED_DT" jdbcType="TIMESTAMP" property="createdDt" />
+    <result column="LAST_UPDATED_BY" jdbcType="VARCHAR" property="lastUpdatedBy" />
+    <result column="LAST_UPDATED_DT" jdbcType="TIMESTAMP" property="lastUpdatedDt" />
+    <result column="VERSION" jdbcType="INTEGER" property="version" />
+    <result column="trial_end_dt" jdbcType="TIMESTAMP" property="trialEndDt" />
+    <result column="end_dt" jdbcType="TIMESTAMP" property="endDt" />
+    <result column="isActive" jdbcType="BIT" property="isactive" />
+    <result column="is_trail" jdbcType="BIT" property="isTrail" />
+    <result column="max_user" jdbcType="INTEGER" property="maxUser" />
+    <result column="start_dt" jdbcType="TIMESTAMP" property="startDt" />
+    <result column="app_plan_id" jdbcType="BIGINT" property="appPlanId" />
+    <result column="order_plan_id" jdbcType="BIGINT" property="orderPlanId" />
+    <result column="subscription_id" jdbcType="BIGINT" property="subscriptionId" />
+  </resultMap>
+</mapper>

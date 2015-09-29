@@ -4,30 +4,137 @@
         "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
 
 <generatorConfiguration>
-    <properties resource="mybatis-generator.properties"/>
+	<properties resource="mybatis-generator.properties" />
 
-    <context id="Mysql" targetRuntime="MyBatis3Simple" defaultModelType="flat">
-        <property name="beginningDelimiter" value="`"/>
-        <property name="endingDelimiter" value="`"/>
+	<context id="Mysql" targetRuntime="MyBatis3Simple"
+		defaultModelType="flat">
+		<property name="beginningDelimiter" value="`" />
+		<property name="endingDelimiter" value="`" />
 
-        <plugin type="${mapper.plugin}">
-          <property name="mappers" value="${mapper.Mapper}"/>
-        </plugin>
+		<plugin type="${mapper.plugin}">
+			<property name="mappers" value="${mapper.Mapper}" />
+		</plugin>
 
-        <jdbcConnection driverClass="${jdbc.driverClass}"
-                        connectionURL="${jdbc.url}"
-                        userId="${jdbc.user}"
-                        password="${jdbc.password}">
-        </jdbcConnection>
+		<jdbcConnection driverClass="${jdbc.driverClass}"
+			connectionURL="${jdbc.url}" userId="${jdbc.user}" password="${jdbc.password}">
+		</jdbcConnection>
 
-        <javaModelGenerator targetPackage="${targetModelPackage}" targetProject="${targetJavaProject}"/>
+		<javaModelGenerator targetPackage="${targetModelPackage}"
+			targetProject="${targetJavaProject}" />
 
-        <sqlMapGenerator targetPackage="${targetXMLPackage}"  targetProject="${targetResourcesProject}"/>
+		<sqlMapGenerator targetPackage="${targetXMLPackage}"
+			targetProject="${targetResourcesProject}" />
 
-        <javaClientGenerator targetPackage="${targetMapperPackage}" targetProject="${targetJavaProject}" type="XMLMAPPER" />
+		<javaClientGenerator targetPackage="${targetMapperPackage}"
+			targetProject="${targetJavaProject}" type="XMLMAPPER" />
 
-        <table tableName="%" >
-          <generatedKey column="id" sqlStatement="Mysql" identity="true"/>
-        </table>
-    </context>
+		<table tableName="aa_permission" domainObjectName="Permission">
+			<generatedKey column="id" sqlStatement="Mysql" identity="true" />
+		</table>
+		<table tableName="aa_resource" domainObjectName="Resource">
+			<generatedKey column="id" sqlStatement="Mysql" identity="true" />
+		</table>
+		<table tableName="aa_role" domainObjectName="Role">
+			<generatedKey column="id" sqlStatement="Mysql" identity="true" />
+		</table>
+		<table tableName="aa_role_permissions" domainObjectName="RolePermissions">
+			<generatedKey column="id" sqlStatement="Mysql" identity="true" />
+		</table>
+		<table tableName="aa_role_resource" domainObjectName="RoleResource">
+			<generatedKey column="id" sqlStatement="Mysql" identity="true" />
+		</table>
+		<table tableName="aa_user_roles" domainObjectName="UserRoles">
+			<generatedKey column="id" sqlStatement="Mysql" identity="true" />
+		</table>
+		<table tableName="csb_app_category" domainObjectName="AppCategory">
+			<generatedKey column="id" sqlStatement="Mysql" identity="true" />
+		</table>
+		<table tableName="csb_app_category_package" domainObjectName="AppCategoryPackage">
+			<generatedKey column="id" sqlStatement="Mysql" identity="true" />
+		</table>
+		<table tableName="csb_app_package" domainObjectName="AppPackage">
+			<generatedKey column="id" sqlStatement="Mysql" identity="true" />
+		</table>
+		<table tableName="csb_app_plan" domainObjectName="AppPlan">
+			<generatedKey column="id" sqlStatement="Mysql" identity="true" />
+		</table>
+		<table tableName="csb_app_plan_cost" domainObjectName="AppPlanCost">
+			<generatedKey column="id" sqlStatement="Mysql" identity="true" />
+		</table>
+		<table tableName="csb_app_product" domainObjectName="AppProduct">
+			<generatedKey column="id" sqlStatement="Mysql" identity="true" />
+		</table>
+		<table tableName="csb_app_product_integration_definition"
+			domainObjectName="AppProductIntegrationDefinition">
+			<generatedKey column="id" sqlStatement="Mysql" identity="true" />
+		</table>
+		<table tableName="csb_app_product_parameter_definition"
+			domainObjectName="AppProductParameterDefinition">
+			<generatedKey column="id" sqlStatement="Mysql" identity="true" />
+		</table>
+		<table tableName="csb_app_provider" domainObjectName="AppProvider">
+			<generatedKey column="id" sqlStatement="Mysql" identity="true" />
+		</table>
+		<table tableName="csb_company" domainObjectName="Company">
+			<generatedKey column="id" sqlStatement="Mysql" identity="true" />
+		</table>
+		<table tableName="csb_order" domainObjectName="Order">
+			<generatedKey column="id" sqlStatement="Mysql" identity="true" />
+		</table>
+		<table tableName="csb_order_plan_cost" domainObjectName="OrderPlanCost">
+			<generatedKey column="id" sqlStatement="Mysql" identity="true" />
+		</table>
+		<table tableName="csb_order_plan_parameter" domainObjectName="OrderPlanParameter">
+			<generatedKey column="id" sqlStatement="Mysql" identity="true" />
+		</table>
+		<table tableName="csb_payment" domainObjectName="Payment">
+			<generatedKey column="id" sqlStatement="Mysql" identity="true" />
+		</table>
+		<table tableName="csb_payment_plan" domainObjectName="PaymentPlan">
+			<generatedKey column="id" sqlStatement="Mysql" identity="true" />
+		</table>
+		<table tableName="csb_platform_iaas_plan" domainObjectName="PlatformIsPlan">
+			<generatedKey column="id" sqlStatement="Mysql" identity="true" />
+		</table>
+		<table tableName="csb_platform_plan" domainObjectName="PlatformPlan">
+			<generatedKey column="id" sqlStatement="Mysql" identity="true" />
+		</table>
+		<table tableName="csb_platform_saas_assignment_plan"
+			domainObjectName="PlatformSaasAssignmentPlan">
+			<generatedKey column="id" sqlStatement="Mysql" identity="true" />
+		</table>
+		<table tableName="csb_platform_saas_plan" domainObjectName="PlatformSaasPlan">
+			<generatedKey column="id" sqlStatement="Mysql" identity="true" />
+		</table>
+		<table tableName="csb_platform_saas_provision_response"
+			domainObjectName="PlatformSaasProvisionResponse">
+			<generatedKey column="id" sqlStatement="Mysql" identity="true" />
+		</table>
+		<table tableName="csb_platform_saas_subscription_plan"
+			domainObjectName="PlatformSaasSubscriptionPlan">
+			<generatedKey column="id" sqlStatement="Mysql" identity="true" />
+		</table>
+		<table tableName="csb_platform_saas_subscription_plan_item"
+			domainObjectName="PlatformSaasSubscriptionPlanItem">
+			<generatedKey column="id" sqlStatement="Mysql" identity="true" />
+		</table>
+		<table tableName="csb_platform_saas_subscription_plan_parameter"
+			domainObjectName="PlatformSaasSubscriptionPlanParameter">
+			<generatedKey column="id" sqlStatement="Mysql" identity="true" />
+		</table>
+		<table tableName="csb_platform_saas_validation_plan"
+			domainObjectName="PlatformSaasValidationPlan">
+			<generatedKey column="id" sqlStatement="Mysql" identity="true" />
+		</table>
+		<table tableName="csb_subscription" domainObjectName="Subscription">
+			<generatedKey column="id" sqlStatement="Mysql" identity="true" />
+		</table>
+		<table tableName="csb_subscription_detail" domainObjectName="SubscriptionDetail">
+			<generatedKey column="id" sqlStatement="Mysql" identity="true" />
+		</table>
+		<table tableName="csb_user" domainObjectName="User">
+			<generatedKey column="id" sqlStatement="Mysql" identity="true" />
+		</table>
+
+	</context>
 </generatorConfiguration>

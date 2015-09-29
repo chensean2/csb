@@ -15,7 +15,7 @@ import com.csb.core.common.BaseEntity;
 
 @Entity
 @Table(name = "csb_platform_saas_plan")
-public class SaaSPlan extends BaseEntity<Long> {
+public class SaasPlan extends BaseEntity<Long> {
 
     
     //ASSIGNMENT,SUBSCRIPTION,NOTIFICATION,VALIDATION
@@ -24,18 +24,18 @@ public class SaaSPlan extends BaseEntity<Long> {
     
     @OneToOne(cascade=CascadeType.ALL)
     @JoinColumn(name="saas_subscription_plan_id")
-    private SaaSSubscriptionPlan saaSSubscriptionPlan;
+    private SaasSubscriptionPlan saasSubscriptionPlan;
 
     @OneToOne(cascade=CascadeType.ALL)
     @JoinColumn(name="saas_assignment_plan")
-    private SaaSAssignmentPlan saaSAssignmentPlan;
+    private SaasAssignmentPlan saasAssignmentPlan;
     
     @OneToMany(mappedBy = "saasPlan",cascade=CascadeType.ALL)
-    private List<SaaSValidationPlan> saaSValidationPlanList;
+    private List<SaasValidationPlan> saasValidationPlanList;
     
     @OneToMany(mappedBy = "saasPlan",cascade=CascadeType.ALL)
     //@OrderBy("ID DESC")
-    private List<SaaSProvisionResponse> saaSProvisionResponseList;
+    private List<SaasProvisionResponse> saasProvisionResponseList;
 
     public String getType() {
         return type;
@@ -45,36 +45,36 @@ public class SaaSPlan extends BaseEntity<Long> {
         this.type = type;
     }
 
-    public SaaSSubscriptionPlan getSaaSSubscriptionPlan() {
-        return saaSSubscriptionPlan;
+    public SaasSubscriptionPlan getSaaSSubscriptionPlan() {
+        return saasSubscriptionPlan;
     }
 
-    public void setSaaSSubscriptionPlan(SaaSSubscriptionPlan saaSSubscriptionPlan) {
-        this.saaSSubscriptionPlan = saaSSubscriptionPlan;
+    public void setSaaSSubscriptionPlan(SaasSubscriptionPlan saasSubscriptionPlan) {
+        this.saasSubscriptionPlan = saasSubscriptionPlan;
     }
 
-    public SaaSAssignmentPlan getSaaSAssignmentPlan() {
-        return saaSAssignmentPlan;
+    public SaasAssignmentPlan getSaaSAssignmentPlan() {
+        return saasAssignmentPlan;
     }
 
-    public void setSaaSAssignmentPlan(SaaSAssignmentPlan saaSAssignmentPlan) {
-        this.saaSAssignmentPlan = saaSAssignmentPlan;
+    public void setSaaSAssignmentPlan(SaasAssignmentPlan saasAssignmentPlan) {
+        this.saasAssignmentPlan = saasAssignmentPlan;
     }
 
-    public List<SaaSValidationPlan> getSaaSValidationPlanList() {
-        return saaSValidationPlanList;
+    public List<SaasValidationPlan> getSaasValidationPlanList() {
+        return saasValidationPlanList;
     }
 
-    public void setSaaSValidationPlanList(List<SaaSValidationPlan> saaSValidationPlanList) {
-        this.saaSValidationPlanList = saaSValidationPlanList;
+    public void setSaaSValidationPlanList(List<SaasValidationPlan> saaSValidationPlanList) {
+        this.saasValidationPlanList = saaSValidationPlanList;
     }
 
-	public List<SaaSProvisionResponse> getSaaSProvisionResponseList() {
-		return saaSProvisionResponseList;
+	public List<SaasProvisionResponse> getSaasProvisionResponseList() {
+		return saasProvisionResponseList;
 	}
 
-	public void setSaaSProvisionResponseList(List<SaaSProvisionResponse> saaSProvisionResponseList) {
-		this.saaSProvisionResponseList = saaSProvisionResponseList;
+	public void setSaaSProvisionResponseList(List<SaasProvisionResponse> saasProvisionResponseList) {
+		this.saasProvisionResponseList = saasProvisionResponseList;
 	}
     
     

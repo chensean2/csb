@@ -39,7 +39,7 @@ public class Plan extends BaseEntity<Long> {
 
 	@OneToOne(cascade=CascadeType.ALL)
 	@JoinColumn(name = "saas_plan_id")
-	private SaaSPlan saasPlan;
+	private SaasPlan saasPlan;
 	
 	@OneToOne(cascade=CascadeType.ALL)
     @JoinColumn(name = "iaas_plan_id")
@@ -93,15 +93,17 @@ public class Plan extends BaseEntity<Long> {
 		this.message = message;
 	}
 
-	public SaaSPlan getSaasPlan() {
-		return saasPlan;
-	}
+	
 
-	public void setSaasPlan(SaaSPlan saasPlan) {
-		this.saasPlan = saasPlan;
-	}
+	public SaasPlan getSaasPlan() {
+        return saasPlan;
+    }
 
-	public IaaSPlan getIaasPlan() {
+    public void setSaasPlan(SaasPlan saasPlan) {
+        this.saasPlan = saasPlan;
+    }
+
+    public IaaSPlan getIaasPlan() {
 		return iaasPlan;
 	}
 

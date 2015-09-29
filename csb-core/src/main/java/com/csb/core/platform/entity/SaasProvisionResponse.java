@@ -10,7 +10,7 @@ import com.csb.core.common.BaseEntity;
 
 @Entity
 @Table(name = "csb_platform_saas_provision_response")
-public class SaaSProvisionResponse extends BaseEntity<Long> {
+public class SaasProvisionResponse extends BaseEntity<Long> {
 
     private static final long serialVersionUID = -9108760868920972643L;
 
@@ -25,7 +25,7 @@ public class SaaSProvisionResponse extends BaseEntity<Long> {
 
     @ManyToOne
     @JoinColumn(name = "saas_plan_id")
-    private SaaSPlan saasPlan;
+    private SaasPlan saasPlan;
 
     public String getSuccessCode() {
         return successCode;
@@ -51,11 +51,12 @@ public class SaaSProvisionResponse extends BaseEntity<Long> {
         this.raw = raw;
     }
 
-    public SaaSPlan getSaasPlan() {
+
+    public SaasPlan getSaasPlan() {
         return saasPlan;
     }
 
-    public void setSaasPlan(SaaSPlan saasPlan) {
+    public void setSaasPlan(SaasPlan saasPlan) {
         this.saasPlan = saasPlan;
     }
 

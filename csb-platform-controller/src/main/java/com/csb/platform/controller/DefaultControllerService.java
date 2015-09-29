@@ -7,10 +7,10 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.csb.core.platform.entity.Plan;
-import com.csb.core.platform.entity.SaaSPlan;
-import com.csb.core.platform.entity.SaaSProvisionResponse;
+import com.csb.core.platform.entity.SaasPlan;
+import com.csb.core.platform.entity.SaasProvisionResponse;
 import com.csb.core.platform.repository.PlanRepository;
-import com.csb.core.platform.repository.SaaSProvisionResponseRepository;
+import com.csb.core.platform.repository.SaasProvisionResponseRepository;
 import com.csb.parser.component.model.AssignmentInfo;
 import com.csb.parser.component.model.AssignmentResult;
 import com.csb.parser.component.model.AssignmentStatus;
@@ -35,7 +35,7 @@ public class DefaultControllerService implements ControllerService {
     private PlanRepository planRepository;
     
     @Autowired
-    private SaaSProvisionResponseRepository saasProvisionResponseRepository;
+    private SaasProvisionResponseRepository saasProvisionResponseRepository;
     
     @Transactional
     @Override
@@ -104,10 +104,10 @@ public class DefaultControllerService implements ControllerService {
     	Plan plan = planRepository.findByEventId(eventId);
     	
     	if(plan != null){
-    		SaaSPlan saasPlan = plan.getSaasPlan();
-    		List<SaaSProvisionResponse> saaSProvisionResponseList = saasProvisionResponseRepository.findBySaasPlan(saasPlan);
+    		SaasPlan saasPlan = plan.getSaasPlan();
+    		List<SaasProvisionResponse> saaSProvisionResponseList = saasProvisionResponseRepository.findBySaasPlan(saasPlan);
     		if(saaSProvisionResponseList != null && saaSProvisionResponseList.size() >0){
-    			SaaSProvisionResponse saasProvisionResponse = saaSProvisionResponseList.get(0);
+    			SaasProvisionResponse saasProvisionResponse = saaSProvisionResponseList.get(0);
     			if(saasProvisionResponse.getSuccessCode().equals("true")){
     				status.setStatus("SUCCESS");
     			}else{
