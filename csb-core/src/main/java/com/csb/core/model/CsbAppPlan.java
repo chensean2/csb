@@ -6,21 +6,23 @@ import javax.persistence.*;
 @Table(name = "csb_app_plan")
 public class CsbAppPlan {
     @Id
+    @Column(name = "ID")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "created_by")
+    @Column(name = "CREATED_BY")
     private String createdBy;
 
-    @Column(name = "created_dt")
+    @Column(name = "CREATED_DT")
     private Date createdDt;
 
-    @Column(name = "last_updated_by")
+    @Column(name = "LAST_UPDATED_BY")
     private String lastUpdatedBy;
 
-    @Column(name = "last_updated_dt")
+    @Column(name = "LAST_UPDATED_DT")
     private Date lastUpdatedDt;
 
+    @Column(name = "VERSION")
     private Integer version;
 
     private String description;
@@ -39,7 +41,7 @@ public class CsbAppPlan {
     private Long appProductId;
 
     /**
-     * @return id
+     * @return ID
      */
     public Long getId() {
         return id;
@@ -53,7 +55,7 @@ public class CsbAppPlan {
     }
 
     /**
-     * @return created_by
+     * @return CREATED_BY
      */
     public String getCreatedBy() {
         return createdBy;
@@ -67,7 +69,7 @@ public class CsbAppPlan {
     }
 
     /**
-     * @return created_dt
+     * @return CREATED_DT
      */
     public Date getCreatedDt() {
         return createdDt;
@@ -81,7 +83,7 @@ public class CsbAppPlan {
     }
 
     /**
-     * @return last_updated_by
+     * @return LAST_UPDATED_BY
      */
     public String getLastUpdatedBy() {
         return lastUpdatedBy;
@@ -95,7 +97,7 @@ public class CsbAppPlan {
     }
 
     /**
-     * @return last_updated_dt
+     * @return LAST_UPDATED_DT
      */
     public Date getLastUpdatedDt() {
         return lastUpdatedDt;
@@ -109,7 +111,7 @@ public class CsbAppPlan {
     }
 
     /**
-     * @return version
+     * @return VERSION
      */
     public Integer getVersion() {
         return version;

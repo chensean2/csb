@@ -1,9 +1,9 @@
 package com.csb.core.service;
 
-import com.csb.core.entity.AppCategory;
+import com.csb.core.model.CsbAppCategory;
 
 public interface AppCategoryService {
 	
-	public AppCategory selectById(long id) ;
+	public CsbAppCategory selectById(long id) ;
 	
 }

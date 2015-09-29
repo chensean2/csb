@@ -10,7 +10,7 @@ import com.csb.core.common.BaseEntity;
 
 
 @Entity
-@Table(name="csb_order_plan_item")
+@Table(name="csb_order_plan_parameter")
 public class OrderPlanParameter extends BaseEntity<Long>  {
 
 	@ManyToOne

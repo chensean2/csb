@@ -30,13 +30,13 @@ public class OrderPlanCost extends BaseEntity<Long>  {
 	@Column(name = "quantity")
 	private Integer quantity;
 
-	@Column(name = "price", scale = 30, precision = 2)
+	@Column(name = "price", scale = 2, precision = 32)
 	private BigDecimal price;
 	
 	//if type is DISCOUNT
 	@Column(name = "discount_percentage")
 	private float discountPercentage;
 	
-	@Column(name = "total_price", scale = 32, precision = 2)
+	@Column(name = "total_price", scale = 2, precision = 32)
 	private BigDecimal totalPrice;
 }

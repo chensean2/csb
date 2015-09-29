@@ -6,31 +6,36 @@ import javax.persistence.*;
 @Table(name = "csb_app_package")
 public class CsbAppPackage {
     @Id
+    @Column(name = "ID")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "created_by")
+    @Column(name = "CREATED_BY")
     private String createdBy;
 
-    @Column(name = "created_dt")
+    @Column(name = "CREATED_DT")
     private Date createdDt;
 
-    @Column(name = "last_updated_by")
+    @Column(name = "LAST_UPDATED_BY")
     private String lastUpdatedBy;
 
-    @Column(name = "last_updated_dt")
+    @Column(name = "LAST_UPDATED_DT")
     private Date lastUpdatedDt;
 
+    @Column(name = "VERSION")
     private Integer version;
 
+    @Column(name = "DESCRIPTION")
     private String description;
 
+    @Column(name = "NAME")
     private String name;
 
+    @Column(name = "TYPE")
     private String type;
 
     /**
-     * @return id
+     * @return ID
      */
     public Long getId() {
         return id;
@@ -44,7 +49,7 @@ public class CsbAppPackage {
     }
 
     /**
-     * @return created_by
+     * @return CREATED_BY
      */
     public String getCreatedBy() {
         return createdBy;
@@ -58,7 +63,7 @@ public class CsbAppPackage {
     }
 
     /**
-     * @return created_dt
+     * @return CREATED_DT
      */
     public Date getCreatedDt() {
         return createdDt;
@@ -72,7 +77,7 @@ public class CsbAppPackage {
     }
 
     /**
-     * @return last_updated_by
+     * @return LAST_UPDATED_BY
      */
     public String getLastUpdatedBy() {
         return lastUpdatedBy;
@@ -86,7 +91,7 @@ public class CsbAppPackage {
     }
 
     /**
-     * @return last_updated_dt
+     * @return LAST_UPDATED_DT
      */
     public Date getLastUpdatedDt() {
         return lastUpdatedDt;
@@ -100,7 +105,7 @@ public class CsbAppPackage {
     }
 
     /**
-     * @return version
+     * @return VERSION
      */
     public Integer getVersion() {
         return version;
@@ -114,7 +119,7 @@ public class CsbAppPackage {
     }
 
     /**
-     * @return description
+     * @return DESCRIPTION
      */
     public String getDescription() {
         return description;
@@ -128,7 +133,7 @@ public class CsbAppPackage {
     }
 
     /**
-     * @return name
+     * @return NAME
      */
     public String getName() {
         return name;
@@ -142,7 +147,7 @@ public class CsbAppPackage {
     }
 
     /**
-     * @return type
+     * @return TYPE
      */
     public String getType() {
         return type;

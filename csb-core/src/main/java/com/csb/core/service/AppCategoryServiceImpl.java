@@ -5,8 +5,8 @@ import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.csb.core.entity.AppCategory;
 import com.csb.core.mapper.CsbAppCategoryMapper;
+import com.csb.core.model.CsbAppCategory;
 
 @Service("appCategoryService")
 public class AppCategoryServiceImpl implements AppCategoryService
@@ -16,7 +16,7 @@ public class AppCategoryServiceImpl implements AppCategoryService
 	
 	@Transactional
 	@Override
-	public AppCategory selectById(long id)
+	public CsbAppCategory selectById(long id)
 	{
 		 return csbAppCategoryMapper.selectByPrimaryKey(id);
 	}

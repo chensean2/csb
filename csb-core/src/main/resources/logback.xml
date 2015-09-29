@@ -11,7 +11,7 @@
 	
 	<!-- 演示按时间滚动的策略 -->
 	<appender name="defaultlogFile" class="ch.qos.logback.core.rolling.RollingFileAppender">
-		<file>/Users/yanliang/dev/saas-base-workspace/log/saas-base.log</file>
+		<file>/tmp/logs/saas-base.log</file>
 		
 		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
 			<fileNamePattern>/tmp/logs/showcase.%d{yyyy-MM-dd}.log</fileNamePattern>
