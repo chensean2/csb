@@ -14,4 +14,17 @@
     <result column="name" jdbcType="VARCHAR" property="name" />
     <result column="url" jdbcType="VARCHAR" property="url" />
   </resultMap>
+  
+  <select id="findByRoleId" resultType="com.csb.core.model.Resource">
+	     SELECT 
+		    res.id, res.name, res.url
+		FROM
+		    aa_resource res,
+		    aa_role r,
+		    aa_role_resource rres
+		WHERE
+		    r.id = rres.role_id
+		        AND rres.resource_id = res.id
+		        AND r.id = #{id}
+   </select>
 </mapper>

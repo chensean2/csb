@@ -22,5 +22,7 @@ public interface PlatformConstant {
     public static final String ACCOUNT_STATUS_NEW = "NEW";
     public static final String ACCOUNT_STATUS_ACTIVE = "ACTIVE";
     public static final String ACCOUNT_STATUS_LOCKED = "LOCKED";
-    
+   
+    public static final String USER_TYPE_PERSON = "PERSON";
+    public static final String USER_TYPE_PROVIDER = "PROVIDER";
 }

@@ -13,6 +13,10 @@ public interface BaseService<T> {
     void delete(Long id);
 
     List<T> find(T entity);
+    
+    T findByUniqueKey(T entity);
 
     int count(T entity);
+    
+    List<T> findAll();
 }

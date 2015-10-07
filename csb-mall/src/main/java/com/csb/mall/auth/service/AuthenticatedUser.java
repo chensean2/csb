@@ -4,7 +4,7 @@ import java.util.Set;
 
 import org.springframework.security.core.GrantedAuthority;
 
-import com.csb.core.entity.User;
+import com.csb.core.model.User;
 
 /**
  * Spring Security user wrapper
@@ -17,7 +17,7 @@ public class AuthenticatedUser extends org.springframework.security.core.userdet
     protected User user;
 
     public AuthenticatedUser(User user, Set<GrantedAuthority> authorities) {
-        super(user.getLoginId(), user.getPassword(), authorities);
+        super(user.getEmail(), user.getPassword(), authorities);
         this.user = user;
     }
 

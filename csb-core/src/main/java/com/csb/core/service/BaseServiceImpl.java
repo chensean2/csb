@@ -37,8 +37,25 @@ public abstract class BaseServiceImpl<T> implements BaseService<T> {
     public List<T> find(T entity){
         return mapper.select(entity);
     }
+    
+    @Override
+    public T findByUniqueKey(T entity){
+        List<T> tList = find(entity);
+        if (tList != null && tList.size() >= 1)
+        {
+            return tList.get(0);
+        }
+        return null;
+    }
+    
     @Override
     public int count(T entity){
         return mapper.selectCount(entity);
+    }
+    
+    @Override
+    public List<T> findAll(){
+        List<T> tList = mapper.selectAll();
+        return tList;
     }
 }

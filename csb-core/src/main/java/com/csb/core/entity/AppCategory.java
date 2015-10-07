@@ -31,15 +31,6 @@ public class AppCategory extends BaseEntity1{
 
     @Column(name = "name")
     private String name;  
-    
-    public String getName() {
-		return name;
-	}
-
-	public void setName(String name) {
-		this.name = name;
-	}
-
 
 
 //	@ManyToMany(fetch=FetchType.LAZY)
