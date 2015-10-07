@@ -8,5 +8,5 @@ import com.csb.core.entity.User;
 @Repository
 public interface UserRepository extends BaseRepository<User, Long> {
 
-    User findByUsername(String username);
+    User findByUserName(String userName);
 }

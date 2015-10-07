@@ -5,15 +5,26 @@
     <!--
       WARNING - @mbggenerated
     -->
-    <id column="ID" jdbcType="BIGINT" property="id" />
-    <result column="CREATED_BY" jdbcType="VARCHAR" property="createdBy" />
-    <result column="CREATED_DT" jdbcType="TIMESTAMP" property="createdDt" />
-    <result column="LAST_UPDATED_BY" jdbcType="VARCHAR" property="lastUpdatedBy" />
-    <result column="LAST_UPDATED_DT" jdbcType="TIMESTAMP" property="lastUpdatedDt" />
-    <result column="VERSION" jdbcType="INTEGER" property="version" />
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="created_by" jdbcType="VARCHAR" property="createdBy" />
+    <result column="created_dt" jdbcType="TIMESTAMP" property="createdDt" />
+    <result column="last_updated_by" jdbcType="VARCHAR" property="lastUpdatedBy" />
+    <result column="last_updated_dt" jdbcType="TIMESTAMP" property="lastUpdatedDt" />
+    <result column="version" jdbcType="INTEGER" property="version" />
     <result column="category" jdbcType="VARCHAR" property="category" />
     <result column="description" jdbcType="VARCHAR" property="description" />
     <result column="name" jdbcType="VARCHAR" property="name" />
     <result column="system" jdbcType="BIT" property="system" />
-  </resultMap>
+ 	</resultMap>
+ 	
+	   <select id="findByUserId" resultType="com.csb.core.model.Role">
+	     SELECT 
+		    r.id, r.category, r.description, r.name, r.system
+		FROM
+		    csb_user u,
+		    aa_user_roles ur,
+		    aa_role r
+		WHERE
+    		u.id = ur.user_id AND ur.role_id = r.id AND u.id = #{id}
+	   </select>
 </mapper>

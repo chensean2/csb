@@ -7,6 +7,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.web.authentication.SavedRequestAwareAuthenticationSuccessHandler;
 import org.springframework.stereotype.Component;
@@ -19,8 +20,8 @@ import org.springframework.stereotype.Component;
 public class AuthenticationSuccessHandler extends SavedRequestAwareAuthenticationSuccessHandler {
 
     
-    @Inject
-    protected UserService userService;
+    @Autowired
+    protected LoginService loginService;
 
 
     @Override
@@ -28,8 +29,9 @@ public class AuthenticationSuccessHandler extends SavedRequestAwareAuthenticatio
                                         HttpServletResponse response,
                                         Authentication authentication) throws ServletException, IOException {
         if (authentication.getPrincipal() instanceof AuthenticatedUser) {
-            //updateLoginInfo(request, (AuthenticatedUser) authentication.getPrincipal());
+            updateLoginInfo(request, (AuthenticatedUser) authentication.getPrincipal());
         }
+        
         super.onAuthenticationSuccess(request, response, authentication);
     }
 
@@ -38,6 +40,8 @@ public class AuthenticationSuccessHandler extends SavedRequestAwareAuthenticatio
         //Tenant defaultTenant = tenantRepository.findOne(authUser.getUser().getTenantId());
      
         //request.getSession().setAttribute(Constants.TENANT, defaultTenant);
+        
+//        loginService.updateLoginInfo(id, remoteAddress)
     }
 
 

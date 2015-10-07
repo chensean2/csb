@@ -9,9 +9,9 @@ import java.util.Map;
 import java.util.Set;
 
 import javax.annotation.PostConstruct;
-import javax.inject.Inject;
 import javax.servlet.http.HttpServletRequest;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.access.ConfigAttribute;
 import org.springframework.security.access.SecurityConfig;
@@ -21,17 +21,21 @@ import org.springframework.security.web.util.AntPathRequestMatcher;
 import org.springframework.security.web.util.RequestMatcher;
 import org.springframework.stereotype.Service;
 
-import com.csb.core.entity.Resource;
-import com.csb.core.entity.Role;
-import com.csb.core.repository.RoleRepository;
+import com.csb.core.model.Resource;
+import com.csb.core.model.Role;
+import com.csb.core.service.ResourceService;
+import com.csb.core.service.RoleService;
 
 
 @Service("customSecurityMetadataSource")
 public class CustomInvocationSecurityMetadataSourceService implements FilterInvocationSecurityMetadataSource {
 
     private static Map<RequestMatcher, Collection<ConfigAttribute>> resourceMap;
-    @Inject
-    protected RoleRepository roleRepository;
+    @Autowired
+    protected RoleService roleService;
+    
+    @Autowired
+    protected ResourceService resourceService;
     
     @Value("${identity.role.prefix:ROLE_}")
     protected String rolePrefix;
@@ -47,12 +51,13 @@ public class CustomInvocationSecurityMetadataSourceService implements FilterInvo
     public void loadResourceDefine() {
         resourceMap = new HashMap<RequestMatcher, Collection<ConfigAttribute>>();
 
-        List<Role> roleList = roleRepository.findAll();
-
+        List<Role> roleList = roleService.findAll();
+        Set<Resource> resourceList = null;
         for (Role role : roleList) {
             ConfigAttribute ca = new SecurityConfig(rolePrefix + role.getName());
             
-            for (Resource res : role.getResources()) {
+            resourceList = resourceService.findByRoleId(role.getId());
+            for (Resource res : resourceList) {
                 String url = res.getUrl();
                 RequestMatcher requestMatcher = new AntPathRequestMatcher(url);
                 if (resourceMap.containsKey(requestMatcher)) {
@@ -91,10 +96,12 @@ public class CustomInvocationSecurityMetadataSourceService implements FilterInvo
         if(resourceMap == null || resourceMap.isEmpty()){
             //if the record haven't prepared, just load from DB directly. This case maybe occurred when clear Cache in Statistic Feature. 
             Collection<ConfigAttribute> atts = new ArrayList<ConfigAttribute>();
-            List<Role> roleList = roleRepository.findAll();
+            List<Role> roleList = roleService.findAll();
+            Set<Resource> resourceList = null;
             for (Role role : roleList) {
                 ConfigAttribute ca = new SecurityConfig(rolePrefix + role.getName());
-                for (Resource res : role.getResources()) {
+                resourceList = resourceService.findByRoleId(role.getId());
+                for (Resource res : resourceList) {
                     String url = res.getUrl();
                     RequestMatcher requestMatcher = new AntPathRequestMatcher(url);
                     if (requestMatcher.matches(request)) {
