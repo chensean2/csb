@@ -13,8 +13,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
-import com.csb.common.util.Encodes;
-import com.csb.core.platform.entity.Plan;
+import com.csb.core.model.PlatformPlan;
 
 @Service
 public class DefaultSaaSProvisionService implements SaaSProvisionService {
@@ -22,7 +21,7 @@ public class DefaultSaaSProvisionService implements SaaSProvisionService {
 	private static Logger logger = LoggerFactory.getLogger(DefaultSaaSProvisionService.class);
 
 	@Override
-	public Map<String, String> createSubscripiton(Plan plan) {
+	public Map<String, String> createSubscripiton(PlatformPlan plan) {
 		Map<String, String> responseMap = new HashMap<String, String>();
 		String saasURL = "http://localhost:9090/saas/provision";
 		String eventURL = "http://localhost:8080/csb-mall/api/integration/events/" + plan.getEventId();

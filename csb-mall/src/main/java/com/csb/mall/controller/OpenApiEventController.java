@@ -8,72 +8,88 @@ import javax.validation.Validator;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.RestController;
 
-import com.csb.core.platform.entity.Plan;
-import com.csb.core.platform.entity.SaasPlan;
-import com.csb.core.platform.entity.SaasSubscriptionPlan;
-import com.csb.core.platform.entity.SaasSubscriptionPlanItem;
-import com.csb.core.platform.repository.PlanRepository;
+import com.csb.core.model.PlatformPlan;
+import com.csb.core.model.PlatformSaasPlan;
+import com.csb.core.model.PlatformSaasSubscriptionPlan;
+import com.csb.core.model.PlatformSaasSubscriptionPlanItem;
+import com.csb.core.service.PlatformPlanService;
+import com.csb.core.service.PlatformSaasPlanService;
+import com.csb.core.service.PlatformSaasSubscriptionPlanItemService;
+import com.csb.core.service.PlatformSaasSubscriptionPlanService;
 import com.csb.openapi.event.model.Company;
 import com.csb.openapi.event.model.Creator;
 import com.csb.openapi.event.model.Order;
 import com.csb.openapi.event.model.OrderItem;
 import com.csb.openapi.event.model.Subscription;
 
-@Controller
+@RestController
 @RequestMapping(value = "/api/integration/events")
 public class OpenApiEventController {
 
-	private static Logger logger = LoggerFactory.getLogger(OpenApiEventController.class);
+    private static Logger logger = LoggerFactory.getLogger(OpenApiEventController.class);
 
-	@Autowired
-	private PlanRepository planRepository;
+    @Autowired
+    private PlatformPlanService platformPlanService;
 
-	@Autowired
-	private Validator validator;
+    @Autowired
+    private PlatformSaasPlanService platformSaasPlanService;
 
-	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
-	@ResponseBody
-	@Transactional
-	public Subscription get(@PathVariable("id") String eventId) {
-		Subscription subscription = new Subscription();
-		Plan plan = planRepository.findByEventId(eventId);
-		SaasPlan saasPlan = plan.getSaasPlan();
-		SaasSubscriptionPlan saasSubscriptionPlan = saasPlan.getSaaSSubscriptionPlan();
-		if (saasPlan != null) {
+    @Autowired
+    private PlatformSaasSubscriptionPlanService platformSaasSubscriptionPlanService;
 
-			subscription.setTerm(saasPlan.getType());
-			subscription.setAction(saasSubscriptionPlan.getAction());
-			Company company = new Company();
-			company.setName(saasSubscriptionPlan.getCompanyName());
-			company.setPhoneNumber(saasSubscriptionPlan.getCompanyPhoneNumber());
-			company.setUuid(saasSubscriptionPlan.getCompanyUUID());
-			subscription.setCompany(company);
+    @Autowired
+    private PlatformSaasSubscriptionPlanItemService platformSaasSubscriptionPlanItemService;
+    
+    
+    @Autowired
+    private Validator validator;
 
-			Creator creator = new Creator();
-			creator.setName(saasSubscriptionPlan.getCreatorLastName() + saasSubscriptionPlan.getCreatorFirstName());
-			creator.setEmail(saasSubscriptionPlan.getCreatorEmail());
-			creator.setOpenId(saasSubscriptionPlan.getCreatorOpenId());
-			subscription.setCreator(creator);
-			Order order = new Order();
-			order.setPlanCode(saasSubscriptionPlan.getPlanCode());
-			List<OrderItem> items = new ArrayList<OrderItem>();
-			for (SaasSubscriptionPlanItem saasSubscriptionPlanItem : saasSubscriptionPlan.getSaaSSubscriptionPlanItemList()) {
-				OrderItem orderItem = new OrderItem();
-				orderItem.setQuantity(saasSubscriptionPlanItem.getQuantity());
-				orderItem.setUnit(saasSubscriptionPlanItem.getUnit());
-				items.add(orderItem);
-			}
-			order.setItems(items);
-			subscription.setOrder(order);
-		}
-		return subscription;
-	}
+    @RequestMapping(value = "/{id}", method = RequestMethod.GET)
+    @ResponseBody
+    @Transactional
+    public Subscription get(@PathVariable("id") String eventId) {
+        Subscription subscription = new Subscription();
+        PlatformPlan plan = platformPlanService.getPlanByEventId(eventId);
+        PlatformSaasPlan saasPlan = platformSaasPlanService.get(plan.getSaasPlanId());
+        PlatformSaasSubscriptionPlan saasSubscriptionPlan = platformSaasSubscriptionPlanService.get(saasPlan.getSaasSubscriptionPlanId());
+        if (saasPlan != null) {
+
+            subscription.setTerm(saasPlan.getType());
+            subscription.setAction(saasSubscriptionPlan.getAction());
+            Company company = new Company();
+            company.setName(saasSubscriptionPlan.getCompanyName());
+            company.setPhoneNumber(saasSubscriptionPlan.getCompanyPhonenumber());
+            company.setUuid(saasSubscriptionPlan.getCompanyUuid());
+            subscription.setCompany(company);
+
+            Creator creator = new Creator();
+            creator.setName(saasSubscriptionPlan.getCreatorLastname() + saasSubscriptionPlan.getCreatorFirstname());
+            creator.setEmail(saasSubscriptionPlan.getCreatorEmail());
+            creator.setOpenId(saasSubscriptionPlan.getCreatorOpenid());
+            subscription.setCreator(creator);
+            Order order = new Order();
+            order.setPlanCode(saasSubscriptionPlan.getPlanCode());
+            List<OrderItem> items = new ArrayList<OrderItem>();
+            PlatformSaasSubscriptionPlanItem paramPlatformSaasSubscriptionPlanItem = new PlatformSaasSubscriptionPlanItem();
+            paramPlatformSaasSubscriptionPlanItem.setSaasSubscriptionPlanId(saasSubscriptionPlan.getId());
+            List<PlatformSaasSubscriptionPlanItem> platformSaasSubscriptionPlanItemList = platformSaasSubscriptionPlanItemService.find(paramPlatformSaasSubscriptionPlanItem);
+            for (PlatformSaasSubscriptionPlanItem saasSubscriptionPlanItem : platformSaasSubscriptionPlanItemList) {
+                OrderItem orderItem = new OrderItem();
+                orderItem.setQuantity(saasSubscriptionPlanItem.getQuantity());
+                orderItem.setUnit(saasSubscriptionPlanItem.getUnit());
+                items.add(orderItem);
+            }
+            order.setItems(items);
+            subscription.setOrder(order);
+        }
+        return subscription;
+    }
 
 }

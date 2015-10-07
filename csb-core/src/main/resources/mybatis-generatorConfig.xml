@@ -93,7 +93,7 @@
 		<table tableName="csb_payment_plan" domainObjectName="PaymentPlan">
 			<generatedKey column="id" sqlStatement="Mysql" identity="true" />
 		</table>
-		<table tableName="csb_platform_iaas_plan" domainObjectName="PlatformIsPlan">
+		<table tableName="csb_platform_iaas_plan" domainObjectName="PlatformIaasPlan">
 			<generatedKey column="id" sqlStatement="Mysql" identity="true" />
 		</table>
 		<table tableName="csb_platform_plan" domainObjectName="PlatformPlan">

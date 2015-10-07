@@ -1,9 +1,9 @@
 package com.csb.platform.broker.component;
 
-import com.csb.core.platform.entity.Plan;
+import com.csb.core.model.PlatformPlan;
 
 
 public interface BrokerComponent {
 
-    public void broke(Plan plan);
+    public void broke(PlatformPlan plan);
 }

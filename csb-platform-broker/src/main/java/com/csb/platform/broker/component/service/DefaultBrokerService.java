@@ -6,8 +6,9 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.csb.common.constant.PlatformConstant;
-import com.csb.core.platform.entity.Plan;
-import com.csb.core.platform.repository.PlanRepository;
+import com.csb.core.model.PlatformPlan;
+import com.csb.core.service.PlatformPlanService;
+import com.csb.core.service.PlatformSaasPlanService;
 import com.csb.platform.broker.component.BrokerComponent;
 
 @Service
@@ -22,14 +23,17 @@ public class DefaultBrokerService implements BrokerService {
     private BrokerComponent iaasBrokerComponent;
 
 
+
     @Autowired
-    private PlanRepository planRepository;
+    private PlatformPlanService platformPlanService;
+
+    @Autowired
+    private PlatformSaasPlanService platformSaasPlanService;
 
     @Override
     @Transactional
     public void broke(String eventId) {
-
-        Plan plan = planRepository.findByEventId(eventId);
+        PlatformPlan plan = platformPlanService.getPlanByEventId(eventId);
         if (plan != null && PlatformConstant.RESOURCE_CATEGORY_SAAS.equals(plan.getCategory())) {
             saasBrokerComponent.broke(plan);
         }else if (plan != null && PlatformConstant.RESOURCE_CATEGORY_IAAS.equals(plan.getCategory())) {

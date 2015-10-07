@@ -6,7 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import com.csb.core.model.AppCategory;
 import com.csb.core.model.PlatformPlan;
 import com.csb.core.service.AppCategoryService;
-import com.csb.core.service.PlanService;
+import com.csb.core.service.PlatformPlanService;
 
 public class EntityTest extends BaseIT {
 
@@ -31,7 +31,7 @@ public class EntityTest extends BaseIT {
     @Autowired
     private AppCategoryService appCategoryService;
     @Autowired
-    private PlanService planService;
+    private PlatformPlanService platformPlanService;
     
     @Test
     public void testAppCategory() {
@@ -41,7 +41,7 @@ public class EntityTest extends BaseIT {
 
     @Test
     public void testPlan() {
-        PlatformPlan plan = planService.get(1L);
+        PlatformPlan plan = platformPlanService.get(1L);
         System.out.println("-----------" + plan.getEventId());
     }
 

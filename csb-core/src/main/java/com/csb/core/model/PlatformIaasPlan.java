@@ -4,7 +4,7 @@ import java.util.Date;
 import javax.persistence.*;
 
 @Table(name = "csb_platform_iaas_plan")
-public class PlatformIsPlan {
+public class PlatformIaasPlan {
     @Id
     @Column(name = "ID")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
