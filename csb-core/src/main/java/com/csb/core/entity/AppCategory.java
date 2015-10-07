@@ -17,7 +17,7 @@ import com.csb.core.common.BaseEntity;
 
 @Entity
 @Table(name = "csb_app_category")
-public class AppCategory extends BaseEntity {
+public class AppCategory extends BaseEntity<Long> {
 
     @Column(name = "name")
     private String name;
