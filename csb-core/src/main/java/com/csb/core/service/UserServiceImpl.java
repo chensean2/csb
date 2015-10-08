@@ -29,7 +29,7 @@ public class UserServiceImpl extends BaseServiceImpl<User> implements UserServic
         String userType = user.getUserType();
         if(userType.equals(PlatformConstant.USER_TYPE_PERSON))
         {
-            userRolesService.save()
+//            userRolesService.save()
         }else if(userType.equals(PlatformConstant.USER_TYPE_PROVIDER))
         {
             
@@ -46,7 +46,7 @@ public class UserServiceImpl extends BaseServiceImpl<User> implements UserServic
     @Override
     public void active(User user)
     {
-        user.setAccountstatus(PlatformConstant.ACCOUNT_STATUS_ACTIVE);
+        user.setAccountStatus(PlatformConstant.ACCOUNT_STATUS_ACTIVE);
         this.update(user);
     }
     

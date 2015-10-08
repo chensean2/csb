@@ -56,10 +56,10 @@ public class DefaultLoginServiceImpl implements LoginService{
         if (user == null) {
             throw new UsernameNotFoundException("notFound");
         }
-        if(user.getAccountstatus().equalsIgnoreCase(PlatformConstant.ACCOUNT_STATUS_NEW)){
+        if(user.getAccountStatus().equalsIgnoreCase(PlatformConstant.ACCOUNT_STATUS_NEW)){
                 throw new DisabledException("new");
         }
-        if(user.getAccountstatus().equalsIgnoreCase(PlatformConstant.ACCOUNT_STATUS_LOCKED)){
+        if(user.getAccountStatus().equalsIgnoreCase(PlatformConstant.ACCOUNT_STATUS_LOCKED)){
                 throw new LockedException("locked");
         }
         //TODO other login errors

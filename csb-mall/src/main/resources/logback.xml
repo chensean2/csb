@@ -66,17 +66,9 @@
 	<logger name="business" level="INFO" additivity="false">
 		<appender-ref ref="businessLogFile" />
 	</logger>
-	
-	<!-- metrics log 使用独立的appender，不继承Root的appender -->
-	<logger name="metrics" level="INFO" additivity="false">
-		<appender-ref ref="metricsLogFile" />
-	</logger>
 
 	<!--log4jdbc -->
 	<logger name="jdbc.sqltiming" level="INFO"/>
-	
-	<!-- springside modules -->
-	<logger name="org.springside.modules" level="INFO" />
 	
 	<!-- cxf inbound/outbound logger -->
 	<logger name="org.apache.cxf.services" level="INFO" />

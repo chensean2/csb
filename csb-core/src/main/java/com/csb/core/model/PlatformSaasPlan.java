@@ -6,35 +6,36 @@ import javax.persistence.*;
 @Table(name = "csb_platform_saas_plan")
 public class PlatformSaasPlan {
     @Id
-    @Column(name = "ID")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "CREATED_BY")
+    @Column(name = "created_by")
     private String createdBy;
 
-    @Column(name = "CREATED_DT")
+    @Column(name = "created_dt")
     private Date createdDt;
 
-    @Column(name = "LAST_UPDATED_BY")
+    @Column(name = "last_updated_by")
     private String lastUpdatedBy;
 
-    @Column(name = "LAST_UPDATED_DT")
+    @Column(name = "last_updated_dt")
     private Date lastUpdatedDt;
 
-    @Column(name = "VERSION")
     private Integer version;
 
     private String type;
 
-    @Column(name = "saas_assignment_plan")
-    private Long saasAssignmentPlan;
+    @Column(name = "saas_assignment_plan_id")
+    private Long saasAssignmentPlanId;
 
     @Column(name = "saas_subscription_plan_id")
     private Long saasSubscriptionPlanId;
 
+    @Column(name = "saas_assignment_plan")
+    private Long saasAssignmentPlan;
+
     /**
-     * @return ID
+     * @return id
      */
     public Long getId() {
         return id;
@@ -48,7 +49,7 @@ public class PlatformSaasPlan {
     }
 
     /**
-     * @return CREATED_BY
+     * @return created_by
      */
     public String getCreatedBy() {
         return createdBy;
@@ -62,7 +63,7 @@ public class PlatformSaasPlan {
     }
 
     /**
-     * @return CREATED_DT
+     * @return created_dt
      */
     public Date getCreatedDt() {
         return createdDt;
@@ -76,7 +77,7 @@ public class PlatformSaasPlan {
     }
 
     /**
-     * @return LAST_UPDATED_BY
+     * @return last_updated_by
      */
     public String getLastUpdatedBy() {
         return lastUpdatedBy;
@@ -90,7 +91,7 @@ public class PlatformSaasPlan {
     }
 
     /**
-     * @return LAST_UPDATED_DT
+     * @return last_updated_dt
      */
     public Date getLastUpdatedDt() {
         return lastUpdatedDt;
@@ -104,7 +105,7 @@ public class PlatformSaasPlan {
     }
 
     /**
-     * @return VERSION
+     * @return version
      */
     public Integer getVersion() {
         return version;
@@ -132,17 +133,17 @@ public class PlatformSaasPlan {
     }
 
     /**
-     * @return saas_assignment_plan
+     * @return saas_assignment_plan_id
      */
-    public Long getSaasAssignmentPlan() {
-        return saasAssignmentPlan;
+    public Long getSaasAssignmentPlanId() {
+        return saasAssignmentPlanId;
     }
 
     /**
-     * @param saasAssignmentPlan
+     * @param saasAssignmentPlanId
      */
-    public void setSaasAssignmentPlan(Long saasAssignmentPlan) {
-        this.saasAssignmentPlan = saasAssignmentPlan;
+    public void setSaasAssignmentPlanId(Long saasAssignmentPlanId) {
+        this.saasAssignmentPlanId = saasAssignmentPlanId;
     }
 
     /**
@@ -157,5 +158,19 @@ public class PlatformSaasPlan {
      */
     public void setSaasSubscriptionPlanId(Long saasSubscriptionPlanId) {
         this.saasSubscriptionPlanId = saasSubscriptionPlanId;
+    }
+
+    /**
+     * @return saas_assignment_plan
+     */
+    public Long getSaasAssignmentPlan() {
+        return saasAssignmentPlan;
+    }
+
+    /**
+     * @param saasAssignmentPlan
+     */
+    public void setSaasAssignmentPlan(Long saasAssignmentPlan) {
+        this.saasAssignmentPlan = saasAssignmentPlan;
     }
 }

@@ -1,6 +1,5 @@
 package com.csb.parser.component;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,11 +7,14 @@ import org.springframework.stereotype.Component;
 
 import com.csb.common.constant.PlatformConstant;
 import com.csb.common.util.UUIDUtil;
-import com.csb.core.platform.entity.Plan;
-import com.csb.core.platform.entity.SaasPlan;
-import com.csb.core.platform.entity.SaasSubscriptionPlan;
-import com.csb.core.platform.entity.SaasSubscriptionPlanItem;
-import com.csb.core.platform.repository.PlanRepository;
+import com.csb.core.model.PlatformPlan;
+import com.csb.core.model.PlatformSaasPlan;
+import com.csb.core.model.PlatformSaasSubscriptionPlan;
+import com.csb.core.model.PlatformSaasSubscriptionPlanItem;
+import com.csb.core.service.PlatformPlanService;
+import com.csb.core.service.PlatformSaasPlanService;
+import com.csb.core.service.PlatformSaasSubscriptionPlanItemService;
+import com.csb.core.service.PlatformSaasSubscriptionPlanService;
 import com.csb.parser.component.model.AssignmentInfo;
 import com.csb.parser.component.model.CompanyInfo;
 import com.csb.parser.component.model.CreatorInfo;
@@ -26,56 +28,69 @@ import com.csb.parser.component.model.ValidationInfo;
 public class SaaSParserComponent implements ParserComponent {
 
     @Autowired
-    private PlanRepository planRepository;
+    private PlatformPlanService platformPlanService;
+    
+    @Autowired
+    private PlatformSaasPlanService platformSaasPlanService;
+    
+    @Autowired
+    private PlatformSaasSubscriptionPlanService platformSaasSubscriptionPlanService;
+    
+    @Autowired
+    private PlatformSaasSubscriptionPlanItemService platformSaasSubscriptionPlanItemService;
+    
     
     @Override
     public String parse(SubscriptionInfo subscriptionInfo) {
-        Plan plan = new Plan();
+        
+        SaaSInfo saasInfo = subscriptionInfo.getSaasInfo();
+        SaaSPlanInfo saasPlanInfo = saasInfo.getSaaSPlanInfo();
+        List<SaaSPlanItemInfo> saasPlanItemInfoList = saasPlanInfo.getSaasPlanItemInfoList();
+        CompanyInfo companyInfo = saasInfo.getCompanyInfo();
+        CreatorInfo creatorInfo = saasInfo.getCreatorInfo();
+        
+        
+        PlatformSaasSubscriptionPlan saasSubscriptionPlan = new PlatformSaasSubscriptionPlan();
+        saasSubscriptionPlan.setAction(saasInfo.getAction());
+        saasSubscriptionPlan.setCompanyName(companyInfo.getName());
+        saasSubscriptionPlan.setCompanyPhonenumber(companyInfo.getPhoneNumber());
+        saasSubscriptionPlan.setCompanyUuid(companyInfo.getUuid());
+        saasSubscriptionPlan.setCreatorEmail(creatorInfo.getEmail());
+        saasSubscriptionPlan.setCreatorFirstname(creatorInfo.getFirstName());
+        saasSubscriptionPlan.setCreatorLastname(creatorInfo.getLastName());
+        saasSubscriptionPlan.setCreatorOpenid(creatorInfo.getOpenId());
+        saasSubscriptionPlan.setPlanCode(saasPlanInfo.getPlanCode());
+        Long saasSubscriptionPlanId = platformSaasSubscriptionPlanService.save(saasSubscriptionPlan);
+        
+        
+        for(SaaSPlanItemInfo saasPlanItemInfo : saasPlanItemInfoList){
+            PlatformSaasSubscriptionPlanItem saasSubscriptionPlanItem = new PlatformSaasSubscriptionPlanItem();
+            saasSubscriptionPlanItem.setQuantity(saasPlanItemInfo.getQuantity());
+            saasSubscriptionPlanItem.setUnit(saasPlanItemInfo.getUnit());
+            saasSubscriptionPlanItem.setSaasSubscriptionPlanId(saasSubscriptionPlanId);
+            platformSaasSubscriptionPlanItemService.save(saasSubscriptionPlanItem);
+        }
+        
+        
+        PlatformSaasPlan saasPlan = new PlatformSaasPlan();
+        saasPlan.setType(PlatformConstant.PROVSION_TYPE_SUBSCRIPTION);
+        saasPlan.setSaasSubscriptionPlanId(saasSubscriptionPlanId);
+        Long saasPlanId = platformSaasPlanService.save(saasPlan);
+        
+        
+        PlatformPlan plan = new PlatformPlan();
         plan.setEventId(UUIDUtil.generate());
         plan.setAppPlanId(subscriptionInfo.getAppPlanId());
         plan.setCategory(subscriptionInfo.getCategory());
         plan.setStatus(PlatformConstant.PROVSION_STATUS_PENDING);
         plan.setTraceId(subscriptionInfo.getTraceId());
+        plan.setSaasPlanId(saasPlanId);
+        Long planId = platformPlanService.save(plan);
         
-        SaaSInfo saasInfo = subscriptionInfo.getSaasInfo();
-        CompanyInfo companyInfo = saasInfo.getCompanyInfo();
-        CreatorInfo creatorInfo = saasInfo.getCreatorInfo();
-        SaaSPlanInfo saasPlanInfo = saasInfo.getSaaSPlanInfo();
-        List<SaaSPlanItemInfo> saasPlanItemInfoList = saasPlanInfo.getSaasPlanItemInfoList();
-        
-        SaasPlan saasPlan = new SaasPlan();
-        saasPlan.setType(PlatformConstant.PROVSION_TYPE_SUBSCRIPTION);
-        
-        
-        SaasSubscriptionPlan saasSubscriptionPlan = new SaasSubscriptionPlan();
-        saasSubscriptionPlan.setAction(saasInfo.getAction());
-        saasSubscriptionPlan.setCompanyName(companyInfo.getName());
-        saasSubscriptionPlan.setCompanyPhoneNumber(companyInfo.getPhoneNumber());
-        saasSubscriptionPlan.setCompanyUUID(companyInfo.getUuid());
-        
-        saasSubscriptionPlan.setCreatorEmail(creatorInfo.getEmail());
-        saasSubscriptionPlan.setCreatorFirstName(creatorInfo.getFirstName());
-        saasSubscriptionPlan.setCreatorLastName(creatorInfo.getLastName());
-        saasSubscriptionPlan.setCreatorOpenId(creatorInfo.getOpenId());
-        
-        saasSubscriptionPlan.setPlanCode(saasPlanInfo.getPlanCode());
-        List<SaasSubscriptionPlanItem> saasSubscriptionPlanItemList = new ArrayList<SaasSubscriptionPlanItem>();
-        for(SaaSPlanItemInfo saasPlanItemInfo : saasPlanItemInfoList){
-            SaasSubscriptionPlanItem saasSubscriptionPlanItem = new SaasSubscriptionPlanItem();
-            saasSubscriptionPlanItem.setQuantity(saasPlanItemInfo.getQuantity());
-            saasSubscriptionPlanItem.setUnit(saasPlanItemInfo.getUnit());
-            saasSubscriptionPlanItem.setSaaSSubscriptionPlan(saasSubscriptionPlan);
-            saasSubscriptionPlanItemList.add(saasSubscriptionPlanItem);
-        }
-        saasSubscriptionPlan.setSaaSSubscriptionPlanItemList(saasSubscriptionPlanItemList);
-        saasPlan.setSaaSSubscriptionPlan(saasSubscriptionPlan);
-        
-        plan.setSaasPlan(saasPlan);
-        Plan planResult = planRepository.save(plan);
-        if(planResult == null){
+        if(planId == null){
                 return null;
         }else{
-                return planResult.getEventId();
+                return plan.getEventId();
         }
     }
 

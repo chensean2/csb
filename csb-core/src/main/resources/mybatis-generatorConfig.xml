@@ -24,9 +24,9 @@
 
 		<sqlMapGenerator targetPackage="${targetXMLPackage}"
 			targetProject="${targetResourcesProject}" />
-
+<!-- 
 		<javaClientGenerator targetPackage="${targetMapperPackage}"
-			targetProject="${targetJavaProject}" type="XMLMAPPER" />
+			targetProject="${targetJavaProject}" type="XMLMAPPER" /> -->
 
 		<table tableName="aa_permission" domainObjectName="Permission">
 			<generatedKey column="id" sqlStatement="Mysql" identity="true" />
@@ -93,7 +93,7 @@
 		<table tableName="csb_payment_plan" domainObjectName="PaymentPlan">
 			<generatedKey column="id" sqlStatement="Mysql" identity="true" />
 		</table>
-		<table tableName="csb_platform_iaas_plan" domainObjectName="PlatformIsPlan">
+		<table tableName="csb_platform_iaas_plan" domainObjectName="PlatformIaasPlan">
 			<generatedKey column="id" sqlStatement="Mysql" identity="true" />
 		</table>
 		<table tableName="csb_platform_plan" domainObjectName="PlatformPlan">

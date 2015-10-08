@@ -6,11 +6,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.csb.core.platform.entity.Plan;
-import com.csb.core.platform.entity.SaasPlan;
+import com.csb.core.model.PlatformPlan;
+import com.csb.core.model.PlatformSaasPlan;
+import com.csb.core.model.PlatformSaasProvisionResponse;
 import com.csb.core.platform.entity.SaasProvisionResponse;
-import com.csb.core.platform.repository.PlanRepository;
-import com.csb.core.platform.repository.SaasProvisionResponseRepository;
+import com.csb.core.service.PlatformPlanService;
+import com.csb.core.service.PlatformSaasPlanService;
+import com.csb.core.service.PlatformSaasProvisionResponseService;
 import com.csb.parser.component.model.AssignmentInfo;
 import com.csb.parser.component.model.AssignmentResult;
 import com.csb.parser.component.model.AssignmentStatus;
@@ -30,13 +32,17 @@ public class DefaultControllerService implements ControllerService {
 
     @Autowired
     private BrokerService csbBrokerService;
-    
+
     @Autowired
-    private PlanRepository planRepository;
-    
+    private PlatformPlanService platformPlanService;
+
     @Autowired
-    private SaasProvisionResponseRepository saasProvisionResponseRepository;
-    
+    private PlatformSaasPlanService platformSaasPlanService;
+
+    @Autowired
+    private PlatformSaasProvisionResponseService platformSaasProvisionResponseService;
+
+
     @Transactional
     @Override
     public SubscriptionResult createSubscription(SubscriptionInfo subscriptionInfo) {
@@ -48,14 +54,14 @@ public class DefaultControllerService implements ControllerService {
             // TODO Auto-generated catch block
             e.printStackTrace();
         }
-        if(eventId == null){
+        if (eventId == null) {
             //
             return subscriptionResult;
         }
         subscriptionResult.setEventId(eventId);
         // TODO, in future, we need use MQ to handle the request asynchronously, current, we use thread to handle.
-        //ExecutorService executorService = Executors.newSingleThreadExecutor();
-        //executorService.execute(new ParserRunable(eventId));
+        // ExecutorService executorService = Executors.newSingleThreadExecutor();
+        // executorService.execute(new ParserRunable(eventId));
         return subscriptionResult;
     }
 
@@ -98,25 +104,27 @@ public class DefaultControllerService implements ControllerService {
     @Override
     @Transactional
     public SubscriptionStatus getSubscriptionStatus(String eventId) {
-    	SubscriptionStatus status = new SubscriptionStatus();
-    	//TODO
-    	status.setStatus("INPROCESS");
-    	Plan plan = planRepository.findByEventId(eventId);
-    	
-    	if(plan != null){
-    		SaasPlan saasPlan = plan.getSaasPlan();
-    		List<SaasProvisionResponse> saaSProvisionResponseList = saasProvisionResponseRepository.findBySaasPlan(saasPlan);
-    		if(saaSProvisionResponseList != null && saaSProvisionResponseList.size() >0){
-    			SaasProvisionResponse saasProvisionResponse = saaSProvisionResponseList.get(0);
-    			if(saasProvisionResponse.getSuccessCode().equals("true")){
-    				status.setStatus("SUCCESS");
-    			}else{
-    				status.setStatus("FAILED");
-    			}
-    			status.setRaw(saasProvisionResponse.getRaw());
-    		}
-    	}
-        // TODO Auto-generated method stub
+        SubscriptionStatus status = new SubscriptionStatus();
+        // TODO
+        status.setStatus("INPROCESS");
+
+        PlatformPlan plan = platformPlanService.getPlanByEventId(eventId);
+
+        if (plan != null) {
+            Long saasPlanId = plan.getSaasPlanId();
+            PlatformSaasProvisionResponse paramPlatformSaasProvisionResponse = new PlatformSaasProvisionResponse();
+            paramPlatformSaasProvisionResponse.setSaasPlanId(saasPlanId);
+            List<PlatformSaasProvisionResponse> saaSProvisionResponseList = platformSaasProvisionResponseService.find(paramPlatformSaasProvisionResponse);
+            if (saaSProvisionResponseList != null && saaSProvisionResponseList.size() > 0) {
+                PlatformSaasProvisionResponse saasProvisionResponse = saaSProvisionResponseList.get(0);
+                if (saasProvisionResponse.getSuccessCode().equals("true")) {
+                    status.setStatus("SUCCESS");
+                } else {
+                    status.setStatus("FAILED");
+                }
+                status.setRaw(saasProvisionResponse.getRaw());
+            }
+        }
         return status;
     }
 
@@ -125,26 +133,24 @@ public class DefaultControllerService implements ControllerService {
         // TODO Auto-generated method stub
         return null;
     }
-    
-    
-    class ParserRunable implements Runnable{
+
+    class ParserRunable implements Runnable {
 
         private String eventId;
-        
-        public ParserRunable(String eventId ){
+
+        public ParserRunable(String eventId) {
             this.eventId = eventId;
         }
+
         @Override
         public void run() {
-        	csbBrokerService.broke(eventId);
+            csbBrokerService.broke(eventId);
         }
 
-            
     }
 
-
-	@Override
-	public void broke(String eventId) {
-		csbBrokerService.broke(eventId);
-	}
+    @Override
+    public void broke(String eventId) {
+        csbBrokerService.broke(eventId);
+    }
 }

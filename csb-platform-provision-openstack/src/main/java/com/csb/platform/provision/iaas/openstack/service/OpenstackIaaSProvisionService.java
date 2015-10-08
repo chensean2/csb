@@ -5,9 +5,7 @@ import java.util.Map;
 
 import org.openstack4j.api.Builders;
 import org.openstack4j.api.OSClient;
-import org.openstack4j.model.compute.ActionResponse;
 import org.openstack4j.model.compute.Flavor;
-import org.openstack4j.model.compute.FloatingIP;
 import org.openstack4j.model.compute.Server;
 import org.openstack4j.model.identity.Tenant;
 import org.openstack4j.model.identity.User;
@@ -15,8 +13,7 @@ import org.openstack4j.model.image.Image;
 import org.openstack4j.openstack.OSFactory;
 import org.springframework.stereotype.Service;
 
-import com.csb.core.platform.entity.IaaSPlan;
-import com.csb.core.platform.entity.Plan;
+import com.csb.core.model.PlatformIaasPlan;
 import com.csb.platform.provision.iaas.service.IaaSProvisionService;
 
 @Service("openstackIaaSProvisionService")
@@ -88,9 +85,8 @@ public class OpenstackIaaSProvisionService implements IaaSProvisionService {
 	}
 
 	@Override
-	public Map<String, String> createServer(Plan plan) {
+	public Map<String, String> createServer(PlatformIaasPlan iaasPlan) {
 
-		IaaSPlan iaasPlan = plan.getIaasPlan();
 		OSClient os = OSFactory.builder().endpoint("http://os.enocloud.com:5000/v2.0")
 				.credentials("jamie.marshall", "aiquahre").tenantName("prologue").authenticate();
 				/*
