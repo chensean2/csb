@@ -35,24 +35,23 @@ public class UserController {
 	@RequestMapping(value = "/register", method = RequestMethod.GET)
 	@ResponseBody
 	public ResponseEntity<?> register() {
-	    //TODO remove later after 
-	    User s = new User();
+	    //TODO remove later after , now default user as Active first
+	    //Prepare user
+	    User user = new User();
 	    StandardPasswordEncoder passwordEncoder = new StandardPasswordEncoder();
-	    s.setEmail(DevelopConstant.USER_EMAIL);
-	    s.setPassword(passwordEncoder.encode(DevelopConstant.USER_PASSWORD));
-	    s.setMobilenumber(DevelopConstant.USER_MOBILE);
-	    s.setAccountstatus(PlatformConstant.ACCOUNT_STATUS_ACTIVE);
-//	    s.setUserType(PlatformConstant.USER_TYPE_PROVIDER);
+	    user.setEmail(DevelopConstant.USER_EMAIL);
+	    user.setPassword(passwordEncoder.encode(DevelopConstant.USER_PASSWORD));
+	    user.setMobilenumber(DevelopConstant.USER_MOBILE);
+	    user.setAccountstatus(PlatformConstant.ACCOUNT_STATUS_ACTIVE);
+	    user.setUserType(PlatformConstant.USER_TYPE_PROVIDER);
 	    
-	    userService.save(s);
-	    
-	    
+	    userService.register(user);
 	    
 	    s = userService.findByUniqueKey(s);
 	    return new ResponseEntity(s,HttpStatus.CREATED);
 	}
 	
-	@RequestMapping(value = "/active", method = RequestMethod.POST)
+	@RequestMapping(value = "/active", method = RequestMethod.GET)
         @ResponseBody
         public ResponseEntity<?> active(@RequestBody User user) {
                 return null;
