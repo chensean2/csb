@@ -205,7 +205,6 @@ public class SubscriptionController {
 
         s.setSaasInfo(saasInfo);
         SubscriptionResult result = controllerService.createSubscription(s);
-
         if (result.getEventId() != null) {
             controllerService.broke(result.getEventId());
         }
@@ -294,11 +293,8 @@ public class SubscriptionController {
             logger.debug("Provision SaaS Manifest End ...");
             return new ResponseEntity<String>(status.getRaw(), HttpStatus.CREATED);
         } catch (Exception e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
+            throw new RuntimeException(e);
         }
-
-        return new ResponseEntity<String>(HttpStatus.INTERNAL_SERVER_ERROR);
 
     }
 
@@ -308,7 +304,7 @@ public class SubscriptionController {
 
         SubscriptionStatus status = controllerService.getSubscriptionStatus(eventId);
 
-        return new ResponseEntity<SubscriptionStatus>(status, HttpStatus.INTERNAL_SERVER_ERROR);
+        return new ResponseEntity<SubscriptionStatus>(status, HttpStatus.OK);
 
     }
 }

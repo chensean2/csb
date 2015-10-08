@@ -6,36 +6,31 @@ import javax.persistence.*;
 @Table(name = "csb_app_package")
 public class AppPackage {
     @Id
-    @Column(name = "ID")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "CREATED_BY")
+    @Column(name = "created_by")
     private String createdBy;
 
-    @Column(name = "CREATED_DT")
+    @Column(name = "created_dt")
     private Date createdDt;
 
-    @Column(name = "LAST_UPDATED_BY")
+    @Column(name = "last_updated_by")
     private String lastUpdatedBy;
 
-    @Column(name = "LAST_UPDATED_DT")
+    @Column(name = "last_updated_dt")
     private Date lastUpdatedDt;
 
-    @Column(name = "VERSION")
     private Integer version;
 
-    @Column(name = "DESCRIPTION")
     private String description;
 
-    @Column(name = "NAME")
     private String name;
 
-    @Column(name = "TYPE")
     private String type;
 
     /**
-     * @return ID
+     * @return id
      */
     public Long getId() {
         return id;
@@ -49,7 +44,7 @@ public class AppPackage {
     }
 
     /**
-     * @return CREATED_BY
+     * @return created_by
      */
     public String getCreatedBy() {
         return createdBy;
@@ -63,7 +58,7 @@ public class AppPackage {
     }
 
     /**
-     * @return CREATED_DT
+     * @return created_dt
      */
     public Date getCreatedDt() {
         return createdDt;
@@ -77,7 +72,7 @@ public class AppPackage {
     }
 
     /**
-     * @return LAST_UPDATED_BY
+     * @return last_updated_by
      */
     public String getLastUpdatedBy() {
         return lastUpdatedBy;
@@ -91,7 +86,7 @@ public class AppPackage {
     }
 
     /**
-     * @return LAST_UPDATED_DT
+     * @return last_updated_dt
      */
     public Date getLastUpdatedDt() {
         return lastUpdatedDt;
@@ -105,7 +100,7 @@ public class AppPackage {
     }
 
     /**
-     * @return VERSION
+     * @return version
      */
     public Integer getVersion() {
         return version;
@@ -119,7 +114,7 @@ public class AppPackage {
     }
 
     /**
-     * @return DESCRIPTION
+     * @return description
      */
     public String getDescription() {
         return description;
@@ -133,7 +128,7 @@ public class AppPackage {
     }
 
     /**
-     * @return NAME
+     * @return name
      */
     public String getName() {
         return name;
@@ -147,7 +142,7 @@ public class AppPackage {
     }
 
     /**
-     * @return TYPE
+     * @return type
      */
     public String getType() {
         return type;

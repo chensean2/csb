@@ -6,65 +6,67 @@ import javax.persistence.*;
 @Table(name = "csb_user")
 public class User {
     @Id
-    @Column(name = "ID")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "CREATED_BY")
+    @Column(name = "created_by")
     private String createdBy;
 
-    @Column(name = "CREATED_DT")
+    @Column(name = "created_dt")
     private Date createdDt;
 
-    @Column(name = "LAST_UPDATED_BY")
+    @Column(name = "last_updated_by")
     private String lastUpdatedBy;
 
-    @Column(name = "LAST_UPDATED_DT")
+    @Column(name = "last_updated_dt")
     private Date lastUpdatedDt;
 
-    @Column(name = "VERSION")
     private Integer version;
 
-    @Column(name = "accountStatus")
-    private String accountstatus;
+    @Column(name = "account_status")
+    private String accountStatus;
 
     private String email;
 
-    @Column(name = "emailVerifiedDate")
-    private Date emailverifieddate;
+    @Column(name = "email_verified_date")
+    private Date emailVerifiedDate;
 
-    @Column(name = "firstName")
-    private String firstname;
+    @Column(name = "first_name")
+    private String firstName;
 
-    @Column(name = "lastLoginDate")
-    private Date lastlogindate;
+    @Column(name = "last_login_date")
+    private Date lastLoginDate;
 
-    @Column(name = "lastLoginIp")
-    private String lastloginip;
+    @Column(name = "last_login_ip")
+    private String lastLoginIp;
 
-    @Column(name = "lastName")
-    private String lastname;
+    @Column(name = "last_name")
+    private String lastName;
 
     @Column(name = "login_id")
     private String loginId;
 
-    @Column(name = "mobileNumber")
-    private String mobilenumber;
+    @Column(name = "mobile_number")
+    private String mobileNumber;
 
     private String name;
 
     private String password;
 
-    @Column(name = "passwordModifiedDate")
-    private Date passwordmodifieddate;
+    @Column(name = "password_modified_date")
+    private Date passwordModifiedDate;
 
-    @Column(name = "passwordReset")
-    private Integer passwordreset;
+    @Column(name = "password_reset")
+    private Integer passwordReset;
 
-    private String username;
+    @Column(name = "user_name")
+    private String userName;
+
+    @Column(name = "user_type")
+    private String userType;
 
     /**
-     * @return ID
+     * @return id
      */
     public Long getId() {
         return id;
@@ -78,7 +80,7 @@ public class User {
     }
 
     /**
-     * @return CREATED_BY
+     * @return created_by
      */
     public String getCreatedBy() {
         return createdBy;
@@ -92,7 +94,7 @@ public class User {
     }
 
     /**
-     * @return CREATED_DT
+     * @return created_dt
      */
     public Date getCreatedDt() {
         return createdDt;
@@ -106,7 +108,7 @@ public class User {
     }
 
     /**
-     * @return LAST_UPDATED_BY
+     * @return last_updated_by
      */
     public String getLastUpdatedBy() {
         return lastUpdatedBy;
@@ -120,7 +122,7 @@ public class User {
     }
 
     /**
-     * @return LAST_UPDATED_DT
+     * @return last_updated_dt
      */
     public Date getLastUpdatedDt() {
         return lastUpdatedDt;
@@ -134,7 +136,7 @@ public class User {
     }
 
     /**
-     * @return VERSION
+     * @return version
      */
     public Integer getVersion() {
         return version;
@@ -148,17 +150,17 @@ public class User {
     }
 
     /**
-     * @return accountStatus
+     * @return account_status
      */
-    public String getAccountstatus() {
-        return accountstatus;
+    public String getAccountStatus() {
+        return accountStatus;
     }
 
     /**
-     * @param accountstatus
+     * @param accountStatus
      */
-    public void setAccountstatus(String accountstatus) {
-        this.accountstatus = accountstatus;
+    public void setAccountStatus(String accountStatus) {
+        this.accountStatus = accountStatus;
     }
 
     /**
@@ -176,73 +178,73 @@ public class User {
     }
 
     /**
-     * @return emailVerifiedDate
+     * @return email_verified_date
      */
-    public Date getEmailverifieddate() {
-        return emailverifieddate;
+    public Date getEmailVerifiedDate() {
+        return emailVerifiedDate;
     }
 
     /**
-     * @param emailverifieddate
+     * @param emailVerifiedDate
      */
-    public void setEmailverifieddate(Date emailverifieddate) {
-        this.emailverifieddate = emailverifieddate;
+    public void setEmailVerifiedDate(Date emailVerifiedDate) {
+        this.emailVerifiedDate = emailVerifiedDate;
     }
 
     /**
-     * @return firstName
+     * @return first_name
      */
-    public String getFirstname() {
-        return firstname;
+    public String getFirstName() {
+        return firstName;
     }
 
     /**
-     * @param firstname
+     * @param firstName
      */
-    public void setFirstname(String firstname) {
-        this.firstname = firstname;
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
     }
 
     /**
-     * @return lastLoginDate
+     * @return last_login_date
      */
-    public Date getLastlogindate() {
-        return lastlogindate;
+    public Date getLastLoginDate() {
+        return lastLoginDate;
     }
 
     /**
-     * @param lastlogindate
+     * @param lastLoginDate
      */
-    public void setLastlogindate(Date lastlogindate) {
-        this.lastlogindate = lastlogindate;
+    public void setLastLoginDate(Date lastLoginDate) {
+        this.lastLoginDate = lastLoginDate;
     }
 
     /**
-     * @return lastLoginIp
+     * @return last_login_ip
      */
-    public String getLastloginip() {
-        return lastloginip;
+    public String getLastLoginIp() {
+        return lastLoginIp;
     }
 
     /**
-     * @param lastloginip
+     * @param lastLoginIp
      */
-    public void setLastloginip(String lastloginip) {
-        this.lastloginip = lastloginip;
+    public void setLastLoginIp(String lastLoginIp) {
+        this.lastLoginIp = lastLoginIp;
     }
 
     /**
-     * @return lastName
+     * @return last_name
      */
-    public String getLastname() {
-        return lastname;
+    public String getLastName() {
+        return lastName;
     }
 
     /**
-     * @param lastname
+     * @param lastName
      */
-    public void setLastname(String lastname) {
-        this.lastname = lastname;
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
     }
 
     /**
@@ -260,17 +262,17 @@ public class User {
     }
 
     /**
-     * @return mobileNumber
+     * @return mobile_number
      */
-    public String getMobilenumber() {
-        return mobilenumber;
+    public String getMobileNumber() {
+        return mobileNumber;
     }
 
     /**
-     * @param mobilenumber
+     * @param mobileNumber
      */
-    public void setMobilenumber(String mobilenumber) {
-        this.mobilenumber = mobilenumber;
+    public void setMobileNumber(String mobileNumber) {
+        this.mobileNumber = mobileNumber;
     }
 
     /**
@@ -302,44 +304,58 @@ public class User {
     }
 
     /**
-     * @return passwordModifiedDate
+     * @return password_modified_date
      */
-    public Date getPasswordmodifieddate() {
-        return passwordmodifieddate;
+    public Date getPasswordModifiedDate() {
+        return passwordModifiedDate;
     }
 
     /**
-     * @param passwordmodifieddate
+     * @param passwordModifiedDate
      */
-    public void setPasswordmodifieddate(Date passwordmodifieddate) {
-        this.passwordmodifieddate = passwordmodifieddate;
+    public void setPasswordModifiedDate(Date passwordModifiedDate) {
+        this.passwordModifiedDate = passwordModifiedDate;
     }
 
     /**
-     * @return passwordReset
+     * @return password_reset
      */
-    public Integer getPasswordreset() {
-        return passwordreset;
+    public Integer getPasswordReset() {
+        return passwordReset;
     }
 
     /**
-     * @param passwordreset
+     * @param passwordReset
      */
-    public void setPasswordreset(Integer passwordreset) {
-        this.passwordreset = passwordreset;
+    public void setPasswordReset(Integer passwordReset) {
+        this.passwordReset = passwordReset;
     }
 
     /**
-     * @return username
+     * @return user_name
      */
-    public String getUsername() {
-        return username;
+    public String getUserName() {
+        return userName;
     }
 
     /**
-     * @param username
+     * @param userName
      */
-    public void setUsername(String username) {
-        this.username = username;
+    public void setUserName(String userName) {
+        this.userName = userName;
+    }
+
+    /**
+     * @return user_type
+     */
+    public String getUserType() {
+        return userType;
+    }
+
+    /**
+     * @param userType
+     */
+    public void setUserType(String userType) {
+        this.userType = userType;
     }
 }
