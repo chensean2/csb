@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.csb.core.mapper.PlatformSaasAssignmentPlanMapper">
+<mapper namespace="mapper.PlatformSaasAssignmentPlanMapper">
   <resultMap id="BaseResultMap" type="com.csb.core.model.PlatformSaasAssignmentPlan">
     <!--
       WARNING - @mbggenerated
     -->
-    <id column="ID" jdbcType="BIGINT" property="id" />
-    <result column="CREATED_BY" jdbcType="VARCHAR" property="createdBy" />
-    <result column="CREATED_DT" jdbcType="TIMESTAMP" property="createdDt" />
-    <result column="LAST_UPDATED_BY" jdbcType="VARCHAR" property="lastUpdatedBy" />
-    <result column="LAST_UPDATED_DT" jdbcType="TIMESTAMP" property="lastUpdatedDt" />
-    <result column="VERSION" jdbcType="INTEGER" property="version" />
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="created_by" jdbcType="VARCHAR" property="createdBy" />
+    <result column="created_dt" jdbcType="TIMESTAMP" property="createdDt" />
+    <result column="last_updated_by" jdbcType="VARCHAR" property="lastUpdatedBy" />
+    <result column="last_updated_dt" jdbcType="TIMESTAMP" property="lastUpdatedDt" />
+    <result column="version" jdbcType="INTEGER" property="version" />
     <result column="action" jdbcType="VARCHAR" property="action" />
     <result column="creator_email" jdbcType="VARCHAR" property="creatorEmail" />
     <result column="creator_firstname" jdbcType="VARCHAR" property="creatorFirstname" />

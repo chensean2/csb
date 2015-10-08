@@ -10,12 +10,7 @@ import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
 import com.csb.core.annotation.WebComponent;
 import com.csb.mall.auth.service.AuthenticatedUser;
 
-/**
- * Intercept each request to handle the retrieval of {@link com.saas.tenant.entity.Tenant} into context.
- *
- * @author 
- * @since 02/01/2013 4:25 PM
- */
+
 @WebComponent
 public class LogInterceptor extends HandlerInterceptorAdapter {
 

@@ -12,29 +12,29 @@ import com.csb.parser.component.model.ValidationInfo;
 @Service
 public class DefaultParserService implements ParserService {
 
-	@Autowired
-	@Qualifier("saasParserComponent")
-	private ParserComponent saasParserComponent;
-	
-	@Autowired
-	@Qualifier("iaasParserComponent")
-	private ParserComponent iaasParserComponent;
-	
-	@Override
+    @Autowired
+    @Qualifier("saasParserComponent")
+    private ParserComponent saasParserComponent;
+
+    @Autowired
+    @Qualifier("iaasParserComponent")
+    private ParserComponent iaasParserComponent;
+
+    @Override
     public String parseSubscription(SubscriptionInfo subscriptionInfo) {
-        // TODO parse and save to db
-    	if(subscriptionInfo == null){
-    		return null;
-    	}
-    	String eventId = null;
-    	if("IAAS".equals( subscriptionInfo.getCategory())){
-    		eventId = iaasParserComponent.parse(subscriptionInfo);
-    	}else if("SAAS".equals( subscriptionInfo.getCategory())){
-    		eventId = saasParserComponent.parse(subscriptionInfo);
-    	}else if("PAAS".equals( subscriptionInfo.getCategory())){
-    		
-    	}
-    	
+        if (subscriptionInfo == null) {
+            return null;
+        }
+
+        String eventId = null;
+        if ("IAAS".equals(subscriptionInfo.getCategory())) {
+            eventId = iaasParserComponent.parse(subscriptionInfo);
+        } else if ("SAAS".equals(subscriptionInfo.getCategory())) {
+            eventId = saasParserComponent.parse(subscriptionInfo);
+        } else if ("PAAS".equals(subscriptionInfo.getCategory())) {
+
+        }
+
         return eventId;
     }
 
@@ -43,8 +43,8 @@ public class DefaultParserService implements ParserService {
         // TODO Auto-generated method stub
         return null;
     }
-    
-    public String parseValidation(ValidationInfo validationInfo){
+
+    public String parseValidation(ValidationInfo validationInfo) {
         return null;
     }
 

@@ -1,29 +1,30 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.csb.core.mapper.UserMapper">
+<mapper namespace="mapper.UserMapper">
   <resultMap id="BaseResultMap" type="com.csb.core.model.User">
     <!--
       WARNING - @mbggenerated
     -->
-    <id column="ID" jdbcType="BIGINT" property="id" />
-    <result column="CREATED_BY" jdbcType="VARCHAR" property="createdBy" />
-    <result column="CREATED_DT" jdbcType="TIMESTAMP" property="createdDt" />
-    <result column="LAST_UPDATED_BY" jdbcType="VARCHAR" property="lastUpdatedBy" />
-    <result column="LAST_UPDATED_DT" jdbcType="TIMESTAMP" property="lastUpdatedDt" />
-    <result column="VERSION" jdbcType="INTEGER" property="version" />
-    <result column="accountStatus" jdbcType="VARCHAR" property="accountstatus" />
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="created_by" jdbcType="VARCHAR" property="createdBy" />
+    <result column="created_dt" jdbcType="TIMESTAMP" property="createdDt" />
+    <result column="last_updated_by" jdbcType="VARCHAR" property="lastUpdatedBy" />
+    <result column="last_updated_dt" jdbcType="TIMESTAMP" property="lastUpdatedDt" />
+    <result column="version" jdbcType="INTEGER" property="version" />
+    <result column="account_status" jdbcType="VARCHAR" property="accountStatus" />
     <result column="email" jdbcType="VARCHAR" property="email" />
-    <result column="emailVerifiedDate" jdbcType="TIMESTAMP" property="emailverifieddate" />
-    <result column="firstName" jdbcType="VARCHAR" property="firstname" />
-    <result column="lastLoginDate" jdbcType="TIMESTAMP" property="lastlogindate" />
-    <result column="lastLoginIp" jdbcType="VARCHAR" property="lastloginip" />
-    <result column="lastName" jdbcType="VARCHAR" property="lastname" />
+    <result column="email_verified_date" jdbcType="TIMESTAMP" property="emailVerifiedDate" />
+    <result column="first_name" jdbcType="VARCHAR" property="firstName" />
+    <result column="last_login_date" jdbcType="TIMESTAMP" property="lastLoginDate" />
+    <result column="last_login_ip" jdbcType="VARCHAR" property="lastLoginIp" />
+    <result column="last_name" jdbcType="VARCHAR" property="lastName" />
     <result column="login_id" jdbcType="VARCHAR" property="loginId" />
-    <result column="mobileNumber" jdbcType="VARCHAR" property="mobilenumber" />
+    <result column="mobile_number" jdbcType="VARCHAR" property="mobileNumber" />
     <result column="name" jdbcType="VARCHAR" property="name" />
     <result column="password" jdbcType="VARCHAR" property="password" />
-    <result column="passwordModifiedDate" jdbcType="TIMESTAMP" property="passwordmodifieddate" />
-    <result column="passwordReset" jdbcType="INTEGER" property="passwordreset" />
-    <result column="username" jdbcType="VARCHAR" property="username" />
+    <result column="password_modified_date" jdbcType="TIMESTAMP" property="passwordModifiedDate" />
+    <result column="password_reset" jdbcType="INTEGER" property="passwordReset" />
+    <result column="user_name" jdbcType="VARCHAR" property="userName" />
+    <result column="user_type" jdbcType="VARCHAR" property="userType" />
   </resultMap>
 </mapper>

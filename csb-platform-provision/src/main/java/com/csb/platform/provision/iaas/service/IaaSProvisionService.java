@@ -2,12 +2,13 @@ package com.csb.platform.provision.iaas.service;
 
 import java.util.Map;
 
-import com.csb.core.platform.entity.Plan;
+import com.csb.core.model.PlatformIaasPlan;
+import com.csb.core.model.PlatformPlan;
 
 
 public interface IaaSProvisionService {
 
-    public Map<String, String> createServer(Plan plan);
+    public Map<String, String> createServer(PlatformIaasPlan iaasPlan);
     
     public Map<String, String> cancelServer(String eventId);
     
