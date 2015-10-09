@@ -19,4 +19,6 @@ public interface BaseService<T> {
     int count(T entity);
     
     List<T> findAll();
+    
+    void batchInsert(List<T> entityList);
 }

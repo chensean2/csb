@@ -1,11 +1,29 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="mapper.UserRolesMapper">
+<mapper namespace="com.csb.core.mapper.UserRolesMapper">
   <resultMap id="BaseResultMap" type="com.csb.core.model.UserRoles">
     <!--
       WARNING - @mbggenerated
     -->
     <id column="user_id" jdbcType="BIGINT" property="userId" />
     <id column="role_id" jdbcType="BIGINT" property="roleId" />
+    <result column="created_by" jdbcType="VARCHAR" property="createdBy" />
+    <result column="created_dt" jdbcType="TIMESTAMP" property="createdDt" />
+    <result column="last_updated_by" jdbcType="VARCHAR" property="lastUpdatedBy" />
+    <result column="last_updated_dt" jdbcType="TIMESTAMP" property="lastUpdatedDt" />
+    <result column="version" jdbcType="INTEGER" property="version" />
   </resultMap>
+  
+  <!-- Batch Insert example -->
+	<insert id="batchInsert" parameterType="java.util.List">
+	    insert into aa_user_roles (
+	    user_id,
+	    role_id,created_by,created_dt,last_updated_by,last_updated_dt,version
+	    )
+	    values (
+	    <foreach item="record" collection="list" open="" close="" separator="),(">
+	        #{record.userId}, #{record.roleId},#{record.createdBy},#{record.createdDt},#{record.lastUpdatedBy},#{record.lastUpdatedDt},#{record.version}
+	    </foreach>
+	    )
+	</insert>
 </mapper>

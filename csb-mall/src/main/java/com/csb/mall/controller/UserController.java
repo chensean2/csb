@@ -15,7 +15,6 @@ import org.springframework.web.bind.annotation.RestController;
 import com.csb.common.constant.DevelopConstant;
 import com.csb.common.constant.PlatformConstant;
 import com.csb.core.model.User;
-import com.csb.core.service.RoleService;
 import com.csb.core.service.UserService;
 
 @RestController
@@ -26,9 +25,6 @@ public class UserController {
 
 	@Autowired
 	private UserService userService;
-	
-	@Autowired
-        private RoleService roleService;
 	    
 	@RequestMapping(value = "/register", method = RequestMethod.GET)
 	@ResponseBody
@@ -46,6 +42,7 @@ public class UserController {
 	    userService.register(user);
 	    
 	    user = userService.findByUniqueKey(user);
+	    
 	    return new ResponseEntity<User>(user,HttpStatus.CREATED);
 	}
 	

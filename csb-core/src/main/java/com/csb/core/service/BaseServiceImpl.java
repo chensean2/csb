@@ -79,4 +79,20 @@ public abstract class BaseServiceImpl<T> implements BaseService<T> {
         List<T> tList = mapper.selectAll();
         return tList;
     }
+    
+    @Override
+    public void batchInsert(List<T> entityList){
+        Date currentDate = new Date();
+        for(T entity:entityList)
+        {
+            Reflections.invokeSetter(entity, "createdDt", currentDate);
+            Reflections.invokeSetter(entity, "createdBy", "system");
+            Reflections.invokeSetter(entity, "lastUpdatedDt", currentDate);
+            Reflections.invokeSetter(entity, "lastUpdatedBy", "system");
+            Reflections.invokeSetter(entity, "version", 1);
+        }
+        
+        Reflections.invokeMethodByName(mapper, "batchInsert", new Object[]{entityList});
+        
+    }
 }
